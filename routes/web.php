@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/pi', function () {
+    phpinfo();
+    die();
+});
