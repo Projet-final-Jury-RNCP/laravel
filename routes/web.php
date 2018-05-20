@@ -19,3 +19,7 @@ Route::get('/pi', function () {
     phpinfo();
     die();
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
