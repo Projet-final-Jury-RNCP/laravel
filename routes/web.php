@@ -1,4 +1,5 @@
 <?php
+use App\Category;
 
 /*
  * |--------------------------------------------------------------------------
@@ -11,11 +12,17 @@
  * |
  */
 Route::get ( '/', function () {
-	$categories = DB::table("categories")->get();
-	return view('index', ['categories' => $categories]);
+	$categories = Category::all ();
+	return view ( 'index', [ 
+			'categories' => $categories 
+	] );
 } );
 
 Route::get ( '/pi', function () {
 	phpinfo ();
 	die ();
 } );
+
+Route::get ( 'stock/create', 'StockController@create' );
+Route::post('category', 'StockController@store');
+
