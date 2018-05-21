@@ -25,9 +25,11 @@ Route::get ( '/pi', function () {
 
 
 
-    Auth::routes();
+Auth::routes();
 
-    Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
+
+
 
 Route::get ( 'stock/create', 'StockController@create' );
 Route::post('category', 'StockController@store');
