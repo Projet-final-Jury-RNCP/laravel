@@ -13,8 +13,8 @@ use App\Category;
  */
 Route::get ( '/', function () {
 	$categories = Category::all ();
-	return view ( 'index', [ 
-			'categories' => $categories 
+	return view ( 'index', [
+			'categories' => $categories
 	] );
 } );
 
@@ -22,6 +22,12 @@ Route::get ( '/pi', function () {
 	phpinfo ();
 	die ();
 } );
+
+
+
+    Auth::routes();
+
+    Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get ( 'stock/create', 'StockController@create' );
 Route::post('category', 'StockController@store');

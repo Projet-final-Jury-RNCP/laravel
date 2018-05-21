@@ -15,7 +15,7 @@ class AddCategoryToUsersTable extends Migration
     {
         //
         Schema::table('users', function (Blueprint $table) {
-            $table->string('category');
+            $table->string('role');
         });
     }
 
@@ -28,7 +28,7 @@ class AddCategoryToUsersTable extends Migration
     {
         //
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('category');
+            $table->dropColumn('role');
         });
     }
 }
