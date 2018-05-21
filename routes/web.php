@@ -11,8 +11,8 @@
  * |
  */
 Route::get ( '/', function () {
-// 	return view ( 'welcome' );
-	return view('index', ['meaningOfLife' => 42]);
+	$categories = DB::table("categories")->get();
+	return view('index', ['categories' => $categories]);
 } );
 
 Route::get ( '/pi', function () {
