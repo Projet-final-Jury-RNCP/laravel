@@ -11,7 +11,8 @@
  * |
  */
 Route::get ( '/', function () {
-	return view ( 'welcome' );
+// 	return view ( 'welcome' );
+	return view('index', ['meaningOfLife' => 42]);
 } );
 
 Route::get ( '/pi', function () {
