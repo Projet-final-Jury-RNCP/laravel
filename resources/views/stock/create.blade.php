@@ -15,13 +15,13 @@
 				<div class="form-group{{ $errors->has('cat_name') ? ' has-error' : '' }}">
 					<label for="exampleInputEmail1">Nom</label>
 					<input type="text" class="form-control" id="cat_name" aria-describedby="cat_name" name="cat_name" placeholder="Nom de la catégorie">
-					<small id="cat_name" class="form-text text-muted">...aide à la saisit</small>
+					<small id="cat_name" class="form-text text-muted">...aide à la saisie</small>
 					 <small class="text-danger">{{ $errors->first('cat_name') }}</small>
 				</div>
 				<div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
 					<label for="exampleInputEmail1">Tipe</label>
 					<input type="text" class="form-control" id="cat_type" aria-describedby="cat_type" name="cat_type" placeholder="Type de catégorie">
-					<small id="cat_type" class="form-text text-muted">...aide à la saisit</small>
+					<small id="cat_type" class="form-text text-muted">...aide à la saisie</small>
 				</div>
 				<button type="submit" class="btn btn-primary float-right">Submit</button>
 			</form>
