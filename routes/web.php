@@ -11,26 +11,32 @@ use App\Category;
  * | contains the "web" middleware group. Now create something great!
  * |
  */
-Route::get ( '/', function () {
-	$categories = Category::all ();
-	return view ( 'index', [
-			'categories' => $categories
-	] );
-} );
 
-Route::get ( '/pi', function () {
-	phpinfo ();
-	die ();
-} );
+Route::get('/', function () {
+    return view('welcome');
+});
 
-
+Route::get('/pi', function () {
+	phpinfo();
+	die();
+});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+/**
+ * Les routes du projet STOCK
+ */
 
-Route::get ( 'stock/create', 'StockController@create' );
+Route::get ('stock/create', 'StockController@create');
 Route::post('category', 'StockController@store');
 
+
+Route::get ('/edc', function () {
+    $categories = Category::all ();
+    return view ( 'index', [
+        'categories' => $categories
+    ] );
+} );

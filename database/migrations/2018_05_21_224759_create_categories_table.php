@@ -16,8 +16,12 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('cat_name',255)->collation('utf8_unicode_ci');
-            $table->string('cat_type',255)->collation('utf8_unicode_ci');
+
+            $table->softDeletes();
+//             $table->boolean('active');
+
+            $table->string('cat_name'); //,255)->collation('utf8_unicode_ci');
+            $table->string('cat_type')->default('');
         });
     }
 

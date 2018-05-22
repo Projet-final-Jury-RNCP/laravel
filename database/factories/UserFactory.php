@@ -21,3 +21,20 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\MeasureUnit::class, function (Faker $faker) {
+    return [
+
+        'measure_name' => $faker->word
+
+    //         $faker = Faker::create();
+    //         foreach(range(1, 3) as $index)
+        //         {
+    //             MeasureUnit::create([
+        //                 'measure_name' => $faker->word . $index,
+    //                 //                 'email' => $faker->email,
+    //             //                 'password' => 'secret'
+    //             ]);
+            //         },
+        ];
+});
