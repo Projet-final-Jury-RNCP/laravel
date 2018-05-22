@@ -1,15 +1,15 @@
 @extends('layouts.public')
 
 @section('title')
-	Publier une categorie 
-@stop 
+	Publier une categorie
+@stop
 
 @section('content')
 <div class="container">
 	<div class="card m-3">
 		<div class="card-header">Formulaire catégories</div>
 		<div class="card-body">
-			<form action="{{ url('category') }}" method="post">
+			<form action="{{ url('stock/categories') }}" method="post">
 				{{ csrf_field() }}
 				@include('partials._form-errors')
 				<div class="form-group{{ $errors->has('cat_name') ? ' has-error' : '' }}">
@@ -59,5 +59,5 @@
 			</table>
 		</div>
 	</div>
-</div>	
+</div>
 @stop

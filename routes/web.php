@@ -21,18 +21,6 @@ Route::get('/pi', function () {
 	die();
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-
-/**
- * Les routes du projet STOCK
- */
-
-Route::get ('stock/create', 'StockController@create');
-Route::post('category', 'StockController@store');
-
 
 Route::get ('/edc', function () {
     $categories = Category::all ();
@@ -40,3 +28,30 @@ Route::get ('/edc', function () {
         'categories' => $categories
     ] );
 } );
+
+
+// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', function() {
+    return Redirect::to( '/stock');
+});
+
+/**
+ * Les routes du projet STOCK
+ */
+
+// Route::group(['prefix' => 'stock', 'middleware' => 'auth'], function()
+Route::group(['prefix' => 'stock'], function()
+{
+
+    Route::get('/', function () {
+        return view('stock.home');
+    });
+
+    Route::get ('categories', 'StockController@create');
+    Route::post('categories', 'StockController@store');
+
+});
+
+Auth::routes();
+
+Route::get('/logout', 'Auth\LoginController@logout');
