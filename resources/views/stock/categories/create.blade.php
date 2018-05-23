@@ -30,7 +30,7 @@
 	<div class="card m-3">
 		<div class="card-header">Liste des catégories</div>
 		<div class="card-body">
-			<table id="table" class="display" style="width: 100%">
+			<table id="table" class="table table-striped table-bordered" style="width: 100%">
 				<thead>
 					<tr>
 						<th>#</th>
