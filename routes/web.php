@@ -1,5 +1,8 @@
 <?php
 use App\Category;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Route;
 
 /*
  * |--------------------------------------------------------------------------
@@ -24,7 +27,7 @@ Route::get('/pi', function () {
 
 Route::get ('/edc', function () {
     $categories = Category::all ();
-    return view ( 'index', [
+    return view ( 'stock.categories.create', [
         'categories' => $categories
     ] );
 } );
