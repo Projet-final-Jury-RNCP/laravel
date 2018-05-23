@@ -47,7 +47,6 @@ class StockController extends Controller
 		$categories->save ();
 
 		$categories = Category::all ();
-// 		return view ( 'stock.create', compact ( 'categories' ) );
 		return redirect('stock/categories');
     }
 
@@ -82,7 +81,17 @@ class StockController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $this->validate ( $request, [
+            'cat_name' => 'required'
+        ] );
+        
+        $category->cat_name = $request->cat_name;
+        $category->cat_type = $request->cat_type;
+        
+        $category->save ();
+        
+        $category = Category::all ();
+        return redirect('stock/categories');
     }
 
     /**
@@ -93,7 +102,9 @@ class StockController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        Category::destroy($category->id);
+        
+        return redirect('stock/categories');
     }
 
 }

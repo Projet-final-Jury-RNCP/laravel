@@ -24,15 +24,6 @@ Route::get('/pi', function () {
 	die();
 });
 
-
-Route::get ('/edc', function () {
-    $categories = Category::all ();
-    return view ( 'stock.categories.create', [
-        'categories' => $categories
-    ] );
-} );
-
-
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home', function() {
     return Redirect::to( '/stock');
@@ -52,6 +43,8 @@ Route::group(['prefix' => 'stock'], function()
 
     Route::get ('categories', 'StockController@create');
     Route::post('categories', 'StockController@store');
+    Route::put('categories/{category}', 'StockController@update');
+    Route::delete('categories/{category}', 'StockController@destroy');
 
 });
 

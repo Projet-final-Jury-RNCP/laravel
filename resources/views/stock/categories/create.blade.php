@@ -9,7 +9,7 @@
 	<div class="card m-3">
 		<div class="card-header">Formulaire catégories</div>
 		<div class="card-body">
-			<form action="{{ url('stock/categories') }}" method="post">
+			<form action="{{ url('stock/categories') }}" method="post" name="category">
 				{{ csrf_field() }}
 				@include('partials._form-errors')
 				<div class="form-group{{ $errors->has('cat_name') ? ' has-error' : '' }}">
@@ -24,6 +24,7 @@
 					<small id="cat_type" class="form-text text-muted">...aide à la saisie</small>
 				</div>
 				<button type="submit" class="btn btn-primary float-right">Submit</button>
+				<button id="new" type="submit" class="btn btn-success float-right mr-3" style="display: none;">New</button>
 			</form>
 		</div>
 	</div>
@@ -50,8 +51,8 @@
 						<td>{{ strftime('%d/%m/%Y', strtotime($category->created_at)) }}</td>
 						<td>{{ strftime('%d/%m/%Y', strtotime($category->updated_at)) }}</td>
 						<td class="text-center">
-							<i id="edit" title="modifier" class="fa fa-pencil fa-2x" data-id="{{ $category->id }}" style="color: #007bff;"></i>
-							<i data-target="#delete" data-toggle="modal" title="supprimer" class="fa fa-trash fa-2x" aria-hidden="true" data-source="contacts-del" data-id="{{ $category->id }}" style="color: red;"></i>
+							<i id="edit" title="modifier" class="fa fa-pencil fa-2x" data-id="{{ $category->id }}" style="color:#007bff;cursor:pointer;"></i>
+							<i data-target="#delete" data-toggle="modal" title="supprimer" class="fa fa-trash fa-2x" aria-hidden="true" data-source="cat-del" data-id="{{ $category->id }}" style="color:red;cursor:pointer;"></i>
 						</td>
 					</tr>
 					@endforeach
