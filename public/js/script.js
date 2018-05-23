@@ -46,18 +46,38 @@ $(document)
 
 					$('#table tbody #edit').on( 'click', function () {
 						var elem = this.parentElement;
+						$('#update').attr('data-id', table.row( elem ).data()[0]);
 						$("#cat_name").val(table.row( elem ).data()[1]);
 						$("#cat_type").val(table.row( elem ).data()[2]);
-						console.log($('#put'));
 						if($('#put').length<1){
 							$('form[name="category"]').append('<input id="put" type="hidden" name="_method" value="PUT">');
 							$('form[name="category"]').attr("action", function( i, val ) { return val + "/"+table.row( elem ).data()[0]});
 						}
+						$("#submit_form").hide();
 						$("#new").fadeIn( "slow" );
+						$("#update").fadeIn( "slow" );
 					    $('html, body').animate({
 					        scrollTop: $(".container").offset().top
 					    }, 500);
 					} );
+					
+					//modal update
+					$('#update_modal').on('show.bs.modal',function(event) {
+						var button = $(event.relatedTarget)
+						var id = button.data('id')
+						var source = button.data('source')
+						var modal = $(this)
+						var src_txt;
+						if (source == "cat-edit") {
+							src_txt = "la catégorie";
+							modal.find('#send').click(function() {
+								document.category.submit();
+							});
+						}
+						modal.find('.modal-title').text('modifier '+src_txt+' n° ' + id + ' ?')
+					}).on('hidden.bs.modal', function (e) {
+						$(this).find('.modal-body form').attr('action', '');
+					});
 					
 					//modal effacements
 					$('#delete').on('show.bs.modal',function(event) {

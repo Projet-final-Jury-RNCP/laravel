@@ -9,7 +9,7 @@
 	<div class="card m-3">
 		<div class="card-header">Formulaire catégories</div>
 		<div class="card-body">
-			<form action="{{ url('stock/categories') }}" method="post" name="category">
+			<form action="{{ url('stock/categories') }}" id="category" method="post" name="category">
 				{{ csrf_field() }}
 				@include('partials._form-errors')
 				<div class="form-group{{ $errors->has('cat_name') ? ' has-error' : '' }}">
@@ -23,8 +23,9 @@
 					<input type="text" class="form-control" id="cat_type" aria-describedby="cat_type" name="cat_type" placeholder="Type de catégorie">
 					<small id="cat_type" class="form-text text-muted">...aide à la saisie</small>
 				</div>
-				<button type="submit" class="btn btn-primary float-right">Submit</button>
-				<button id="new" type="submit" class="btn btn-success float-right mr-3" style="display: none;">New</button>
+				<button data-target="#update_modal" data-toggle="modal" data-source="cat-edit" id="update" type="button" class="btn btn-warning float-right" style="display: none;">Modifier</button>
+				<button id="submit_form" type="submit" class="btn btn-primary float-right">Envoyer</button>
+				<button id="new" type="button" class="btn btn-success float-right mr-3" style="display: none;">New</button>
 			</form>
 		</div>
 	</div>
