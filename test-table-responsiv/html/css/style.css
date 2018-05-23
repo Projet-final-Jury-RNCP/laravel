@@ -1,0 +1,55 @@
+td.responsive-td i {
+	cursor: pointer;
+}
+
+tr:nth-child(odd):not(.head-tr) {
+	background-color: #EEEEEE !important;
+}
+
+tr:nth-child(even) {
+	background-color: #CCCCCC !important;
+}
+
+@media (max-width: 767px) {		
+	table, thead, tbody, th, tr, td.responsive-td { 
+		display: block; 
+	}	 	
+ 
+	/* display the responsive-field attribute content before each td */
+	td.responsive-td:before { 
+		content: attr(responsive-field); 
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		font-weight: bold;
+		font-size: 0.97rem;
+		width: 50%; 
+		height: 100%;
+		text-align: left;
+		padding-top: 4px;
+		padding-left: 1px;
+	}
+	tr:nth-child(odd) td.responsive-td:before {
+		background-color: #DDDDDD !important;
+	}
+
+	tr:nth-child(even) td.responsive-td:before {
+		background-color: #BBBBBB !important;
+	}
+
+	/* Push the td content after the before content */
+	td.responsive-td { 
+		position: relative;
+		padding-left: 55% !important; 
+	}	
+
+	/* The edit and delete icons */
+	.table-icone {
+		text-align: right;
+	}
+
+	/* hide the table head */
+	thead { 
+		display: none;
+	}
+}
