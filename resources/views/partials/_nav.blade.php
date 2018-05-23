@@ -28,26 +28,23 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{{  url('/stock') }}">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Stock
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/stock/consulter">Consulter</a>
-          <a class="dropdown-item" href="/stock/approvisionner">Approvisionner</a>
+          <a class="dropdown-item" href="{{  url('/stock/consulter') }}">Consulter</a>
+          <a class="dropdown-item" href="{{  url('/stock/approvisionner') }}">Approvisionner</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="/stock/categories">Categories</a>
-          <a class="dropdown-item" href="/stock/mesures">Mesures</a>
-          <a class="dropdown-item" href="/stock/produits">Produits</a>
+          <a class="dropdown-item" href="{{  url('/stock/categories') }}">Categories</a>
+          <a class="dropdown-item" href="{{  url('/stock/mesures') }}">Mesures</a>
+          <a class="dropdown-item" href="{{  url('/stock/produits') }}">Produits</a>
         </div>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{  url('/repas') }}">Repas</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
       </li>
     </ul>
 
