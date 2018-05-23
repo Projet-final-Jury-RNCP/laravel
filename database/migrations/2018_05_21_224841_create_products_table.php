@@ -25,7 +25,7 @@ class CreateProductsTable extends Migration
             $table->foreign('id_measure_unit')->references('id')->on('measure_units');
 //             $table->integer('id_category');
             $table->unsignedInteger('id_category');
-            $table->foreign('id_category')->references('id')->on('categories');
+            $table->foreign('id_category')->references('id')->on('categories'); // ->onDelete('cascade');
             $table->string('name');
             $table->string('description');
             $table->integer('min_threshold');

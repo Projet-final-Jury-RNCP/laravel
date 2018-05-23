@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use App\Product;
 
 class StockController extends Controller
 {
@@ -84,12 +85,12 @@ class StockController extends Controller
         $this->validate ( $request, [
             'cat_name' => 'required'
         ] );
-        
+
         $category->cat_name = $request->cat_name;
         $category->cat_type = $request->cat_type;
-        
+
         $category->save ();
-        
+
         $category = Category::all ();
         return redirect('stock/categories');
     }
@@ -102,8 +103,16 @@ class StockController extends Controller
      */
     public function destroy(Category $category)
     {
-        Category::destroy($category->id);
-        
+//         dd($category);  // Category
+//         dd($category->products); // Collection 0-n
+
+        if($category->products->count()) {
+            \Session::flash('flash_message_error','Catégorie non supprimée, car elle est utilisée par des produits');
+        }else{
+            Category::destroy($category->id);
+            \Session::flash('flash_message_success','Catégorie supprimée');
+        }
+
         return redirect('stock/categories');
     }
 

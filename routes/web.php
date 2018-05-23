@@ -51,3 +51,10 @@ Route::group(['prefix' => 'stock'], function()
 Auth::routes();
 
 Route::get('/logout', 'Auth\LoginController@logout');
+
+
+/**
+ * Les routes de TEST
+ */
+Route::get('/test/seb/a', 'TestSebController@a');
+Route::get('/test/seb/flashmessage', 'TestSebController@flashmessage');
