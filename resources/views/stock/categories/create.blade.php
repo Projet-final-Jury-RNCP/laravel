@@ -49,7 +49,7 @@
 						<td>{{ $category->cat_type }}</td>
 						<td>{{ strftime('%d/%m/%Y', strtotime($category->created_at)) }}</td>
 						<td>{{ strftime('%d/%m/%Y', strtotime($category->updated_at)) }}</td>
-						<td>
+						<td class="text-center">
 							<i id="edit" title="modifier" class="fa fa-pencil fa-2x" data-id="{{ $category->id }}" style="color: #007bff;"></i>
 							<i data-target="#delete" data-toggle="modal" title="supprimer" class="fa fa-trash fa-2x" aria-hidden="true" data-source="contacts-del" data-id="{{ $category->id }}" style="color: red;"></i>
 						</td>
