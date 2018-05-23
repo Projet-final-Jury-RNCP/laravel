@@ -38,7 +38,8 @@ class StockController extends Controller
     public function store(Request $request)
     {
 		$this->validate ( $request, [
-				'cat_name' => 'required'
+		    'cat_name' => 'required|string|max:255',
+		    'cat_type' => 'required|string|max:255',
 		] );
 
 		$categories = new Category ();
