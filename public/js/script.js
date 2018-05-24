@@ -51,7 +51,7 @@ $(document)
 //						}
 						$('#update').attr('data-id', table.row( elem ).data()[0]);
 						
-						if($('form[name="category"]').length<1){
+						if($('form[name="category"]').length>0){
 							$('form[name="category"]').append('<input id="put" type="hidden" name="_method" value="PUT">');
 							$('form[name="category"]').attr("action", function( i, val ) { return val + "/"+table.row( elem ).data()[0]});
 						}
@@ -60,8 +60,9 @@ $(document)
 						$("#cat_type").val(table.row( elem ).data()[2]);
 						if($('#put').length<1){
 							$('form').append('<input id="put" type="hidden" name="_method" value="PUT">');
-							$('form').attr("action", function( i, val ) { return val + "/"+table.row( elem ).data()[0]});
+							$('form').attr("action", function( i, val ) { return val + "/"+table.row( elem ).data()[0]});//FIXME rimuovere il vecchio id su nuovo click edit
 						}
+						
 						$("#submit_form").hide();
 						$("#new").fadeIn( "slow" );
 						$("#update").fadeIn( "slow" );
