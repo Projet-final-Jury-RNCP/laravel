@@ -7,6 +7,7 @@
     <meta name="description" content="Plateforme de microblogging">
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" media="screen" title="no title">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" media="screen" title="no title">
 
     <title>Gestion de stock | @yield('title')</title>
 
@@ -24,6 +25,9 @@
 	<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.16/r-2.2.1/datatables.min.js"></script>
 	<script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
 
+<style type="text/css">
+
+</style>
 </head>
 <body>
     <!-- Main navigation -->

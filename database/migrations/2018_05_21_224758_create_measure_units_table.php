@@ -18,6 +18,7 @@ class CreateMeasureUnitsTable extends Migration
             $table->timestamps();
 
             $table->string('measure_name', 50);
+            $table->string('measure_symbol', 50);
         });
     }
 
