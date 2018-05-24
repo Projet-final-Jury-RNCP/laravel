@@ -40,7 +40,8 @@ class MeasureUnitSeeder extends Seeder
 
                 // https://github.com/fzaninotto/Faker#fakerprovidermiscellaneous
                 MeasureUnit::create([
-                    'measure_name' => ucfirst(strtolower($faker->countryCode))
+                    'measure_name' => ucfirst(strtolower($faker->city)),
+                    'measure_symbol' => ucfirst(strtolower($faker->countryCode))
                 ]);
             }
 

@@ -4,22 +4,22 @@ $(document)
 					var	table = $('#table')
 									.DataTable(
 											{
-										        responsive: {
-										            details: {
-										                renderer: function ( api, rowIdx, columns ) {
-										                    var data = $.map( columns, function ( col, i ) {
-										                        return col.hidden ?
-										                            '<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
-										                                '<td>'+col.title+':'+'</td> '+
-										                                '<td>'+col.data+'</td>'+
-										                            '</tr>' :
-										                            '';
-										                    } ).join('');
-										 
-										                    return data ? $('<table/>').append( data ) : false;
-										                }
-										            }
-										        },
+//										        responsive: {
+//										            details: {
+//										                renderer: function ( api, rowIdx, columns ) {
+//										                    var data = $.map( columns, function ( col, i ) {
+//										                        return col.hidden ?
+//										                            '<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
+//										                                '<td>'+col.title+':'+'</td> '+
+//										                                '<td>'+col.data+'</td>'+
+//										                            '</tr>' :
+//										                            '';
+//										                    } ).join('');
+//										 
+//										                    return data ? $('<table/>').append( data ) : false;
+//										                }
+//										            }
+//										        },
 												language : {
 													processing : "Traitement en cours...",
 													search : "Rechercher&nbsp;:",
@@ -46,13 +46,23 @@ $(document)
 
 					$('#table tbody #edit').on( 'click', function () {
 						var elem = this.parentElement;
+//						for (var i = 0; i < table.row( elem ).data().length; i++) {
+//							console.log(table.row( elem ).data()[i]);
+//						}
 						$('#update').attr('data-id', table.row( elem ).data()[0]);
-						$("#cat_name").val(table.row( elem ).data()[1]);
-						$("#cat_type").val(table.row( elem ).data()[2]);
-						if($('#put').length<1){
+						
+						if($('form[name="category"]').length>0){
 							$('form[name="category"]').append('<input id="put" type="hidden" name="_method" value="PUT">');
 							$('form[name="category"]').attr("action", function( i, val ) { return val + "/"+table.row( elem ).data()[0]});
 						}
+						
+						$("#cat_name").val(table.row( elem ).data()[1]);
+						$("#cat_type").val(table.row( elem ).data()[2]);
+						if($('#put').length<1){
+							$('form').append('<input id="put" type="hidden" name="_method" value="PUT">');
+							$('form').attr("action", function( i, val ) { return val + "/"+table.row( elem ).data()[0]});//FIXME rimuovere il vecchio id su nuovo click edit
+						}
+						
 						$("#submit_form").hide();
 						$("#new").fadeIn( "slow" );
 						$("#update").fadeIn( "slow" );
