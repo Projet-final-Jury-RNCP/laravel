@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->timestamps();
 
             $table->softDeletes();
-//             $table->boolean('active');
+            $table->boolean('active')->default(true);
 
 //             $table->integer('id_measure_unit');
             $table->unsignedInteger('id_measure_unit');

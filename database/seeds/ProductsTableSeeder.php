@@ -15,6 +15,84 @@ class ProductsTableSeeder extends Seeder
     public function run()
     {
 
+        Product::create([
+            'id' => 1,
+            'active' => true,
+            'id_measure_unit' => 2,
+            'id_category' => 1,
+            'name' => 'Eau de source',
+            'description' => 'eau de source',
+            'min_threshold' => 10,
+            'max_threshold' => 30
+        ]);
+
+        Product::create([
+            'id' => 2,
+            'active' => true,
+            'id_measure_unit' => 5,
+            'id_category' => 1,
+            'name' => 'Eau 1.5L',
+            'description' => 'eau en btl',
+            'min_threshold' => 50,
+            'max_threshold' => 100
+        ]);
+
+        Product::create([
+            'id' => 3,
+            'active' => true,
+            'id_measure_unit' => 2,
+            'id_category' => 1,
+            'name' => 'Vinaigre',
+            'description' => '',
+            'min_threshold' => 1,
+            'max_threshold' => 3
+        ]);
+
+        Product::create([
+            'id' => 4,
+            'active' => false,
+            'id_measure_unit' => 4,
+            'id_category' => 1,
+            'name' => 'Poison',
+            'description' => 'attention danger',
+            'min_threshold' => 1,
+            'max_threshold' => 3
+        ]);
+
+        Product::create([
+            'id' => 5,
+            'active' => true,
+            'id_measure_unit' => 4,
+            'id_category' => 1,
+            'name' => 'Poisson',
+            'description' => '',
+            'min_threshold' => 1,
+            'max_threshold' => 3
+        ]);
+
+        Product::create([
+            'id' => 6,
+            'active' => true,
+            'id_measure_unit' => 1,
+            'id_category' => 1,
+            'name' => 'Steack congelé',
+            'description' => '',
+            'min_threshold' => 60,
+            'max_threshold' => 100
+        ]);
+
+        Product::create([
+            'id' => 7,
+            'active' => true,
+            'id_measure_unit' => 1,
+            'id_category' => 2,
+            'name' => 'Sopalin',
+            'description' => 'moelleu',
+            'min_threshold' => 20,
+            'max_threshold' => 60
+        ]);
+
+
         $faker = Faker::create();
         foreach(range(1, 10) as $index)
         {
