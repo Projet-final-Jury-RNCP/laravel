@@ -76,8 +76,8 @@ class TestSebController extends Controller
     {
         $request->session()->flash('flash_message_success', __('Thanks for your comment. It will appear when an administrator has validated it.<br>Once you are validated your other comments immediately appear.'));
 
-        \Session::flash('flash_message_success','Office successfully added.'); //<--FLASH MESSAGE
-        \Session::flash('flash_message_error','Office successfully NO added.'); //<--FLASH MESSAGE
+//         \Session::flash('flash_message_success','Office successfully added.'); //<--FLASH MESSAGE
+//         \Session::flash('flash_message_error','Office successfully NO added.'); //<--FLASH MESSAGE
 
 //         return redirect('/stock/categories');
         return redirect('/home');

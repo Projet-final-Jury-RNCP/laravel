@@ -20,6 +20,7 @@ $(document)
 //										                }
 //										            }
 //										        },
+												"autoWidth": false,
 												language : {
 													processing : "Traitement en cours...",
 													search : "Rechercher&nbsp;:",
@@ -46,21 +47,19 @@ $(document)
 
 					$('#table tbody #edit').on( 'click', function () {
 						var elem = this.parentElement;
-//						for (var i = 0; i < table.row( elem ).data().length; i++) {
-//							console.log(table.row( elem ).data()[i]);
-//						}
+
 						$('#update').attr('data-id', table.row( elem ).data()[0]);
 						
 						if($('form[name="category"]').length>0){
-							$('form[name="category"]').append('<input id="put" type="hidden" name="_method" value="PUT">');
-							$('form[name="category"]').attr("action", function( i, val ) { return val + "/"+table.row( elem ).data()[0]});
+							$("#cat_name").val(table.row( elem ).data()[1]);
+							$("#cat_type").val(table.row( elem ).data()[2]);
 						}
 						
-						$("#cat_name").val(table.row( elem ).data()[1]);
-						$("#cat_type").val(table.row( elem ).data()[2]);
+						$('#index').val(table.row( elem ).data()[0]);
+
 						if($('#put').length<1){
 							$('form').append('<input id="put" type="hidden" name="_method" value="PUT">');
-							$('form').attr("action", function( i, val ) { return val + "/"+table.row( elem ).data()[0]});//FIXME rimuovere il vecchio id su nuovo click edit
+							$('form').attr("action", function( i, val ) { return val + "/update"});
 						}
 						
 						$("#submit_form").hide();

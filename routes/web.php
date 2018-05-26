@@ -43,7 +43,7 @@ Route::group(['prefix' => 'stock'], function()
 
     Route::get ('categories', 'StockController@create');
     Route::post('categories', 'StockController@store');
-    Route::put('categories/{category}', 'StockController@update');
+    Route::put('categories/update', 'StockController@update');
     Route::delete('categories/{category}', 'StockController@destroy');
 
 });
