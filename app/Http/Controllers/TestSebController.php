@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use App\Product;
 use Illuminate\Http\Request;
 use App\Category;
+use App\StockReal;
+use App\StockFlow;
+use App\StockSupply;
 
 class TestSebController extends Controller
 {
 
-    public function a(Request $request)
+    public function dbrelations(Request $request)
     {
 
         $id_category = 1;
@@ -81,6 +84,44 @@ class TestSebController extends Controller
 
 //         return redirect('/stock/categories');
         return redirect('/home');
+    }
+
+    public function stockreel(Request $request)
+    {
+//         $stocks = StockReal::all();
+
+//         dd($stocks[0]->product());
+//         dd($stocks[0]->product()->category());
+
+//         dd($stocks[0]->product());  // HasOne
+//         dd($stocks[0]->product);    // Product  ok avec le StockReal hasOne('App\Product', 'id')    // SQLSTATE[42S22]: Column not found: 1054 Unknown column 'products.id_product' in 'where clause' (SQL: select * from `products` where `products`.`id_product` = 1 and `products`.`id_product` is not null limit 1)
+//         dd($stocks[0]->product()->getResults());    // Product
+//         dd($stocks[0]->product()->get());   // Collection
+
+
+//         https://www.amitmerchant.com/Laravel-Eager-Loading-Load-Vs-With/     Laravel Eager Loading - load() Vs. with()
+//         https://laravel-news.com/eloquent-eager-loading                      Optimize Laravel Eloquent Queries with Eager Loading
+
+//         $stocks = StockReal::all();
+//         $stocks->load('product.category');                       // force le chargement des dependances
+
+//         $stocks = StockReal::get();                             // eager loading
+        $stocks = StockReal::with('product.category')->get();   // eager loading
+
+//         foreach ($stocks as $stock) {
+
+// //             dump($stock);
+//             echo $stock->id_product . ' QTE:' . $stock->quantity . $stock->product . ' (';
+
+//         }
+
+//         die();
+
+
+//         $stocks = StockSupply::with('product.category')->get();   // eager loading
+//         $stocks = StockFlow::with('product.category')->get();   // eager loading
+
+        return $stocks;
     }
 
 }
