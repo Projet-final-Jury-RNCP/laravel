@@ -9,7 +9,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form name="delete" action="" method="post">
+				<form name="delete" action="{{ url('/') }}" method="post">
 					{{ csrf_field() }} {{ method_field('DELETE') }}
 				</form>
 			</div>
