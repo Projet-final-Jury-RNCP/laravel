@@ -108,10 +108,10 @@ class StockController extends Controller
 //         dd($category->products); // Collection 0-n
 
         if($category->products->count()) {
-            Session::flash('flash_message_error','Catégorie non supprimée, car elle est utilisée par des produits');
+            \Session::flash('flash_message_error','Catégorie non supprimée, car elle est utilisée par des produits');
         }else{
             Category::destroy($category->id);
-            Session::flash('flash_message_success','Catégorie supprimée');
+            \Session::flash('flash_message_success','Catégorie supprimée');
         }
 
         return redirect('stock/categories');
