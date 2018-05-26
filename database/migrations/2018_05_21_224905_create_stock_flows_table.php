@@ -23,7 +23,8 @@ class CreateStockFlowsTable extends Migration
 //             $table->integer('id_meal');
             $table->unsignedInteger('id_meal');
             $table->foreign('id_meal')->references('id')->on('meals');
-            $table->integer('quantity');
+            $table->integer('quantity_add');
+            $table->integer('quantity_rem');
             $table->float('unit_price', 8, 2);
         });
     }
