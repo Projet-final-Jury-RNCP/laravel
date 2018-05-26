@@ -43,7 +43,7 @@ Route::group(['prefix' => 'stock'], function()
 
     Route::get ('categories', 'StockController@create');
     Route::post('categories', 'StockController@store');
-    Route::put('categories/{category}', 'StockController@update');
+    Route::put('categories_update', 'StockController@update');
     Route::delete('categories/{category}', 'StockController@destroy');
 
 });
@@ -56,5 +56,6 @@ Route::get('/logout', 'Auth\LoginController@logout');
 /**
  * Les routes de TEST
  */
-Route::get('/test/seb/a', 'TestSebController@a');
+Route::get('/test/seb/dbrelations', 'TestSebController@dbrelations');
 Route::get('/test/seb/flashmessage', 'TestSebController@flashmessage');
+Route::get('/test/seb/stockreel', 'TestSebController@stockreel');

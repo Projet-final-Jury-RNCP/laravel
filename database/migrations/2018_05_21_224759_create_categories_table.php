@@ -18,10 +18,10 @@ class CreateCategoriesTable extends Migration
             $table->timestamps();
 
             $table->softDeletes();
-//             $table->boolean('active');
+            $table->boolean('active')->default(true);
 
             $table->string('cat_name'); //,255)->collation('utf8_unicode_ci');
-            $table->string('cat_type')->default('');
+            $table->text('cat_desc')->nullable();
         });
     }
 

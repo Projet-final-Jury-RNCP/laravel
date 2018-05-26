@@ -38,13 +38,12 @@ class StockController extends Controller
     public function store(Request $request)
     {
 		$this->validate ( $request, [
-		    'cat_name' => 'required|string|max:255',
-		    'cat_type' => 'required|string|max:255',
+		    'cat_name' => 'required|min:5|max:255',
 		] );
 
 		$categories = new Category ();
 		$categories->cat_name = $request->cat_name;
-		$categories->cat_type = $request->cat_type;
+		$categories->cat_desc = $request->cat_desc;
 
 		$categories->save ();
 
@@ -81,14 +80,15 @@ class StockController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request)
     {
         $this->validate ( $request, [
-            'cat_name' => 'required'
+			'cat_name' => 'required|min:5|max:255',
         ] );
 
+        $category = Category::find($request->index);
         $category->cat_name = $request->cat_name;
-        $category->cat_type = $request->cat_type;
+        $category->cat_desc = $request->cat_desc;
 
         $category->save ();
 
@@ -108,10 +108,10 @@ class StockController extends Controller
 //         dd($category->products); // Collection 0-n
 
         if($category->products->count()) {
-            \Session::flash('flash_message_error','Catégorie non supprimée, car elle est utilisée par des produits');
+            Session::flash('flash_message_error','Catégorie non supprimée, car elle est utilisée par des produits');
         }else{
             Category::destroy($category->id);
-            \Session::flash('flash_message_success','Catégorie supprimée');
+            Session::flash('flash_message_success','Catégorie supprimée');
         }
 
         return redirect('stock/categories');

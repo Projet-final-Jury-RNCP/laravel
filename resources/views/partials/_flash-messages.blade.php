@@ -57,7 +57,7 @@ https://laravel.sillo.org/creer-une-application-avec-laravel-5-5-les-categories-
 @if(Session::has('flash_message_success'))
 
 <div class="container">
-    <div class="alert alert-dismissible alert-success fade show" role="alert">
+    <div class="alert alert-dismissible alert-success fade show m-3" role="alert">
         {{ session('flash_message_success') }}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -71,7 +71,7 @@ https://laravel.sillo.org/creer-une-application-avec-laravel-5-5-les-categories-
 @if(Session::has('flash_message_error'))
 
 <div class="container">
-    <div class="alert alert-dismissible alert-danger fade show" role="alert">
+    <div class="alert alert-dismissible alert-danger fade show m-3" role="alert">
         {{ session('flash_message_error') }}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
