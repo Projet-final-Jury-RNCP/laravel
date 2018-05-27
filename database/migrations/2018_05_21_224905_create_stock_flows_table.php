@@ -17,6 +17,9 @@ class CreateStockFlowsTable extends Migration
             $table->increments('id');
             $table->timestamps();
 
+            $table->unsignedInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
+
 //             $table->integer('id_product');
             $table->unsignedInteger('id_product');
             $table->foreign('id_product')->references('id')->on('products');

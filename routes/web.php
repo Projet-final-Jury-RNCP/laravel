@@ -48,6 +48,18 @@ Route::group(['prefix' => 'stock'], function()
 
 });
 
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
+{
+
+    Route::get('/user', ['as' => 'user', 'uses' => 'UserController@index']);
+    Route::get('/user/create', 'UserController@create');
+    Route::post('/user/create', 'UserController@store');
+    Route::get('/user/{user}/edit', 'UserController@edit');
+    Route::put('/user/{user}', 'UserController@update');
+    Route::delete('/user/{user}', 'UserController@destroy');
+
+});
+
 Auth::routes();
 
 Route::get('/logout', 'Auth\LoginController@logout');

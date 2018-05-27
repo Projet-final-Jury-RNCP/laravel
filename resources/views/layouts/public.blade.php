@@ -4,10 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Plateforme de microblogging">
+    <meta name="description" content="STOCK">
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" media="screen" title="no title">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}" media="screen" title="no title">
+<!--     <link rel="stylesheet" href="{{ asset('css/style.css') }}" media="screen" title="no title"> -->
+	<link rel="stylesheet" href="{{ asset('css/stock.css') }}" media="screen" title="no title">
 
     <title>Gestion de stock | @yield('title')</title>
 
