@@ -26,11 +26,11 @@ $(document)
 										        },
 										        "initComplete": function () {
 											        if ($('#stockSupply').length>0) {
-											            this.api().columns().every( function () {
+											        	var tbl = this.api();
+											           tbl.columns().every( function () {
 											                var column = this;
 											                if (this.index()==0) {
-												                var select = $('<select style="float:right;"><option value=""></option></select>')
-											                    .appendTo( $(column.header()) )
+												                var select = $('<select><option value=""></option></select>')
 											                    .on( 'change', function () {
 											                        var val = $.fn.dataTable.util.escapeRegex(
 											                            $(this).val()
@@ -41,7 +41,8 @@ $(document)
 											 
 												                column.data().unique().sort().each( function ( d, j ) {
 												                    select.append( '<option value="'+d+'">'+d+'</option>' )
-												                } );															
+												                } );
+												                $('<div style="float:left;"><lavel>Categorie : </label></div>').append(select).appendTo( $('#table_filter') );
 															}
 											            } );
 													}
@@ -101,12 +102,46 @@ $(document)
 						var modal = $(this)
 						var src_txt;
 						if (source == "cat-edit") {
-							src_txt = "la catégorie";
+							src_txt = 'modifier la catégorie n° ' + id + ' ?';
 							modal.find('#send').click(function() {
-								document.category.submit();
+								docume,nt.category.submit();
+							});
+						}else if(source == "sup-edit"){
+							var token=button.data('token');
+							src_txt = 'modifier les quantités ?';
+							modal.find('#send').click(function() {
+//						        var data = table.$('input').serialize();
+						        
+						        var unindexed_array = table.$('input').serializeArray();
+						        var indexed_array = {};
+
+						        $.map(unindexed_array, function(n, i){
+//						        	console.log(n['name']+" - "+n['value']);
+						            indexed_array[n['name']] = n['value'];
+						        });
+						        console.log(
+						            "The following data would have been submitted to the server: \n\n"+
+						            indexed_array.toString
+						        );
+						        $.each( indexed_array, function( key, val ) {
+						        	console.log(key+" - "+val);
+						        });
+						       
+//						        return;
+						        $.ajax({
+					        	  method: "POST",
+					        	  url: "supplies_update",
+					        	  data: "_token="+token+"&_method=PUT&data="+indexed_array
+					        	})
+					        	  .done(function( msg ) {
+					        	    console.log( "Data Saved: " + msg);
+					        	    modal.modal('hide');
+					        	});
+						        return false;
+						    
 							});
 						}
-						modal.find('.modal-title').text('modifier '+src_txt+' n° ' + id + ' ?')
+						modal.find('.modal-title').text(src_txt);
 					}).on('hidden.bs.modal', function (e) {
 						$(this).find('.modal-body form').attr('action', '');
 					});

@@ -7,15 +7,15 @@
 @section('content')
 <div class="container">
 	<div class="card m-3" id="stockSupply">
-		<div class="card-header">Gestion des approvisionnements</div>
+		<div class="card-header">Gestion des approvisionnements <button  data-target="#update_modal" data-toggle="modal" data-source="sup-edit" data-token="{{ csrf_token() }}" class="btn btn-primary float-right" type="button" id="supply_button">Enregistrer</button></div>
 		<div class="card-body">
 			<table id="table" class="table table-striped table-bordered" style="width: 100%">
 				<thead>
 					<tr>
 						<th>Categorie </th>
 						<th>Produit</th>	
-						<th>Quantité</th>
-						<th style="width:50px;"></th>
+						<th>Quantité initiale</th>
+						<th>Quantité actuelle</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -23,10 +23,10 @@
 					<tr>
 						<td class="responsive-td" responsive-field="Categorie">{{ $stockSupply->product->category->cat_name }}</td>
 						<td class="responsive-td" responsive-field="Produit">{{ $stockSupply->product->name }}</td>
-						<td class="responsive-td" responsive-field="Quantité">{{ $stockSupply->quantity }}</td>
-						<td class="text-center responsive-td">
-							<i id="edit" title="modifier" class="fa fa-pencil fa-2x" data-id="{{ $stockSupply->id_product }}" style="color:#007bff;cursor:pointer;margin-right:10px;"></i>
-							<i data-target="#delete" data-toggle="modal" title="supprimer" class="fa fa-trash fa-2x" aria-hidden="true" data-source="cat-del" data-id="{{ $stockSupply->id_product }}" style="color:red;cursor:pointer;"></i>
+						<td class="responsive-td" responsive-field="Quantité initiale">{{ $stockSupply->quantity }}</td>
+						<td class="responsive-td text-center" responsive-field="Quantité actuelle">
+							<input type="number" name="qte_{{ $stockSupply->id_product }}" value="{{ $stockSupply->quantity }}">
+							<input type="hidden" name="index_{{ $stockSupply->id_product }}" value="{{ $stockSupply->id_product }}">
 						</td>
 					</tr>
 					@endforeach
