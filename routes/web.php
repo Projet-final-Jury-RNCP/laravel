@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    return view('welcome');
+//     return view('welcome');
+    return Redirect::to( '/stock');
 });
 
 Route::get('/pi', function () {
@@ -34,8 +35,8 @@ Route::get('/home', function() {
  *
  */
 
-// Route::group(['prefix' => 'stock', 'middleware' => 'auth'], function()
-Route::group(['prefix' => 'stock'], function()
+Route::group(['prefix' => 'stock', 'middleware' => 'auth'], function()
+// Route::group(['prefix' => 'stock'], function()
 {
 
     Route::get('/', function () {

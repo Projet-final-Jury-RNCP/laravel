@@ -43,16 +43,10 @@ $( document ).ready(function() {
 
   				{{ csrf_field() }}
 
-				<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-				    <label for="content">Nom</label>
-				    <input type="text" name="name" placeholder="Nom" class="form-control" value="{{ old('name') }}">
-				    <small class="text-danger">{{ $errors->first('name') }}</small>
-				</div>
-
-				<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-				    <label for="content">Email</label>
-				    <input type="email" name="email" placeholder="Email" class="form-control" value="{{ old('email') }}">
-				    <small class="text-danger">{{ $errors->first('email') }}</small>
+				<div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+				    <label for="content">Login</label>
+				    <input type="text" name="username" placeholder="Identifiant" class="form-control" value="{{ old('username') }}">
+				    <small class="text-danger">{{ $errors->first('username') }}</small>
 				</div>
 
 				<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
@@ -65,6 +59,18 @@ $( document ).ready(function() {
 				    <label for="content">Mot de passe (à confirmer)</label>
 				    <input type="password" name="password_confirmation" placeholder="Confirmation du mot de passe" class="form-control" value="{{ old('password_confirmation') }}">
 				    <small class="text-danger">{{ $errors->first('password_confirmation') }}</small>
+				</div>
+
+				<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+				    <label for="content">Nom</label>
+				    <input type="text" name="name" placeholder="Nom" class="form-control" value="{{ old('name') }}">
+				    <small class="text-danger">{{ $errors->first('name') }}</small>
+				</div>
+
+				<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+				    <label for="content">Email</label>
+				    <input type="email" name="email" placeholder="Email" class="form-control" value="{{ old('email') }}">
+				    <small class="text-danger">{{ $errors->first('email') }}</small>
 				</div>
 
 				<div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">

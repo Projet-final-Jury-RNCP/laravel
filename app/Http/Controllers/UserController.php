@@ -45,7 +45,8 @@ class UserController extends Controller
     {
 
         $this->validate($request, [
-            'name' => 'required|string|unique:users',
+            'username' => 'required|string|unique:users',
+            'name' => 'required|string',
             'email' => 'required|email',
             'password' => 'required|string|max:255|confirmed', // password_confirmation : https://laravel.com/docs/5.1/validation#rule-confirmed  https://laracasts.com/discuss/channels/laravel/laravel-confirm-password-is-not-working
 //             'password_confirmation' => 'required',
@@ -53,6 +54,7 @@ class UserController extends Controller
         ]);
 
         $user = new User();
+        $user->username = $request->username;
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);

@@ -17,36 +17,12 @@ class UsersTableSeeder extends Seeder
 
         DB::table('users')->delete();
 
-        $u = User::create(array(
-            'name'     => 'User management',
-            'email'    => 'user.management@yopmail.com',
-            'password' => Hash::make('user.management@yopmail.com'),
-
-            'role' => 'management'
-        ));
-
-        $u = User::create(array(
-            'name'     => 'User responsable_du_stock',
-            'email'    => 'user.responsable_du_stock@yopmail.com',
-            'password' => Hash::make('user.responsable_du_stock@yopmail.com'),
-
-            'role' => 'responsable_du_stock'
-        ));
-
-        $u = User::create(array(
-            'name'     => 'User cuisinier',
-            'email'    => 'user.cuisinier@yopmail.com',
-            'password' => Hash::make('user.cuisinier@yopmail.com'),
-
-            'role' => 'cuisinier'
-        ));
-
-
 
         $u = User::create(array(
             'name'     => 'Emanuele Di Carlo',
-            'email'    => 'emanueledc@gmail.com',
-            'password' => Hash::make('emanueledc@yopmail.com'),
+            'email'    => 'emanueledc@yopmail.com',
+            'username' => 'edc',
+            'password' => Hash::make('edc'),
 
             'role' => 'cuisinier'
         ));
@@ -54,7 +30,8 @@ class UsersTableSeeder extends Seeder
         $u = User::create(array(
             'name'     => 'Nils Potet',
             'email'    => 'nilspotet@gmail.com',
-            'password' => Hash::make('nilspotet@yopmail.com'),
+            'username' => 'nils',
+            'password' => Hash::make('nils'),
 
             'role' => 'cuisinier'
         ));
@@ -62,9 +39,51 @@ class UsersTableSeeder extends Seeder
         $u = User::create(array(
             'name'     => 'Sébastien Jachym',
             'email'    => 'sjachym@yopmail.com',
-            'password' => Hash::make('sjachym@yopmail.com'),
+            'username' => 'seb',
+            'password' => Hash::make('seb'),
 
             'role' => 'cuisinier'
         ));
+
+        $u = User::create(array(
+            'name'     => "Arnaud L'Ollivier",
+            'email'    => 'arno_lol@yopmail.com',
+            'username' => 'arno',
+            'password' => Hash::make('arno'),
+
+            'role' => 'cuisinier'
+        ));
+
+
+
+
+
+        $u = User::create(array(
+            'name'     => 'User management',
+            'email'    => 'user.management@yopmail.com',
+            'username' => 'management',
+            'password' => Hash::make('management'),
+
+            'role' => 'management'
+        ));
+
+        $u = User::create(array(
+            'name'     => 'User responsable_du_stock',
+            'email'    => 'user.responsable_du_stock@yopmail.com',
+            'username' => 'stock',
+            'password' => Hash::make('stock'),
+
+            'role' => 'responsable_du_stock'
+        ));
+
+        $u = User::create(array(
+            'name'     => 'User cuisinier',
+            'email'    => 'user.cuisinier@yopmail.com',
+            'username' => 'cuisinier',
+            'password' => Hash::make('cuisinier'),
+
+            'role' => 'cuisinier'
+        ));
+
     }
 }

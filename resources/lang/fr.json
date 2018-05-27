@@ -1,0 +1,17 @@
+{
+  "__()": "Laravel Underscores __() Function for localization based Translations : https://tutsforweb.com/laravel-underscores-__-function-for-localization-based-translations/",
+
+  "UserNameLogin": "Identitifiant",
+  "Password": "Mot de passe",
+   
+  "Login": "Se connecter",
+  "Remember Me": "Se souvernir de moi",
+  "Logout": "Deconnecter",
+  "Register": "S'enregistrer",  
+  "Forgot Your Password?": "Mot de passe perdu ?",
+  
+  "E-Mail Address": "Adresse email",
+  "Send Password Reset Link": "Envoyer le lien de remise à zéro du mot de passe",
+  "Reset Password": "Ré-initialiser le mot de passe",
+  "Confirm Password": "Confirmer le mot de passe" 
+}

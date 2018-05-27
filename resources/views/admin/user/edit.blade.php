@@ -41,16 +41,10 @@ $( document ).ready(function() {
 		        {{ csrf_field() }}
 		        {{ method_field('PUT') }}
 
-				<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-		            <label for="content">Nom</label>
-		    		<input type="text" name="name" placeholder="Nome" value="{{ !is_null(old('name'))?old('name'):$user->name }}" class="form-control">
-		            <small class="text-danger">{{ $errors->first('name') }}</small>
-		        </div>
-
-		        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-		            <label for="content">Email</label>
-		    		<input type="email" name="email" placeholder="Email" value="{{ !is_null(old('email'))?old('email'):$user->email }}" class="form-control">
-		            <small class="text-danger">{{ $errors->first('email') }}</small>
+				<div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+		            <label for="content">Login</label>
+		    		<input disabled="disabled" type="text" name="name" placeholder="Identifiant" value="{{ !is_null(old('username'))?old('username'):$user->username }}" class="form-control">
+		            <small class="text-danger">{{ $errors->first('username') }}</small>
 		        </div>
 
 				<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
@@ -64,6 +58,18 @@ $( document ).ready(function() {
 				    <input type="password" name="password_confirmation" placeholder="Confirmation du mot de passe" class="form-control" value="{{ old('password_confirmation') }}">
 				    <small class="text-danger">{{ $errors->first('password_confirmation') }}</small>
 				</div>
+
+				<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+		            <label for="content">Nom</label>
+		    		<input type="text" name="name" placeholder="Nom" value="{{ !is_null(old('name'))?old('name'):$user->name }}" class="form-control">
+		            <small class="text-danger">{{ $errors->first('name') }}</small>
+		        </div>
+
+		        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+		            <label for="content">Email</label>
+		    		<input type="email" name="email" placeholder="Email" value="{{ !is_null(old('email'))?old('email'):$user->email }}" class="form-control">
+		            <small class="text-danger">{{ $errors->first('email') }}</small>
+		        </div>
 
 				<div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
 				    <label for="content">Role</label>

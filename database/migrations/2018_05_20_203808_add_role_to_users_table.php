@@ -17,6 +17,7 @@ class AddRoleToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('role');
             $table->boolean('active')->default(true);
+            $table->string('username')->unique();
         });
     }
 
@@ -31,6 +32,7 @@ class AddRoleToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('role');
             $table->dropColumn('active');
+            $table->dropColumn('username');
         });
     }
 }
