@@ -41,15 +41,10 @@ Route::group(['prefix' => 'stock'], function()
         return view('stock.home');
     });
 
-    Route::get ('categories', 'CategoryController@create');
-    Route::post('categories', 'CategoryController@store');
-    Route::put('categories_update', 'CategoryController@update');
-    Route::delete('categories/{category}', 'CategoryController@destroy');
-    
-    Route::get ('supplies', 'StockSupplyController@index');
-    Route::post('supplies', 'StockSupplyController@store');
-    Route::put('supplies_update', 'StockSupplyController@update');
-    Route::delete('supplies/{stockSupply}', 'StockSupplyController@destroy');
+    Route::get ('categories', 'StockController@create');
+    Route::post('categories', 'StockController@store');
+    Route::put('categories_update', 'StockController@update');
+    Route::delete('categories/{category}', 'StockController@destroy');
 
 });
 
