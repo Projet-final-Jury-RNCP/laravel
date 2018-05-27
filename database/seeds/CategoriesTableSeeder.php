@@ -41,7 +41,8 @@ class CategoriesTableSeeder extends Seeder
         {
             // https://github.com/fzaninotto/Faker#fakerprovidermiscellaneous
             Category::create([
-                'cat_name' => ucfirst($faker->word)
+                'cat_name' => ucfirst($faker->word),
+            	'cat_desc' => ucfirst($faker->sentence)
             ]);
         }
     }

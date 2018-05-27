@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\StockSupply;
+use App\StockReal;
 use Illuminate\Http\Request;
 
 class StockSupplyController extends Controller
@@ -14,7 +15,10 @@ class StockSupplyController extends Controller
      */
     public function index()
     {
-        //
+//     	$stockSupply = StockSupply::all();
+    	$stockSupply= StockReal::with('product.category')->get();
+//     	dd($stockSupply);
+    	return view ( 'stock.supply.index', compact ( 'stockSupply' ) );
     }
 
     /**

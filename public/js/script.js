@@ -25,10 +25,10 @@ $(document)
 										            style: 'single'
 										        },
 										        "initComplete": function () {
-											        if ($('form[name="supplies"]').length>0) {
+											        if ($('#stockSupply').length>0) {
 											            this.api().columns().every( function () {
 											                var column = this;
-											                if (this.index()==1) {
+											                if (this.index()==0) {
 												                var select = $('<select style="float:right;"><option value=""></option></select>')
 											                    .appendTo( $(column.header()) )
 											                    .on( 'change', function () {
