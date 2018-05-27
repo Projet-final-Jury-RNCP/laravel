@@ -23,7 +23,7 @@
 					<tr>
 						<td class="responsive-td" responsive-field="Categorie">{{ $stockSupply->product->category->cat_name }}</td>
 						<td class="responsive-td" responsive-field="Produit">{{ $stockSupply->product->name }}</td>
-						<td class="responsive-td" responsive-field="Quantité">{{ $stockSupply->product->max_threshold }}</td>
+						<td class="responsive-td" responsive-field="Quantité">{{ $stockSupply->quantity }}</td>
 						<td class="text-center responsive-td">
 							<i id="edit" title="modifier" class="fa fa-pencil fa-2x" data-id="{{ $stockSupply->id_product }}" style="color:#007bff;cursor:pointer;margin-right:10px;"></i>
 							<i data-target="#delete" data-toggle="modal" title="supprimer" class="fa fa-trash fa-2x" aria-hidden="true" data-source="cat-del" data-id="{{ $stockSupply->id_product }}" style="color:red;cursor:pointer;"></i>
