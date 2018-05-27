@@ -20,8 +20,8 @@ Route::get('/', function () {
 });
 
 Route::get('/pi', function () {
-	phpinfo();
-	die();
+    phpinfo();
+    die();
 });
 
 // Route::get('/home', 'HomeController@index')->name('home');
@@ -42,35 +42,35 @@ Route::group(['prefix' => 'stock'], function()
         return view('stock.home');
     });
 
-    /**
-     * Stock
-     */
+        /**
+         * Stock
+         */
 
-    // Consulter : IN/OUT
+        // Consulter : IN/OUT
 
-    // Approvisionner
-	Route::get('approvisionner', 'StockSupplyController@index');
-	Route::post('approvisionner', 'StockSupplyController@store');
-	Route::put('approvisionner_update', 'StockSupplyController@update');
-	Route::delete('approvisionner/{stockSupply}', 'StockSupplyController@destroy');
+        // Approvisionner
+        Route::get('approvisionner', 'StockSupplyController@index');
+        Route::post('approvisionner', 'StockSupplyController@store');
+        Route::put('approvisionner_update', 'StockSupplyController@update');
+        Route::delete('approvisionner/{stockSupply}', 'StockSupplyController@destroy');
 
-	// Inventaire
+        // Inventaire
 
 
 
-	/**
-	 * Configuration
-	 */
+        /**
+         * Configuration
+         */
 
-	// Catégories
-	Route::get('categories', 'CategoryController@create');
-	Route::post('categories', 'CategoryController@store');
-	Route::put('categories_update', 'CategoryController@update');
-	Route::delete('categories/{category}', 'CategoryController@destroy');
+        // Catégories
+        Route::get('categories', 'CategoryController@create');
+        Route::post('categories', 'CategoryController@store');
+        Route::put('categories_update', 'CategoryController@update');
+        Route::delete('categories/{category}', 'CategoryController@destroy');
 
-	// Mesures
+        // Mesures
 
-	// Produits
+        // Produits
 
 
 });
