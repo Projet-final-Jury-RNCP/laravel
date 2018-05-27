@@ -6,7 +6,7 @@ use App\Category;
 use Illuminate\Http\Request;
 use App\Product;
 
-class StockController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -91,7 +91,7 @@ class StockController extends Controller
         $category->cat_desc = $request->cat_desc;
 
         $category->save ();
-
+        \Session::flash('flash_message_success','Catégorie modifiée');
         $category = Category::all ();
         return redirect('stock/categories');
     }

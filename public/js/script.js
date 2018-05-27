@@ -21,6 +21,31 @@ $(document)
 //										            }
 //										        },
 												"autoWidth": false,
+										        select: {
+										            style: 'single'
+										        },
+										        "initComplete": function () {
+											        if ($('form[name="supplies"]').length>0) {
+											            this.api().columns().every( function () {
+											                var column = this;
+											                if (this.index()==1) {
+												                var select = $('<select style="float:right;"><option value=""></option></select>')
+											                    .appendTo( $(column.header()) )
+											                    .on( 'change', function () {
+											                        var val = $.fn.dataTable.util.escapeRegex(
+											                            $(this).val()
+											                        );
+											 
+											                        column.search( val ? '^'+val+'$' : '', true, false ).draw();
+											                    } );
+											 
+												                column.data().unique().sort().each( function ( d, j ) {
+												                    select.append( '<option value="'+d+'">'+d+'</option>' )
+												                } );															
+															}
+											            } );
+													}
+										        },
 												language : {
 													processing : "Traitement en cours...",
 													search : "Rechercher&nbsp;:",
@@ -44,7 +69,7 @@ $(document)
 													},
 												}
 											});
-
+					
 					$('#table tbody #edit').on( 'click', function () {
 						var elem = this.parentElement;
 

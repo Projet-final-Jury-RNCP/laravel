@@ -59,3 +59,8 @@ tr:nth-child(even) {
 		display: none;
 	}
 }
+
+
+table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected{
+	background-color: #999 !important;
+}
