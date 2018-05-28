@@ -1,7 +1,8 @@
+var	table ;
 $(document)
 		.ready(
 				function() {
-					var	table = $('#table')
+					table = $('#table')
 									.DataTable(
 											{
 //										        responsive: {
@@ -71,31 +72,31 @@ $(document)
 												}
 											});
 					
-					$('#table tbody #edit').on( 'click', function () {
-						var elem = this.parentElement;
-
-						$('#update').attr('data-id', table.row( elem ).data()[0]);
-						$("#index").val(table.row( elem ).data()[0]);
-						if($('form[name="category"]').length>0){
-							$("#cat_name").val(table.row( elem ).data()[1]);
-							$("#cat_desc").val(table.row( elem ).data()[2]);
-						} else if($('form[name="measure"]').length>0){
-							$("#measure_name").val(table.row( elem ).data()[1]);
-							$("#measure_symbol").val(table.row( elem ).data()[2]);
-						}
-
-						if($('#put').length<1){
-							$('form').append('<input id="put" type="hidden" name="_method" value="PUT">');
-							$('form').attr("action", function( i, val ) { return val + "_update"});
-						}
-						
-						$("#submit_form").hide();
-						$("#new").fadeIn( "slow" );
-						$("#update").fadeIn( "slow" );
-					    $('html, body').animate({
-					        scrollTop: $(".container").offset().top
-					    }, 500);
-					} );
+//					$('#table tbody #edit').on( 'click', function () {
+//						var elem = this.parentElement;
+//
+//						$('#update').attr('data-id', table.row( elem ).data()[0]);
+//						$("#index").val(table.row( elem ).data()[0]);
+//						if($('form[name="category"]').length>0){
+//							$("#cat_name").val(table.row( elem ).data()[1]);
+//							$("#cat_desc").val(table.row( elem ).data()[2]);
+//						} else if($('form[name="measure"]').length>0){
+//							$("#measure_name").val(table.row( elem ).data()[1]);
+//							$("#measure_symbol").val(table.row( elem ).data()[2]);
+//						}
+//
+//						if($('#put').length<1){
+//							$('form').append('<input id="put" type="hidden" name="_method" value="PUT">');
+//							$('form').attr("action", function( i, val ) { return val + "_update"});
+//						}
+//						
+//						$("#submit_form").hide();
+//						$("#new").fadeIn( "slow" );
+//						$("#update").fadeIn( "slow" );
+//					    $('html, body').animate({
+//					        scrollTop: $(".container").offset().top
+//					    }, 500);
+//					} );
 					
 					//modal update
 					$('#update_modal').on('show.bs.modal',function(event) {
@@ -107,12 +108,12 @@ $(document)
 						if (source == "cat-edit") {
 							src_txt = 'modifier la catégorie n° ' + id + ' ?';
 							modal.find('#send').click(function() {
-								document.category.submit();
+								document.measure.submit();
 							});
 						} else if (source == "measure-edit") {
 							src_txt = "modifier l'unité de mesure n° " + id + ' ?';
 							modal.find('#send').click(function() {
-								document.measure.submit();
+								document.category.submit();
 							});
 						} else if(source == "sup-edit"){
 							var token=button.data('token');
@@ -178,3 +179,29 @@ $(document)
 						return false;
 					})
 				});
+
+function editRaw(target) {
+	var elem = target.parentElement;
+
+	$('#update').attr('data-id', table.row( elem ).data()[0]);
+	$("#index").val(table.row( elem ).data()[0]);
+	if($('form[name="category"]').length>0){
+		$("#cat_name").val(table.row( elem ).data()[1]);
+		$("#cat_desc").val(table.row( elem ).data()[2]);
+	} else if($('form[name="measure"]').length>0){
+		$("#measure_name").val(table.row( elem ).data()[1]);
+		$("#measure_symbol").val(table.row( elem ).data()[2]);
+	}
+
+	if($('#put').length<1){
+		$('form').append('<input id="put" type="hidden" name="_method" value="PUT">');
+		$('form').attr("action", function( i, val ) { return val + "_update"});
+	}
+	
+	$("#submit_form").hide();
+	$("#new").fadeIn( "slow" );
+	$("#update").fadeIn( "slow" );
+    $('html, body').animate({
+        scrollTop: $(".container").offset().top
+    }, 500);
+}

@@ -14,7 +14,7 @@
 				<input id="index" name="index" type="hidden">
 				<div class="form-group">
 					<label for="exampleInputEmail1">Nom</label>
-					<input type="text" class="form-control{{ $errors->has('cat_name') ? ' is-invalid' : '' }}" id="cat_name" aria-describedby="cat_name" name="cat_name" placeholder="Nom de la catégorie" autocomplete="off" required>
+					<input type="text" class="form-control{{ $errors->has('cat_name') ? ' is-invalid' : '' }}" id="cat_name" aria-describedby="cat_name" name="cat_name" placeholder="Nom de la catégorie" required>
 					<small class="text-danger">{{ $errors->first('cat_name') }}</small>
 				</div>
 				<div class="form-group">
@@ -46,7 +46,7 @@
 						<td class="responsive-td" responsive-field="Nom">{{ $category->cat_name }}</td>
 						<td class="responsive-td" responsive-field="Description">{{ $category->cat_desc }}</td>
 						<td class="text-center responsive-td">
-							<i id="edit" title="modifier" class="fa fa-pencil fa-2x" data-id="{{ $category->id }}" style="color:#007bff;cursor:pointer;margin-right:10px;"></i>
+							<i onclick="editRaw(this)" id="edit" title="modifier" class="fa fa-pencil fa-2x" data-id="{{ $category->id }}" style="color:#007bff;cursor:pointer;margin-right:10px;"></i>
 							<i data-target="#delete" data-toggle="modal" title="supprimer" class="fa fa-trash fa-2x" aria-hidden="true" data-source="cat-del" data-id="{{ $category->id }}" style="color:red;cursor:pointer;"></i>
 						</td>
 					</tr>
