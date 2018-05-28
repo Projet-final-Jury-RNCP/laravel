@@ -35,6 +35,12 @@ class Product extends Model
         return $this->belongsTo('App\Category', 'id_category');
     }
 
+    public function measureUnit()
+    {
+        //         return $this->belongsTo('App\MeasureUnit');
+        return $this->belongsTo('App\MeasureUnit', 'id_measure_unit');
+    }
+
 
 
 }

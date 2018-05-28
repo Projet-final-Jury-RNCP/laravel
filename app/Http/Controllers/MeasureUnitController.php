@@ -24,7 +24,8 @@ class MeasureUnitController extends Controller
      */
     public function create()
     {
-        //
+        $measures = MeasureUnit::all ();
+        return view ( 'stock.mesures.create', compact ( 'measures' ) );
     }
 
     /**
@@ -35,7 +36,18 @@ class MeasureUnitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate ( $request, [
+            'measure_name' => 'required|min:1|max:255',
+        ] );
+        
+        $measures = new MeasureUnit ();
+        $measures->measure_name = $request->measure_name;
+        $measures->measure_symbol = $request->measure_symbol;
+        
+        $measures->save ();
+        
+        $measures = MeasureUnit::all ();
+        return redirect('stock/mesures');
     }
 
     /**
@@ -67,9 +79,20 @@ class MeasureUnitController extends Controller
      * @param  \App\MeasureUnit  $measureUnit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MeasureUnit $measureUnit)
+    public function update(Request $request)
     {
-        //
+        $this->validate ( $request, [
+            'measure_name' => 'required|min:1|max:255',
+        ] );
+        
+        $measures = MeasureUnit::find($request->index);
+        $measures->measure_name = $request->measure_name;
+        $measures->measure_symbol = $request->measure_symbol;
+        
+        $measures->save ();
+        \Session::flash('flash_message_success','Unités de mesure modifiée');
+        $measures = MeasureUnit::all ();
+        return redirect('stock/mesures');
     }
 
     /**
@@ -80,6 +103,13 @@ class MeasureUnitController extends Controller
      */
     public function destroy(MeasureUnit $measureUnit)
     {
-        //
+        if($measureUnit->products->count()) {
+            \Session::flash('flash_message_error','Unité de mesure non supprimée, car elle est utilisée par des produits');
+        }else{
+            MeasureUnit::destroy($measureUnit->id);
+            \Session::flash('flash_message_success','Unité de mesure supprimée');
+        }
+        
+        return redirect('stock/mesures');
     }
 }
