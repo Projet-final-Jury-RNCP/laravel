@@ -28,8 +28,9 @@
 						<td class="responsive-td" responsive-field="Produit">{{ $stockSupply->product->name }}</td>
 						<td class="responsive-td" responsive-field="Quantité initiale">{{ $stockSupply->quantity }}</td>
 						<td class="responsive-td text-center" responsive-field="Quantité actuelle">{{ $loop->iteration }}
-							<input type="number" name="qte_{{ $loop->iteration }}" value="{{ $stockSupply->quantity }}">
-							<input type="hidden" name="index_{{ $loop->iteration }}" value="{{ $stockSupply->id_product }}">
+<!-- 							<input type="number" name="qte_{{ $loop->iteration }}" value="{{ $stockSupply->quantity }}"> -->
+<!-- 							<input type="hidden" name="index_{{ $loop->iteration }}" value="{{ $stockSupply->id_product }}"> -->
+							<input type="number" name="qte[{{ $stockSupply->id_product }}]" value="{{ $stockSupply->quantity }}">
 						</td>
 					</tr>
 					@endforeach
