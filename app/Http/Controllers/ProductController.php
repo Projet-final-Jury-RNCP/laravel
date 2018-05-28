@@ -80,6 +80,19 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        //         dd($category);  // Category
+        //         dd($category->products); // Collection 0-n
+
+        if($product->category->count()) {
+            \Session::flash('flash_message_error','Produit non supprimé, car il est utilisée par des catégories');
+            \Session::flash('flash_message_success','Produit désactivé');
+            $product->active = false;
+            $product->save ();
+        }else{
+            Category::destroy($category->id);
+            \Session::flash('flash_message_success','Produit supprimé');
+        }
+
+        return redirect('stock/porduits');
     }
 }
