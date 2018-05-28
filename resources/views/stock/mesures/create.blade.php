@@ -47,7 +47,7 @@
 						<td class="responsive-td" responsive-field="Nom">{{ $measure->measure_name }}</td>
 						<td class="responsive-td" responsive-field="Symboles">{{ $measure->measure_symbol }}</td>
 						<td class="text-center responsive-td">
-							<i id="edit" title="modifier" class="fa fa-pencil fa-2x" data-id="{{ $measure->id }}" style="color:#007bff;cursor:pointer;margin-right:10px;"></i>
+							<i onclick="editRow(this)" id="edit" title="modifier" class="fa fa-pencil fa-2x" data-id="{{ $measure->id }}" style="color:#007bff;cursor:pointer;margin-right:10px;"></i>
 							<i data-target="#delete" data-toggle="modal" title="supprimer" class="fa fa-trash fa-2x" aria-hidden="true" data-source="measure-del" data-id="{{ $measure->id }}" style="color:red;cursor:pointer;"></i>
 						</td>
 					</tr>
