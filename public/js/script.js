@@ -2,6 +2,8 @@ var	table ;
 $(document)
 		.ready(
 				function() {
+					var actionHolder = $('#delete .modal-body form').attr("action");
+					console.log("actionHolder : "+actionHolder);
 					table = $('#table')
 									.DataTable(
 											{
@@ -164,14 +166,14 @@ $(document)
 						var src_txt;
 						if (source == "cat-del") {
 							src_txt = "la catégorie";
-							modal.find('.modal-body form').attr("action", function( i, val ) { return val + '/categories/'+id});
+							modal.find('.modal-body form').attr("action", actionHolder + '/categories/'+id);
 						} else if (source == "measure-del") {
 							src_txt = "l'unité de mesure";
-							modal.find('.modal-body form').attr("action", function( i, val ) { return val + '/mesures/'+id});
+							modal.find('.modal-body form').attr("action", actionHolder + '/mesures/'+id);
 						}
 						modal.find('.modal-title').text('supprimer '+src_txt+' n° ' + id + ' ?')
 					}).on('hidden.bs.modal', function (e) {
-//						$(this).find('.modal-body form').attr('action', '');
+						$(this).find('.modal-body form').attr('action', actionHolder);
 					});
 					
 					$("#new").click(function() {
