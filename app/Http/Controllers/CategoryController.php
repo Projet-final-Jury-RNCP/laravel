@@ -87,6 +87,7 @@ class CategoryController extends Controller
         ] );
 
         $category = Category::find($request->index);
+        $category->active = true;
         $category->cat_name = $request->cat_name;
         $category->cat_desc = $request->cat_desc;
 
@@ -109,6 +110,9 @@ class CategoryController extends Controller
 
         if($category->products->count()) {
             \Session::flash('flash_message_error','Catégorie non supprimée, car elle est utilisée par des produits');
+            \Session::flash('flash_message_success','Catégorie désactivée');
+            $category->active = false;
+            $category->save ();
         }else{
             Category::destroy($category->id);
             \Session::flash('flash_message_success','Catégorie supprimée');
