@@ -41,7 +41,7 @@
 				</thead>
 				<tbody>
 					@foreach($categories as $category)
-					<tr>
+					<tr style="{{ $category->active?:'text-decoration: line-through;' }}">
 						<td class="responsive-td" responsive-field="#">{{ $category->id }}</td>
 						<td class="responsive-td" responsive-field="Nom">{{ $category->cat_name }}</td>
 						<td class="responsive-td" responsive-field="Description">{{ $category->cat_desc }}</td>

@@ -87,6 +87,7 @@ class CategoryController extends Controller
         ] );
 
         $category = Category::find($request->index);
+        $category->active = true;
         $category->cat_name = $request->cat_name;
         $category->cat_desc = $request->cat_desc;
 
