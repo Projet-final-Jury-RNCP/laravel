@@ -22,6 +22,91 @@ https://getbootstrap.com/docs/4.0/layout/overview/
 */
 
 
+/* Hide fields in table on small devices */
 @media screen and (min-width: 0px) and (max-width: 992px) {
 	.hidden-on-small { display: none; } 
+}
+
+
+/*** pure css responsive datable ***/
+.dataTable td {
+    padding: 5px;
+}
+
+.dataTable td.responsive-td i {
+	cursor: pointer;
+}
+
+.dataTable tr:nth-child(odd):not(.head-tr) {
+	background-color: #EEEEEE !important;
+}
+
+.dataTable tr:nth-child(even) {
+	background-color: #CCCCCC !important;
+}
+
+/* Cancel a bootstrap rule to optimise display on small device */
+div.dataTables_wrapper div.dataTables_info {
+    white-space: normal;
+}
+
+@media (max-width: 767px) {		
+	.dataTable table, 
+	.dataTable thead, 
+	.dataTable tbody, 
+	.dataTable th, 
+	.dataTable tr, 
+	.dataTable td.responsive-td { 
+		display: block; 
+	}	 	
+ 
+	/* display the responsive-field attribute content before each td */
+	.dataTable td.responsive-td:before { 
+		content: attr(responsive-field); 
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		font-weight: bold;
+		font-size: 0.97rem;
+		width: 50%; 
+		height: 100%;
+		text-align: left;
+		padding-top: 4px;
+		padding-left: 1px;
+	}
+	.dataTable tr:nth-child(odd) td.responsive-td:before {
+		background-color: #DDDDDD !important;
+	}
+
+	.dataTable tr:nth-child(even) td.responsive-td:before {
+		background-color: #BBBBBB !important;
+	}
+
+	/* Push the td content after the before content */
+	.dataTable td.responsive-td { 
+		position: relative;
+		padding-left: 55% !important; 
+	}	
+
+	/* The edit and delete icons */
+	.dataTable .table-icone {
+		text-align: right;
+	}
+
+	/* hide the table head */
+	#table.dataTable thead { 
+		display: none;
+	}
+}
+
+@media (max-width: 576px) {	
+	/* Cancel a bootstrap rule to optimise display on small device */
+	div.dataTables_wrapper div.dataTables_filter input {
+    	width: 120px;
+	}
+}
+/*** End pure css responsive datable ***/
+
+table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected{
+	background-color: #999 !important;
 }

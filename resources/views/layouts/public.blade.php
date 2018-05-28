@@ -14,9 +14,10 @@
 
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.16/sl-1.2.5/datatables.min.css"/>
 	
+	<!-- The style by default -->
 	<link rel="stylesheet" href="{{ asset('css/app.css') }}" media="screen" title="no title">
+	<!-- Our custom style -->
     <link rel="stylesheet" href="{{ asset('css/stock.css') }}" media="screen" title="no title">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}" media="screen" title="no title">
     
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
