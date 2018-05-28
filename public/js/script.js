@@ -104,9 +104,14 @@ $(document)
 						if (source == "cat-edit") {
 							src_txt = 'modifier la catégorie n° ' + id + ' ?';
 							modal.find('#send').click(function() {
-								docume,nt.category.submit();
+								document.category.submit();
 							});
-						}else if(source == "sup-edit"){
+						} else if (source == "measure-edit") {
+							src_txt = "modifier l'unité de mesure n° " + id + ' ?';
+							modal.find('#send').click(function() {
+								document.category.submit();
+							});
+						} else if(source == "sup-edit"){
 							var token=button.data('token');
 							src_txt = 'modifier les quantités ?';
 							modal.find('#send').click(function() {
@@ -156,6 +161,9 @@ $(document)
 						if (source == "cat-del") {
 							src_txt = "la catégorie";
 							modal.find('.modal-body form').attr("action", function( i, val ) { return val + '/categories/'+id});
+						} else if (source == "measure-del") {
+							src_txt = "l'unité de mesure";
+							modal.find('.modal-body form').attr("action", function( i, val ) { return val + '/mesures/'+id});
 						}
 						modal.find('.modal-title').text('supprimer '+src_txt+' n° ' + id + ' ?')
 					}).on('hidden.bs.modal', function (e) {
