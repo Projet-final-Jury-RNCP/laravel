@@ -108,12 +108,12 @@ $(document)
 						if (source == "cat-edit") {
 							src_txt = 'modifier la catégorie n° ' + id + ' ?';
 							modal.find('#send').click(function() {
-								document.measure.submit();
+								document.category.submit();
 							});
 						} else if (source == "measure-edit") {
 							src_txt = "modifier l'unité de mesure n° " + id + ' ?';
 							modal.find('#send').click(function() {
-								document.category.submit();
+								document.measure.submit();
 							});
 						} else if(source == "sup-edit"){
 							var token=button.data('token');
