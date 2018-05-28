@@ -2,6 +2,7 @@ var	table ;
 $(document)
 		.ready(
 				function() {
+					
 					var actionHolder = $('#delete .modal-body form').attr("action");
 					console.log("actionHolder : "+actionHolder);
 					table = $('#table')
