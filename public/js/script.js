@@ -180,7 +180,7 @@ $(document)
 					})
 				});
 
-function editRaw(target) {
+function editRow(target) {
 	var elem = target.parentElement;
 
 	$('#update').attr('data-id', table.row( elem ).data()[0]);
