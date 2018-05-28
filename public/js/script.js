@@ -79,6 +79,9 @@ $(document)
 						if($('form[name="category"]').length>0){
 							$("#cat_name").val(table.row( elem ).data()[1]);
 							$("#cat_desc").val(table.row( elem ).data()[2]);
+						} else if($('form[name="measure"]').length>0){
+							$("#measure_name").val(table.row( elem ).data()[1]);
+							$("#measure_symbol").val(table.row( elem ).data()[2]);
 						}
 
 						if($('#put').length<1){
