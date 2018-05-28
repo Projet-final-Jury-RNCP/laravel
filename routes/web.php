@@ -73,7 +73,7 @@ Route::group(['prefix' => 'stock', 'middleware' => 'auth'], function()
         Route::get('mesures', 'MeasureUnitController@create');
         Route::post('mesures', 'MeasureUnitController@store');
         Route::put('mesures_update', 'MeasureUnitController@update');
-        Route::delete('mesures/{measure}', 'MeasureUnitController@destroy');
+        Route::delete('mesures/{measureUnit}', 'MeasureUnitController@destroy');
 
         // Produits
 

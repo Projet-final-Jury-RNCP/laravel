@@ -22,7 +22,7 @@
 					<input type="text" class="form-control{{ $errors->has('measure_symbol') ? ' is-invalid' : '' }}" id="measure_symbol" aria-describedby="measure_symbol" name="measure_symbol" placeholder="Symbole de l'unité de mesure" autocomplete="off" required>
 					<small class="text-danger">{{ $errors->first('measure_symbol') }}</small>
 				</div>
-				<button data-target="#update_modal" data-toggle="modal" data-source="measure-edit" id="update" type="button" class="btn btn-warning float-right" style="display: none;">Modifier</button>
+				<button data-target="#update_modal" data-toggle="modal" data-source="cat-edit" id="update" type="button" class="btn btn-warning float-right" style="display: none;">Modifier</button>
 				<button id="submit_form" type="submit" class="btn btn-primary float-right">Envoyer</button>
 				<button id="new" type="button" class="btn btn-danger float-right mr-3" style="display: none;">Annuler</button>
 			</form>
@@ -48,7 +48,7 @@
 						<td class="responsive-td" responsive-field="Symboles">{{ $measure->measure_symbol }}</td>
 						<td class="text-center responsive-td">
 							<i id="edit" title="modifier" class="fa fa-pencil fa-2x" data-id="{{ $measure->id }}" style="color:#007bff;cursor:pointer;margin-right:10px;"></i>
-							<i data-target="#delete" data-toggle="modal" title="supprimer" class="fa fa-trash fa-2x" aria-hidden="true" data-source="measure-del" data-id="{{ $measure->id }}" style="color:red;cursor:pointer;"></i>
+							<i data-target="#delete" data-toggle="modal" title="supprimer" class="fa fa-trash fa-2x" aria-hidden="true" data-source="cat-del" data-id="{{ $measure->id }}" style="color:red;cursor:pointer;"></i>
 						</td>
 					</tr>
 					@endforeach
