@@ -34,7 +34,7 @@
                     	<label for="measure">Unité de mesure : </label><br />
                         <select name="measure" id="measure">
                            @foreach($measures as $measure)
-                               <option value="{{ $measure->id }}">{{ $measure->measure_name }}</option>
+                               <option value="{{ $measure->id }}">{{ $measure->measure_name . ' (' . $measure->measure_symbol . ')' }}</option>
                            @endforeach
                         </select>
                 	</div>
@@ -71,12 +71,20 @@
 				</thead>
 				<tbody>
 					@foreach($products as $product)
+
+<?php
+
+// dump($product);
+// dump();
+
+?>
+
 					<tr style="{{ $product->active?:'text-decoration: line-through;' }}">
 						<td class="responsive-td" responsive-field="#">{{ $product->id }}</td>
 						<td class="responsive-td" responsive-field="Nom">{{ $product->name }}</td>
 						<td class="responsive-td" responsive-field="Description">{{ $product->description }}</td>
-						<td class="responsive-td" responsive-field="Catégorie">{{ $categories[($product->id_category - 1)]->cat_name }}</td>
-						<td class="responsive-td" responsive-field="Unité de mesure">{{ $measures[($product->id_measure_unit -1)]->measure_symbol }}</td>
+						<td class="responsive-td" responsive-field="Catégorie">{{ $product->category->cat_name }}</td>
+						<td class="responsive-td" responsive-field="Unité de mesure">{{ $product->measureUnit->measure_symbol }}</td>
 						<td class="responsive-td" responsive-field="Quantité minimale">{{ $product->min_threshold }}</td>
 						<td class="responsive-td" responsive-field="Quantité maximale">{{ $product->max_threshold }}</td>
 						<td class="text-center responsive-td">

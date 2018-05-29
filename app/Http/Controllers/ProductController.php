@@ -26,9 +26,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $products = Product::all ();
-        $categories = Category::all ();
-        $measures = MeasureUnit::all ();
+        $products = Product::all()->sortBy('name');
+        $categories = Category::all()->sortBy('cat_name');
+        $measures = MeasureUnit::all()->sortBy('measure_name');
         return view ( 'stock.products.create', compact ( 'products', 'categories', 'measures' ) );
     }
 

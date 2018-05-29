@@ -14,7 +14,6 @@ class MeasureUnitTableSeeder extends Seeder
      */
     public function run()
     {
-        //
 
         MeasureUnit::create([
             'id' => 1,
@@ -46,36 +45,16 @@ class MeasureUnitTableSeeder extends Seeder
             'measure_symbol' => 'btl'
         ]);
 
-
-
 //         $faker = Faker::create();
-//         foreach(range(1, 3) as $index)
+//         foreach(range(1, 6) as $index)
 //         {
+
+//             // https://github.com/fzaninotto/Faker#fakerprovidermiscellaneous
 //             MeasureUnit::create([
-//                 'measure_name' => $faker->word . $index,
-//                 //                 'email' => $faker->email,
-//             //                 'password' => 'secret'
+//                 'measure_name' => ucfirst(strtolower($faker->city)),
+//                 'measure_symbol' => ucfirst(strtolower($faker->countryCode))
 //             ]);
 //         }
-
-//         factory(App\MeasureUnit::class, 50)->create();
-
-            $faker = Faker::create();
-            foreach(range(1, 6) as $index)
-            {
-//                 https://github.com/laracasts/larabook/blob/master/app/database/seeds/UsersTableSeeder.php
-//                 User::create([
-//                     'username' => $faker->word . $index,
-//                     'email' => $faker->email,
-//                     'password' => 'secret'
-//                 ]);
-
-                // https://github.com/fzaninotto/Faker#fakerprovidermiscellaneous
-                MeasureUnit::create([
-                    'measure_name' => ucfirst(strtolower($faker->city)),
-                    'measure_symbol' => ucfirst(strtolower($faker->countryCode))
-                ]);
-            }
 
     }
 }
