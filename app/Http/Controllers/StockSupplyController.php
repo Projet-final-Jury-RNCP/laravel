@@ -20,9 +20,7 @@ class StockSupplyController extends Controller
     public function index()
     {
     	
-//     	$stockSupply = StockSupply::all();
     	$stockSupply= StockReal::with('product.category')->get();
-//     	dd($stockSupply);
     	return view ( 'stock.supply.index', compact ( 'stockSupply' ) );
     }
 
@@ -78,51 +76,27 @@ class StockSupplyController extends Controller
      */
     public function update(Request $request)
     {
-//     	dd($request->qte);	
-    	
     	foreach ($request->qte as $key => $val){
-			$supply = new StockFlow();
-			$supply -> quantity_add = $val;
-			$supply -> id_product = $key;
-			$supply -> user_id = Auth::user()->getAuthIdentifier();
-			$supply -> save();
+    		if (StockReal::find($key)->quantity == $val) {
+    			continue;
+    		}else if(StockReal::find($key)->quantity > $val){
+    			$supply = new StockFlow();
+    			$supply -> quantity_add = $val - StockReal::find($key)->quantity;
+    			$supply -> id_product = $key;
+    			$supply -> user_id = Auth::user()->getAuthIdentifier();
+    			$supply -> save();
+    		}else{
+    			$supply = new StockFlow();
+    			$supply -> quantity_rem = StockReal::find($key)->quantity - $val;
+    			$supply -> id_product = $key;
+    			$supply -> user_id = Auth::user()->getAuthIdentifier();
+    			$supply -> save();
+    		}
     	}
     	
-//     	return var_dump(json_decode($request->data));
-//     	echo json_decode($request->_token, true);
-//     	exit();
-
-//     	foreach($request->request as $key => $val) 
-//     	{
-
-//     		if (strpos($key, 'index') !== false){
-// //     			echo 'Field name : '.$key .', Value : '.$val.'<br>';
-//     			$this->index=$val;
-//     		}else if (strpos($key, 'qte') !== false){
-// //     			echo 'Field name : '.$key .', Value : '.$val.'<br>';
-//     			$this->quantity = $val;
-    			
-//     			if (!empty($this->index) && !empty($this->quantity)) {
-//     				$supply = StockFlow::find($this->index);
-//     				$supply->quantity_add = $this->quantity;
-//     			}
-// //     			echo $this->index."<br>";
-// //     			echo $this->quantity."<br>";
-//     			$this->index="";
-//     			$this->quantity="";
-//     		}
-//     	}
-    	
-//     	exit();
-//     	$supply = new StockFlow();
-//     	$supply->id_product = $request->index;
-//     	$supply->quantity_add= $request->quantity_add;
-    	
-//     	$supply->save ();
     	\Session::flash('flash_message_success','Quantité modifiée');
-//     	$category = Category::all ();
-    	$stockSupply= StockReal::with('product.category')->get();
-    	return view ( 'stock.supply.index', compact ( 'stockSupply' ) );
+    	
+    	return redirect('stock/approvisionner');
     }
 
     /**

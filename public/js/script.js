@@ -45,7 +45,7 @@ $(document)
 												                column.data().unique().sort().each( function ( d, j ) {
 												                    select.append( '<option value="'+d+'">'+d+'</option>' )
 												                } );
-												                $('<div style="float:left;"><lavel>Categorie : </label></div>').append(select).appendTo( $('#table_filter') );
+												                $('<div><lavel>Categorie : </label></div>').append(select).appendTo( $('#table_filter') );
 															}
 											            } );
 													}
@@ -74,32 +74,6 @@ $(document)
 												}
 											});
 					
-//					$('#table tbody #edit').on( 'click', function () {
-//						var elem = this.parentElement;
-//
-//						$('#update').attr('data-id', table.row( elem ).data()[0]);
-//						$("#index").val(table.row( elem ).data()[0]);
-//						if($('form[name="category"]').length>0){
-//							$("#cat_name").val(table.row( elem ).data()[1]);
-//							$("#cat_desc").val(table.row( elem ).data()[2]);
-//						} else if($('form[name="measure"]').length>0){
-//							$("#measure_name").val(table.row( elem ).data()[1]);
-//							$("#measure_symbol").val(table.row( elem ).data()[2]);
-//						}
-//
-//						if($('#put').length<1){
-//							$('form').append('<input id="put" type="hidden" name="_method" value="PUT">');
-//							$('form').attr("action", function( i, val ) { return val + "_update"});
-//						}
-//						
-//						$("#submit_form").hide();
-//						$("#new").fadeIn( "slow" );
-//						$("#update").fadeIn( "slow" );
-//					    $('html, body').animate({
-//					        scrollTop: $(".container").offset().top
-//					    }, 500);
-//					} );
-					
 					//modal update
 					$('#update_modal').on('show.bs.modal',function(event) {
 						var button = $(event.relatedTarget)
@@ -116,40 +90,6 @@ $(document)
 							src_txt = "modifier l'unité de mesure n° " + id + ' ?';
 							modal.find('#send').click(function() {
 								document.measure.submit();
-							});
-						} else if(source == "sup-edit"){
-							var token=button.data('token');
-							src_txt = 'modifier les quantités ?';
-							modal.find('#send').click(function() {
-//						        var data = table.$('input').serialize();
-						        
-						        var unindexed_array = table.$('input').serializeArray();
-						        var indexed_array = {};
-
-						        $.map(unindexed_array, function(n, i){
-//						        	console.log(n['name']+" - "+n['value']);
-						            indexed_array[n['name']] = n['value'];
-						        });
-						        console.log(
-						            "The following data would have been submitted to the server: \n\n"+
-						            indexed_array.toString
-						        );
-						        $.each( indexed_array, function( key, val ) {
-						        	console.log(key+" - "+val);
-						        });
-						       
-//						        return;
-						        $.ajax({
-					        	  method: "POST",
-					        	  url: "supplies_update",
-					        	  data: "_token="+token+"&_method=PUT&data="+indexed_array
-					        	})
-					        	  .done(function( msg ) {
-					        	    console.log( "Data Saved: " + msg);
-					        	    modal.modal('hide');
-					        	});
-						        return false;
-						    
 							});
 						}
 						modal.find('.modal-title').text(src_txt);

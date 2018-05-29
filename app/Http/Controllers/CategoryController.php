@@ -47,7 +47,6 @@ class CategoryController extends Controller
 
 		$categories->save ();
 
-		$categories = Category::all ();
 		return redirect('stock/categories');
     }
 
@@ -93,7 +92,6 @@ class CategoryController extends Controller
 
         $category->save ();
         \Session::flash('flash_message_success','Catégorie modifiée');
-        $category = Category::all ();
         return redirect('stock/categories');
     }
 
