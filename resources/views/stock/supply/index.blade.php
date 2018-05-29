@@ -13,7 +13,6 @@
 		</div>
 		<div class="card-body">
 			<form action="{{ url('stock/approvisionner_update') }}" id="supply" method="post" name="supply">
-			<input type="submit" value="submit">
 				{{ csrf_field() }} {{ method_field('PUT') }}
 			<table id="table" class="table table-striped table-bordered" style="width: 100%">
 				<thead>
