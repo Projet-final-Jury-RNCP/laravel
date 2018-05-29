@@ -43,7 +43,7 @@
                   		<input type="number" class="form-control" id="min_threshold" name="min_threshold">
                 	</div>
                 	<div class="form-group col-lg-3 col-md-6 col-sm-12">
-            			<label for="max_threshold">Quantité minimale</label>
+            			<label for="max_threshold">Quantité maximale</label>
                   		<input type="number" class="form-control" id="max_threshold" name="max_threshold">
                 	</div>
                 </div>
