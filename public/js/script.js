@@ -117,40 +117,6 @@ $(document)
 							modal.find('#send').click(function() {
 								document.measure.submit();
 							});
-						} else if(source == "sup-edit"){
-							var token=button.data('token');
-							src_txt = 'modifier les quantités ?';
-							modal.find('#send').click(function() {
-//						        var data = table.$('input').serialize();
-						        
-						        var unindexed_array = table.$('input').serializeArray();
-						        var indexed_array = {};
-
-						        $.map(unindexed_array, function(n, i){
-//						        	console.log(n['name']+" - "+n['value']);
-						            indexed_array[n['name']] = n['value'];
-						        });
-						        console.log(
-						            "The following data would have been submitted to the server: \n\n"+
-						            indexed_array.toString
-						        );
-						        $.each( indexed_array, function( key, val ) {
-						        	console.log(key+" - "+val);
-						        });
-						       
-//						        return;
-						        $.ajax({
-					        	  method: "POST",
-					        	  url: "supplies_update",
-					        	  data: "_token="+token+"&_method=PUT&data="+indexed_array
-					        	})
-					        	  .done(function( msg ) {
-					        	    console.log( "Data Saved: " + msg);
-					        	    modal.modal('hide');
-					        	});
-						        return false;
-						    
-							});
 						}
 						modal.find('.modal-title').text(src_txt);
 					}).on('hidden.bs.modal', function (e) {
