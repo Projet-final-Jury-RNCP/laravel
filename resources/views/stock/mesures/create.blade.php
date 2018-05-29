@@ -5,8 +5,8 @@
 @stop
 
 @section('content')
-<div class="container">
-	<div class="card m-3">
+<div class="container-fluid">
+	<div class="card m-3 cancel-side-margins">
 		<div class="card-header">Formulaire unités de mesure</div>
 		<div class="card-body">
 			<form action="{{ url('stock/mesures') }}" id="measure" method="post" name="measure">
@@ -28,9 +28,9 @@
 			</form>
 		</div>
 	</div>
-	<div class="card m-3">
+	<div class="card m-3 cancel-side-margins">
 		<div class="card-header">Liste des unités de mesures</div>
-		<div class="card-body">
+		<div class="card-body table-container">
 			<table id="table" class="table table-striped table-bordered" style="width: 100%">
 				<thead>
 					<tr>
