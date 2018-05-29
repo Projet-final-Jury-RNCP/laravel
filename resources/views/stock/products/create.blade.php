@@ -71,14 +71,6 @@
 				</thead>
 				<tbody>
 					@foreach($products as $product)
-
-<?php
-
-// dump($product);
-// dump();
-
-?>
-
 					<tr style="{{ $product->active?:'text-decoration: line-through;' }}">
 						<td class="responsive-td" responsive-field="#">{{ $product->id }}</td>
 						<td class="responsive-td" responsive-field="Nom">{{ $product->name }}</td>
