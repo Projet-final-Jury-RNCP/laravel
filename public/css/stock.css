@@ -83,6 +83,10 @@ div.dataTables_wrapper div.dataTables_info {
 	.dataTable td.responsive-td {
 		position: relative;
 		padding-left: 55% !important;
+		min-height: 50px;
+	}
+	.dataTable td.responsive-td input { 
+		max-width: 80%;
 	}
 
 	/* The edit and delete icons */
@@ -93,6 +97,17 @@ div.dataTables_wrapper div.dataTables_info {
 	/* hide the table head */
 	#table.dataTable thead {
 		display: none;
+	}
+	/*** Optimize margins and paddings on small devices ***/
+	.card-body.table-container {
+	    padding: 0;
+	}
+	.cancel-side-margins {
+		margin: 0 !important;
+		margin-top: 1rem !important;
+	}
+	.dataTables_wrapper .row:first-child {
+		margin-top: 14px;
 	}
 }
 
