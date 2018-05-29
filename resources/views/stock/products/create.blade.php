@@ -75,8 +75,8 @@
 						<td class="responsive-td" responsive-field="#">{{ $product->id }}</td>
 						<td class="responsive-td" responsive-field="Nom">{{ $product->name }}</td>
 						<td class="responsive-td" responsive-field="Description">{{ $product->description }}</td>
-						<td class="responsive-td" responsive-field="Catégorie">{{ $product->id_category }}</td>
-						<td class="responsive-td" responsive-field="Unité de mesure">{{ $product->id_measure_unit }}</td>
+						<td class="responsive-td" responsive-field="Catégorie">{{ $categories[($product->id_category - 1)]->cat_name }}</td>
+						<td class="responsive-td" responsive-field="Unité de mesure">{{ $measures[($product->id_measure_unit -1)]->measure_symbol }}</td>
 						<td class="responsive-td" responsive-field="Quantité minimale">{{ $product->min_threshold }}</td>
 						<td class="responsive-td" responsive-field="Quantité maximale">{{ $product->max_threshold }}</td>
 						<td class="text-center responsive-td">
