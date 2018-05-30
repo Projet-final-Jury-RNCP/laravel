@@ -60,6 +60,10 @@ class ProductController extends Controller
             $products->max_threshold = 0;
         }
         
+        if(is_null($products->description)) {
+            $products->description = "";
+        }
+        
         $products->save ();
         
         return redirect('stock/produits');
