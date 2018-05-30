@@ -29,9 +29,9 @@ class CreateProductsTable extends Migration
             $table->unsignedInteger('id_category');
             $table->foreign('id_category')->references('id')->on('categories'); // ->onDelete('cascade');
             $table->string('name');
-            $table->string('description');
-            $table->integer('min_threshold');
-            $table->integer('max_threshold');
+            $table->string('description')->nullable();
+            $table->integer('min_threshold')->default(0);
+            $table->integer('max_threshold')->default(0);
         });
     }
 

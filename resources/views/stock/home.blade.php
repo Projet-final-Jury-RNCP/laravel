@@ -21,7 +21,10 @@
                       <a href="#" class="list-group-item active">
                         Stock
                       </a>
-                      <a href="/stock/consulter" class="list-group-item list-group-item-action">Consulter</a>
+<!--                       <a href="/stock/consulter" class="list-group-item list-group-item-action">Consulter</a> -->
+
+                      <a href="/stock/shopping" class="list-group-item list-group-item-action">Faire les courses</a>
+
                       <a href="/stock/approvisionner" class="list-group-item list-group-item-action"><b>Approvisionner</b> (au retour des courses)</a>
                       <a href="/stock/inventorier" class="list-group-item list-group-item-action">Inventorier (remise en l'état du stock)</a>
                       <a href="/stock/sortir" class="list-group-item list-group-item-action"><b>Sortie</b> de stock</a>

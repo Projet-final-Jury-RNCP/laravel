@@ -17,13 +17,19 @@
           Stock
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{{  url('/stock/consulter') }}"><b>Consulter</b></a>
+
+          <a class="dropdown-item" href="{{  url('/stock/shopping') }}"><b>Faire les courses</b></a>
+
+<!--           <a class="dropdown-item" href="{{  url('/stock/consulter') }}"><b>Consulter</b></a> -->
+
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="{{  url('/stock/approvisionner') }}"><b>Approvisionner</b> (au retour des courses)</a>
           <a class="dropdown-item" href="{{  url('/stock/inventorier') }}">Inventorier (remise en l'état du stock)</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="{{  url('/stock/sortir') }}"><b>Sortie</b> de stock</a>
           <a class="dropdown-item" href="{{  url('/stock/retourner') }}">Retour en stock</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{{  url('/stock/historique') }}">Historique du stock</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="{{  url('/stock/categories') }}">Categories</a>
           <a class="dropdown-item" href="{{  url('/stock/mesures') }}">Mesures</a>

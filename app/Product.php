@@ -34,6 +34,7 @@ class Product extends Model
     {
 //         return $this->belongsTo('App\Category');
         return $this->belongsTo('App\Category', 'id_category');
+//         return $this->hasOne('App\Category', 'id_category');
     }
 
     /**

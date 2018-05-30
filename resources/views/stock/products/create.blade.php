@@ -15,12 +15,13 @@
 				<input id="index" name="index" type="hidden">
 				<div class="form-group">
 					<label for="name">Nom</label>
-					<input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id="name" aria-describedby="name" name="name" placeholder="Nom du produit" required>
+					<input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id="name" aria-describedby="name" name="name" placeholder="Nom du produit" required value="{{ old('name') }}">
 					<small class="text-danger">{{ $errors->first('name') }}</small>
 				</div>
 				<div class="form-group">
 					<label for="description">Description</label>
-					<textarea class="form-control" id="description" aria-describedby="description" name="description"></textarea>
+					<textarea class="form-control" id="description" aria-describedby="description" name="description">{{ old('description') }}</textarea>
+					<small class="text-danger">{{ $errors->first('description') }}</small>
 				</div>
                 <div class="row">
                 	<div class="form-group col-lg-3 col-md-6 col-sm-12">
@@ -28,7 +29,7 @@
                         <select name="id_category" id="id_category">
                             <!-- looping though each category -->
                            	@foreach($categories as $category)
-                               <option value="{{ $category->id }}">{{ $category->cat_name }}</option>
+                               <option value="{{ $category->id }}" <?php if( $category->id == old('id_category')) echo ' selected'; ?>>{{ $category->cat_name }}</option>
                            	@endforeach
                         </select>
                 	</div>
@@ -37,17 +38,19 @@
                         <select name="id_measure_unit" id="id_measure_unit">
                             <!-- looping though each unit of measurement -->
                           	@foreach($measures as $measure)
-                               <option value="{{ $measure->id }}">{{ $measure->measure_name . ' (' . $measure->measure_symbol . ')' }}</option>
+                               <option value="{{ $measure->id }}" <?php if( $measure->id == old('id_measure_unit')) echo ' selected'; ?>>{{ $measure->measure_name . ' (' . $measure->measure_symbol . ')' }}</option>
                            	@endforeach
                         </select>
                 	</div>
                 	<div class="form-group col-lg-3 col-md-6 col-sm-12">
             			<label for="min_threshold">Quantité minimale</label>
-                  		<input type="number" class="form-control" id="min_threshold" name="min_threshold" placeholder="0" min="0">
+                  		<input type="number" class="form-control" id="min_threshold" name="min_threshold" placeholder="0" min="0" value="{{ old('min_threshold') }}">
+						<small class="text-danger">{{ $errors->first('min_threshold') }}</small>
                 	</div>
                 	<div class="form-group col-lg-3 col-md-6 col-sm-12">
             			<label for="max_threshold">Quantité maximale</label>
-                  		<input type="number" class="form-control" id="max_threshold" name="max_threshold" placeholder="0" min="0">
+                  		<input type="number" class="form-control" id="max_threshold" name="max_threshold" placeholder="0" min="0" value="{{ old('max_threshold') }}">
+						<small class="text-danger">{{ $errors->first('max_threshold') }}</small>
                 	</div>
                 </div>
 				<button data-target="#update_modal" data-toggle="modal" data-source="product-edit" id="update" type="button" class="btn btn-warning float-right" style="display: none;">Modifier</button>
@@ -76,7 +79,7 @@
 				<tbody>
 					<!-- start looping though each product -->
 					@foreach($products as $product)
-					<tr style="{{ $product->active?:'text-decoration: line-through;' }}">
+					<tr style="{{ $product->active?:'text-decoration: line-through;' }}" data-catid="{{ $product->category->id }}" data-measureid="{{ $product->measureUnit->id }}">
 						<td class="responsive-td" responsive-field="#">{{ $product->id }}</td>
 						<td class="responsive-td" responsive-field="Nom">{{ $product->name }}</td>
 						<td class="responsive-td" responsive-field="Description">{{ $product->description }}</td>

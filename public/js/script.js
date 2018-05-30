@@ -2,19 +2,37 @@ var	table ;
 $(document)
 		.ready(
 				function() {
+					
+					// Alignement à droite du contenu des cellules pour la/les colonnes à partir de l'index 0
+					// (valable uniquement par table - selon les colonnes ... :(
+					// inventorier : 2 = Quantité théorique 3 = Quantité réelle
+					var customColumnDefs = [];
+					if ($('#stockSupply').length>0) {
+						customColumnDefs = [
+						      { className: "text-right", "targets": [2] },
+						      { className: "text-center", "targets": [3] },
+//						       { className: "text-center", "targets": [4] },	// prix 
+						  ];
+					}
+					// TODO : dissocier les différentes tables, pour :
+					// - aligner à droite les NUMERIQUES
+					// - aligner au centre les inputs
+					// - aligner à gauche les TEXTE (défault)
+									
+					
+					
 					var actionHolder = $('#delete .modal-body form').attr("action");
 					console.log("actionHolder : "+actionHolder);
 					table = $('#table')
 									.DataTable(
 											{
 												
-												// Alignement à droite du contenu des cellules pour la/les colonnes à partir de l'index 0
-												// (valable uniquement par table - selon les colonnes ... :(
-												// inventorier : 2 = Quantité théorique 3 = Quantité réelle
-												  "columnDefs": [
-												      { className: "text-right", "targets": [2] },
-												      { className: "text-center", "targets": [3] },
-												  ],
+
+//												  "columnDefs": [
+//												      { className: "text-right", "targets": [2] },
+//												      { className: "text-center", "targets": [3] },
+//												  ],
+												  "columnDefs": customColumnDefs,
 												
 //										        responsive: {
 //										            details: {
@@ -141,6 +159,15 @@ $(document)
 
 function editRow(target) {
 	var elem = target.parentElement;
+	console.log(elem); // td.text-center.responsive-td
+	console.log("tr?");
+	var tr_current = elem.parentElement;
+//	console.log(tr_current);
+//	console.log($(tr_current));
+	console.log($(tr_current).attr('data-catid'));
+//	console.log($(tr_current).data('catid'));
+	var cat_id_selected = $(tr_current).attr('data-catid');
+	var measure_id_selected = $(tr_current).attr('data-measureid');
 
 	$('#update').attr('data-id', table.row( elem ).data()[0]);
 	$("#index").val(table.row( elem ).data()[0]);
@@ -153,8 +180,20 @@ function editRow(target) {
 	} else if($('form[name="product"]').length>0){
 		$("#name").val(table.row( elem ).data()[1]);
 		$("#description").val(table.row( elem ).data()[2]);
-		$("#id_category").val(table.row( elem ).data()[3]);
-		$("#id_measure_unit").val(table.row( elem ).data()[4]);
+//		$("#id_category").val(table.row( elem ).data()[3]);
+		$('#id_category option').each(function() {
+			console.log($(this).val());
+		    if($(this).val() == cat_id_selected) {
+		        $(this).prop("selected", true);
+		    }
+		});		
+//		$("#id_measure_unit").val(table.row( elem ).data()[4]);
+		$('#id_measure_unit option').each(function() {
+			console.log($(this).val());
+		    if($(this).val() == measure_id_selected) {
+		        $(this).prop("selected", true);
+		    }
+		});
 		$("#min_threshold").val(table.row( elem ).data()[5]);
 		$("#max_threshold").val(table.row( elem ).data()[6]);
 	}
