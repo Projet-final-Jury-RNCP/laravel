@@ -6,6 +6,7 @@
 
 @section('content')
 <div class="container-fluid">
+	<!-- Display the complete list of available products and allow quantity modifying -->
 	<div class="card m-3 cancel-side-margins" id="stockSupply">
 		<div class="card-header">
 			Inventaire - remise à niveau des quantités des produits du stock
@@ -24,11 +25,13 @@
 					</tr>
 				</thead>
 				<tbody>
+					<!-- looping though each product -->
 					@foreach($arrayProduct as $product)
 					<tr style="{{ $product->active?:'text-decoration: line-through;' }}">
 						<td class="responsive-td" responsive-field="Categorie">{{ $product->category->cat_name }}</td>
 						<td class="responsive-td" responsive-field="Produit">{{ $product->name }}</td>
 						<td class="responsive-td" responsive-field="Quantité théorique">{{ $product->quantity }}</td>
+						<!-- allow to modify the product quantity by typping the real quantity seen in storage -->
 						<td class="responsive-td text-center" responsive-field="Quantité réelle">
 							<input type="number" name="qte[{{ $product->id }}]" value="{{ $product->quantity }}">
 						</td>

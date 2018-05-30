@@ -58,7 +58,7 @@ div.dataTables_wrapper div.dataTables_info {
 		display: block;
 	}
 
-	/* display the responsive-field attribute content before each td */
+	/* display the HTML responsive-field attribute content before each td */
 	.dataTable td.responsive-td:before {
 		content: attr(responsive-field);
 		position: absolute;

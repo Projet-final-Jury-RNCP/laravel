@@ -26,7 +26,8 @@ class Category extends Model
 //     }
 
     /**
-     * Get the phone record associated with the user.
+     * Make the association between categories and products
+     * a category has many products
      */
     public function products()
     {

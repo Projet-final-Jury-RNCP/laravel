@@ -6,6 +6,7 @@
 
 @section('content')
 <div class="container-fluid">
+	<!-- The form to add or edit a category -->
 	<div class="card m-3 cancel-side-margins">
 		<div class="card-header">Formulaire catégories</div>
 		<div class="card-body">
@@ -27,6 +28,7 @@
 			</form>
 		</div>
 	</div>
+	<!-- Display the complete list of available categories -->
 	<div class="card m-3 cancel-side-margins">
 		<div class="card-header">Liste des catégories</div>
 		<div class="card-body table-container">
@@ -40,6 +42,7 @@
 					</tr>
 				</thead>
 				<tbody>
+					<!-- start looping though each category -->
 					@foreach($categories as $category)
 					<tr style="{{ $category->active?:'text-decoration: line-through;' }}">
 						<td class="responsive-td" responsive-field="#">{{ $category->id }}</td>
@@ -51,6 +54,7 @@
 						</td>
 					</tr>
 					@endforeach
+					<!-- end looping though each category -->
 				</tbody>
 			</table>
 		</div>

@@ -31,7 +31,7 @@ $( document ).ready(function() {
     <br>
 
 	<div class="card">
-  		<div class="card-header">Utilisateur</div>
+  		<div class="card-header">Créer un nouvel utilisateur</div>
   		<div class="card-block" style="padding: 1.5rem">
 
 <!--         <div class="row"> -->
@@ -39,6 +39,7 @@ $( document ).ready(function() {
 
 			@include('partials._form-errors')
 
+			<!-- The form to create a new user -->
 			<form action="{{ url('/admin/user/create') }}" method="POST">
 
   				{{ csrf_field() }}

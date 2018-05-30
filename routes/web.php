@@ -31,14 +31,14 @@ Route::get('/home', function() {
 });
 
 /**
- * Les routes du projet STOCK
- *
+ * Routes for the STOCK project
+ * only accessible when logged in
  */
 
 Route::group(['prefix' => 'stock', 'middleware' => 'auth'], function()
 // Route::group(['prefix' => 'stock'], function()
 {
-
+    // The index page
     Route::get('/', function () {
         return view('stock.home');
     });
@@ -47,29 +47,29 @@ Route::group(['prefix' => 'stock', 'middleware' => 'auth'], function()
      * Stock
      */
 
-    // Consulter
+    // See the complete storage (all products in it)
     // Acheter
     // TODO
 
-    // Approvisionner
+    // supplying
     Route::get('approvisionner', 'StockSupplyProvisionController@index');
     Route::post('approvisionner', 'StockSupplyProvisionController@store');
     Route::put('approvisionner_update', 'StockSupplyProvisionController@update');
     Route::delete('approvisionner/{stockSupply}', 'StockSupplyProvisionController@destroy');
 
-    // Inventorier
+    // inventory (for storage control and correcting)
     Route::get('inventorier', 'StockSupplyInventoryController@index');
     Route::post('inventorier', 'StockSupplyInventoryController@store');
     Route::put('inventorier_update', 'StockSupplyInventoryController@update');
     Route::delete('inventorier/{stockSupply}', 'StockSupplyInventoryController@destroy');
 
-    // Sortir
+    // Remove products from storage
     Route::get('sortir', 'StockFlowPullController@index');
     Route::post('sortir', 'StockFlowPullController@store');
     Route::put('sortir_update', 'StockFlowPullController@update');
     Route::delete('sortir/{stockSupply}', 'StockFlowPullController@destroy');
 
-    // Retourner
+    // Put back products in storage
     Route::get('retourner', 'StockFlowPushController@index');
     Route::post('retourner', 'StockFlowPushController@store');
     Route::put('retourner_update', 'StockFlowPushController@update');
@@ -80,19 +80,19 @@ Route::group(['prefix' => 'stock', 'middleware' => 'auth'], function()
      * Configuration
      */
 
-    // Catégories
+    // Product categories
     Route::get('categories', 'CategoryController@create');
     Route::post('categories', 'CategoryController@store');
     Route::put('categories_update', 'CategoryController@update');
     Route::delete('categories/{category}', 'CategoryController@destroy');
 
-    // Mesures
+    // Product units of measurement
     Route::get('mesures', 'MeasureUnitController@create');
     Route::post('mesures', 'MeasureUnitController@store');
     Route::put('mesures_update', 'MeasureUnitController@update');
     Route::delete('mesures/{measureUnit}', 'MeasureUnitController@destroy');
 
-    // Produits
+    // Products
     Route::get('produits', 'ProductController@create');
     Route::post('produits', 'ProductController@store');
     Route::put('produits_update', 'ProductController@update');
@@ -100,6 +100,7 @@ Route::group(['prefix' => 'stock', 'middleware' => 'auth'], function()
 
 });
 
+// Users
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
 {
 
@@ -118,7 +119,7 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 
 /**
- * Les routes de TEST
+ * the TEST routes
  */
 Route::get('/test/seb/dbrelations', 'TestSebController@dbrelations');
 Route::get('/test/seb/flashmessage', 'TestSebController@flashmessage');

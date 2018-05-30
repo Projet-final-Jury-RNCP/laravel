@@ -56,7 +56,7 @@ hidden -> d-none d-md-block d-lg-none
                 </div>
 
 @else
-
+	<!-- Display the complete list of users with links for deleting and modifying -->
     <div class="table-responsive">
         <table class="table table-striped table-bordered table-hover"><!--  table-sm -->
             <thead class="thead-dark">

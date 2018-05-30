@@ -6,6 +6,7 @@
 
 @section('content')
 <div class="container-fluid">
+	<!-- Display all products and allow to modify quantities by adding some in storage -->
 	<div class="card m-3 cancel-side-margins" id="stockSupply">
 		<div class="card-header">
 			Approvisionner - ajouter une livraison de produits
@@ -28,8 +29,9 @@
 					<tr style="{{ $product->active?:'text-decoration: line-through;' }}">
 						<td class="responsive-td" responsive-field="Categorie">{{ $product->category->cat_name }}</td>
 						<td class="responsive-td" responsive-field="Produit">{{ $product->name }}</td>
-						<td class="responsive-td" responsive-field="Quantité théorique">{{ $product->quantity }}</td>
-						<td class="responsive-td text-center" responsive-field="Quantité réelle">
+						<td class="responsive-td" responsive-field="Quantité actuelle en stock">{{ $product->quantity }}</td>
+						<!-- allow to modify the product quantity by typping a quantity to be add in storage -->
+						<td class="responsive-td text-center" responsive-field="Quantité à ajouter">
 							<input type="number" name="qte[{{ $product->id }}]" value="">
 						</td>
 					</tr>

@@ -1,11 +1,12 @@
 @extends('layouts.public')
 
 @section('title')
-	Sortir
+	Sortir des produits du stock
 @stop
 
 @section('content')
 <div class="container-fluid">
+	<!-- Display all products and allow to modify quantities by removing some in storage -->
 	<div class="card m-3 cancel-side-margins" id="stockSupply">
 		<div class="card-header">
 			Sortir - des produits du stock
@@ -29,6 +30,7 @@
 						<td class="responsive-td" responsive-field="Categorie">{{ $product->category->cat_name }}</td>
 						<td class="responsive-td" responsive-field="Produit">{{ $product->name }}</td>
 						<td class="responsive-td" responsive-field="Quantité théorique">{{ $product->quantity }}</td>
+						<!-- allow to modify the product quantity by typping a quantity to be remove from storage -->
 						<td class="responsive-td text-center" responsive-field="Quantité à sortir">
 							<input type="number" name="qte[{{ $product->id }}]" value="">
 						</td>

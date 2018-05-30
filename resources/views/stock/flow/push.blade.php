@@ -1,11 +1,12 @@
 @extends('layouts.public')
 
 @section('title')
-	Retourner
+	Retourner des produits dans le stock
 @stop
 
 @section('content')
 <div class="container-fluid">
+	<!-- Display all products and allow to modify quantities by adding some in storage -->
 	<div class="card m-3 cancel-side-margins" id="stockSupply">
 		<div class="card-header">
 			Retourner - des produits dans le stock
@@ -29,6 +30,7 @@
 						<td class="responsive-td" responsive-field="Categorie">{{ $product->category->cat_name }}</td>
 						<td class="responsive-td" responsive-field="Produit">{{ $product->name }}</td>
 						<td class="responsive-td" responsive-field="Quantité théorique">{{ $product->quantity }}</td>
+						<!-- allow to modify the product quantity by typping a quantity to be add in storage -->
 						<td class="responsive-td text-center" responsive-field="Quantité à retourner">
 							<input type="number" name="qte[{{ $product->id }}]" value="">
 						</td>

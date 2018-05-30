@@ -6,6 +6,7 @@
 
 @section('content')
 <div class="container-fluid">
+    <!-- The form to add or edit a unit of measurement -->
 	<div class="card m-3 cancel-side-margins">
 		<div class="card-header">Formulaire unités de mesure</div>
 		<div class="card-body">
@@ -28,6 +29,7 @@
 			</form>
 		</div>
 	</div>
+	<!-- Display the complete list of available units of measurement -->
 	<div class="card m-3 cancel-side-margins">
 		<div class="card-header">Liste des unités de mesures</div>
 		<div class="card-body table-container">
@@ -41,6 +43,7 @@
 					</tr>
 				</thead>
 				<tbody>
+					<!-- start looping though each unit of measurement -->
 					@foreach($measures as $measure)
 					<tr>
 						<td class="responsive-td" responsive-field="#">{{ $measure->id }}</td>
@@ -52,6 +55,7 @@
 						</td>
 					</tr>
 					@endforeach
+					<!-- end looping though each unit of measurement -->
 				</tbody>
 			</table>
 		</div>

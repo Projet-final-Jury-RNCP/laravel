@@ -6,6 +6,7 @@
 
 @section('content')
 <div class="container-fluid">
+	<!-- The form to add or edit a product -->
 	<div class="card m-3 cancel-side-margins">
 		<div class="card-header">Formulaire Produits</div>
 		<div class="card-body">
@@ -25,17 +26,19 @@
                 	<div class="form-group col-lg-3 col-md-6 col-sm-12">
                     	<label for="category">Catégorie : </label><br />
                         <select name="category" id="category">
-                           @foreach($categories as $category)
+                            <!-- looping though each category -->
+                           	@foreach($categories as $category)
                                <option value="{{ $category->id }}">{{ $category->cat_name }}</option>
-                           @endforeach
+                           	@endforeach
                         </select>
                 	</div>
                 	<div class="form-group col-lg-3 col-md-6 col-sm-12">
                     	<label for="measure">Unité de mesure : </label><br />
                         <select name="measure" id="measure">
-                           @foreach($measures as $measure)
+                            <!-- looping though each unit of measurement -->
+                          	@foreach($measures as $measure)
                                <option value="{{ $measure->id }}">{{ $measure->measure_name . ' (' . $measure->measure_symbol . ')' }}</option>
-                           @endforeach
+                           	@endforeach
                         </select>
                 	</div>
                 	<div class="form-group col-lg-3 col-md-6 col-sm-12">
@@ -53,6 +56,7 @@
 			</form>
 		</div>
 	</div>
+	<!-- Display the complete list of available products -->
 	<div class="card m-3 cancel-side-margins">
 		<div class="card-header">Liste des produits</div>
 		<div class="card-body table-container">
@@ -70,12 +74,15 @@
 					</tr>
 				</thead>
 				<tbody>
+					<!-- start looping though each product -->
 					@foreach($products as $product)
 					<tr style="{{ $product->active?:'text-decoration: line-through;' }}">
 						<td class="responsive-td" responsive-field="#">{{ $product->id }}</td>
 						<td class="responsive-td" responsive-field="Nom">{{ $product->name }}</td>
 						<td class="responsive-td" responsive-field="Description">{{ $product->description }}</td>
+						<!-- get the associated category -->
 						<td class="responsive-td" responsive-field="Catégorie">{{ $product->category->cat_name }}</td>
+						<!-- get the associated unit of measurement -->
 						<td class="responsive-td" responsive-field="Unité de mesure">{{ $product->measureUnit->measure_symbol }}</td>
 						<td class="responsive-td" responsive-field="Quantité minimale">{{ $product->min_threshold }}</td>
 						<td class="responsive-td" responsive-field="Quantité maximale">{{ $product->max_threshold }}</td>
@@ -85,6 +92,7 @@
 						</td>
 					</tr>
 					@endforeach
+					<!-- end looping though each product -->
 				</tbody>
 			</table>
 		</div>

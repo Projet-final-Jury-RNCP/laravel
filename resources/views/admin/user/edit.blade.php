@@ -31,11 +31,12 @@ $( document ).ready(function() {
     <br>
 
 	<div class="card">
-  		<div class="card-header">Icon, titre, description</div>
+  		<div class="card-header">Modifier un utilisateur</div>
   		<div class="card-block" style="padding: 1.5rem">
 
 			@include('partials._form-errors')
 
+			<!-- The form to modify a user -->
 		    <form action="{{ url('/admin/user/' . $user->id) }}" method="POST" role="form" enctype="multipart/form-data">
 
 		        {{ csrf_field() }}
