@@ -100,6 +100,11 @@ $(document)
 							modal.find('#send').click(function() {
 								document.measure.submit();
 							});
+						} else if (source == "product-edit") {
+							src_txt = "modifier le produit n° " + id + ' ?';
+							modal.find('#send').click(function() {
+								document.product.submit();
+							});
 						}
 						modal.find('.modal-title').text(src_txt);
 					}).on('hidden.bs.modal', function (e) {
@@ -119,6 +124,9 @@ $(document)
 						} else if (source == "measure-del") {
 							src_txt = "l'unité de mesure";
 							modal.find('.modal-body form').attr("action", actionHolder + '/mesures/'+id);
+						} else if (source == "product-del") {
+							src_txt = "le produit";
+							modal.find('.modal-body form').attr("action", actionHolder + '/produits/'+id);
 						}
 						modal.find('.modal-title').text('supprimer '+src_txt+' n° ' + id + ' ?')
 					}).on('hidden.bs.modal', function (e) {
@@ -142,6 +150,13 @@ function editRow(target) {
 	} else if($('form[name="measure"]').length>0){
 		$("#measure_name").val(table.row( elem ).data()[1]);
 		$("#measure_symbol").val(table.row( elem ).data()[2]);
+	} else if($('form[name="product"]').length>0){
+		$("#name").val(table.row( elem ).data()[1]);
+		$("#description").val(table.row( elem ).data()[2]);
+		$("#id_category").val(table.row( elem ).data()[3]);
+		$("#id_measure_unit").val(table.row( elem ).data()[4]);
+		$("#min_threshold").val(table.row( elem ).data()[5]);
+		$("#max_threshold").val(table.row( elem ).data()[6]);
 	}
 
 	if($('#put').length<1){

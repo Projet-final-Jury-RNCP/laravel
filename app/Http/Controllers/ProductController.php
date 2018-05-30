@@ -40,7 +40,29 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate ( $request, [
+            'name' => 'required|min:1|max:255',
+        ] );
+        
+        $products = new Product ();
+        $products->name = $request->name;
+        $products->description = $request->description;
+        $products->id_measure_unit = $request->id_measure_unit;
+        $products->id_category = $request->id_category;
+        $products->min_threshold = $request->min_threshold;
+        $products->max_threshold = $request->max_threshold;
+        
+        if(is_null($products->min_threshold)) {
+            $products->min_threshold = 0;
+        }
+        
+        if(is_null($products->max_threshold)) {
+            $products->max_threshold = 0;
+        }
+        
+        $products->save ();
+        
+        return redirect('stock/produits');
     }
 
     /**
@@ -72,9 +94,25 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request)
     {
-        //
+        $this->validate ( $request, [
+            'name' => 'required|min:1|max:255',
+        ] );
+        
+        $products = Product::find($request->index);
+        $products->active = true;
+        $products->name = $request->name;
+        $products->description = $request->description;
+        $products->id_measure_unit = $request->id_measure_unit;
+        $products->id_category = $request->id_category;
+        $products->min_threshold = $request->min_threshold;
+        $products->max_threshold = $request->max_threshold;
+        
+        $products->save ();
+        \Session::flash('flash_message_success','Produit modifié');
+        $products = Product::all ();
+        return redirect('stock/produits');
     }
 
     /**
@@ -87,17 +125,19 @@ class ProductController extends Controller
     {
         //         dd($category);  // Category
         //         dd($category->products); // Collection 0-n
-
+        /*
         if($product->category->count()) {
             \Session::flash('flash_message_error','Produit non supprimé, car il est utilisée par des catégories');
             \Session::flash('flash_message_success','Produit désactivé');
             $product->active = false;
             $product->save ();
         }else{
-            Category::destroy($category->id);
+            Product::destroy($product->id);
             \Session::flash('flash_message_success','Produit supprimé');
         }
+        */
+        Product::destroy($product->id);
 
-        return redirect('stock/porduits');
+        return redirect('stock/produits');
     }
 }

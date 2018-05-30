@@ -46,7 +46,6 @@ class MeasureUnitController extends Controller
         
         $measures->save ();
         
-        $measures = MeasureUnit::all ();
         return redirect('stock/mesures');
     }
 

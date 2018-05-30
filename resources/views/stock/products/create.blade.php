@@ -10,7 +10,7 @@
 	<div class="card m-3 cancel-side-margins">
 		<div class="card-header">Formulaire Produits</div>
 		<div class="card-body">
-			<form action="{{ url('stock/products') }}" id="product" method="post" name="product">
+			<form action="{{ url('stock/produits') }}" id="product" method="post" name="product">
 				{{ csrf_field() }}
 				<input id="index" name="index" type="hidden">
 				<div class="form-group">
@@ -24,8 +24,8 @@
 				</div>
                 <div class="row">
                 	<div class="form-group col-lg-3 col-md-6 col-sm-12">
-                    	<label for="category">Catégorie : </label><br />
-                        <select name="category" id="category">
+                    	<label for="id_category">Catégorie : </label><br />
+                        <select name="id_category" id="id_category">
                             <!-- looping though each category -->
                            	@foreach($categories as $category)
                                <option value="{{ $category->id }}">{{ $category->cat_name }}</option>
@@ -33,8 +33,8 @@
                         </select>
                 	</div>
                 	<div class="form-group col-lg-3 col-md-6 col-sm-12">
-                    	<label for="measure">Unité de mesure : </label><br />
-                        <select name="measure" id="measure">
+                    	<label for="id_measure_unit">Unité de mesure : </label><br />
+                        <select name="id_measure_unit" id="id_measure_unit">
                             <!-- looping though each unit of measurement -->
                           	@foreach($measures as $measure)
                                <option value="{{ $measure->id }}">{{ $measure->measure_name . ' (' . $measure->measure_symbol . ')' }}</option>
@@ -43,11 +43,11 @@
                 	</div>
                 	<div class="form-group col-lg-3 col-md-6 col-sm-12">
             			<label for="min_threshold">Quantité minimale</label>
-                  		<input type="number" class="form-control" id="min_threshold" name="min_threshold">
+                  		<input type="number" class="form-control" id="min_threshold" name="min_threshold" placeholder="0" min="0">
                 	</div>
                 	<div class="form-group col-lg-3 col-md-6 col-sm-12">
             			<label for="max_threshold">Quantité maximale</label>
-                  		<input type="number" class="form-control" id="max_threshold" name="max_threshold">
+                  		<input type="number" class="form-control" id="max_threshold" name="max_threshold" placeholder="0" min="0">
                 	</div>
                 </div>
 				<button data-target="#update_modal" data-toggle="modal" data-source="product-edit" id="update" type="button" class="btn btn-warning float-right" style="display: none;">Modifier</button>
