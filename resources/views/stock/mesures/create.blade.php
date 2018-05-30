@@ -13,12 +13,12 @@
 				{{ csrf_field() }}
 				<input id="index" name="index" type="hidden">
 				<div class="form-group">
-					<label for="exampleInputEmail1">Nom</label>
+					<label for="measure_name">Nom</label>
 					<input type="text" class="form-control{{ $errors->has('measure_name') ? ' is-invalid' : '' }}" id="measure_name" aria-describedby="measure_name" name="measure_name" placeholder="Nom de l'unité de mesure" autocomplete="off" required>
 					<small class="text-danger">{{ $errors->first('measure_name') }}</small>
 				</div>
 				<div class="form-group">
-					<label for="exampleInputEmail1">Symbole</label>
+					<label for="measure_symbol">Symbole</label>
 					<input type="text" class="form-control{{ $errors->has('measure_symbol') ? ' is-invalid' : '' }}" id="measure_symbol" aria-describedby="measure_symbol" name="measure_symbol" placeholder="Symbole de l'unité de mesure" autocomplete="off" required>
 					<small class="text-danger">{{ $errors->first('measure_symbol') }}</small>
 				</div>
@@ -31,8 +31,8 @@
 	<div class="card m-3 cancel-side-margins">
 		<div class="card-header">Liste des unités de mesures</div>
 		<div class="card-body table-container">
-			<table id="table" class="table table-striped table-bordered" style="width: 100%">
-				<thead>
+			<table id="table" class="table table-striped table-bordered table-hover" style="width: 100%">
+				<thead class="thead-dark">
 					<tr>
 						<th>#</th>
 						<th>Nom</th>

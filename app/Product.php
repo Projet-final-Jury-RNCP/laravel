@@ -41,6 +41,11 @@ class Product extends Model
         return $this->belongsTo('App\MeasureUnit', 'id_measure_unit');
     }
 
+//     public function stockReal()
+//     {
+//         return $this->hasOne(StockReal::class, 'id_product');   // (SQL: select * from `stock_real` where `stock_real`.`id_product` in (1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17))
+// //         return $this->belongsTo('App\StockReal', 'id_product');
+//     }
 
 
 }

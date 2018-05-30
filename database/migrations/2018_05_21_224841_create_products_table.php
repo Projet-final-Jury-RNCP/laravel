@@ -20,6 +20,8 @@ class CreateProductsTable extends Migration
             $table->softDeletes();
             $table->boolean('active')->default(true);
 
+            $table->integer('quantity')->default(0);
+
 //             $table->integer('id_measure_unit');
             $table->unsignedInteger('id_measure_unit');
             $table->foreign('id_measure_unit')->references('id')->on('measure_units');

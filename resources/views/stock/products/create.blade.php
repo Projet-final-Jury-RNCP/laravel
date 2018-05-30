@@ -13,12 +13,12 @@
 				{{ csrf_field() }}
 				<input id="index" name="index" type="hidden">
 				<div class="form-group">
-					<label for="exampleInputEmail1">Nom</label>
+					<label for="name">Nom</label>
 					<input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id="name" aria-describedby="name" name="name" placeholder="Nom du produit" required>
 					<small class="text-danger">{{ $errors->first('name') }}</small>
 				</div>
 				<div class="form-group">
-					<label for="exampleInputEmail1">Description</label>
+					<label for="description">Description</label>
 					<textarea class="form-control" id="description" aria-describedby="description" name="description"></textarea>
 				</div>
                 <div class="row">
@@ -56,8 +56,8 @@
 	<div class="card m-3 cancel-side-margins">
 		<div class="card-header">Liste des produits</div>
 		<div class="card-body table-container">
-			<table id="table" class="table table-striped table-bordered" style="width: 100%">
-				<thead>
+			<table id="table" class="table table-striped table-bordered table-hover" style="width: 100%">
+				<thead class="thead-dark">
 					<tr>
 						<th>#</th>
 						<th>Nom</th>

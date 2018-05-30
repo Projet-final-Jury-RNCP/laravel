@@ -43,43 +43,60 @@ Route::group(['prefix' => 'stock', 'middleware' => 'auth'], function()
         return view('stock.home');
     });
 
-        /**
-         * Stock
-         */
+    /**
+     * Stock
+     */
 
-        // Consulter : IN/OUT
+    // Consulter
+    // Acheter
+    // TODO
 
-        // Approvisionner
-        Route::get('approvisionner', 'StockSupplyController@index');
-        Route::post('approvisionner', 'StockSupplyController@store');
-        Route::put('approvisionner_update', 'StockSupplyController@update');
-        Route::delete('approvisionner/{stockSupply}', 'StockSupplyController@destroy');
+    // Approvisionner
+    Route::get('approvisionner', 'StockSupplyProvisionController@index');
+    Route::post('approvisionner', 'StockSupplyProvisionController@store');
+    Route::put('approvisionner_update', 'StockSupplyProvisionController@update');
+    Route::delete('approvisionner/{stockSupply}', 'StockSupplyProvisionController@destroy');
 
-        // Inventaire
+    // Inventorier
+    Route::get('inventorier', 'StockSupplyInventoryController@index');
+    Route::post('inventorier', 'StockSupplyInventoryController@store');
+    Route::put('inventorier_update', 'StockSupplyInventoryController@update');
+    Route::delete('inventorier/{stockSupply}', 'StockSupplyInventoryController@destroy');
+
+    // Sortir
+    Route::get('sortir', 'StockFlowPullController@index');
+    Route::post('sortir', 'StockFlowPullController@store');
+    Route::put('sortir_update', 'StockFlowPullController@update');
+    Route::delete('sortir/{stockSupply}', 'StockFlowPullController@destroy');
+
+    // Retourner
+    Route::get('retourner', 'StockFlowPushController@index');
+    Route::post('retourner', 'StockFlowPushController@store');
+    Route::put('retourner_update', 'StockFlowPushController@update');
+    Route::delete('retourner/{stockSupply}', 'StockFlowPushController@destroy');
 
 
+    /**
+     * Configuration
+     */
 
-        /**
-         * Configuration
-         */
+    // Catégories
+    Route::get('categories', 'CategoryController@create');
+    Route::post('categories', 'CategoryController@store');
+    Route::put('categories_update', 'CategoryController@update');
+    Route::delete('categories/{category}', 'CategoryController@destroy');
 
-        // Catégories
-        Route::get('categories', 'CategoryController@create');
-        Route::post('categories', 'CategoryController@store');
-        Route::put('categories_update', 'CategoryController@update');
-        Route::delete('categories/{category}', 'CategoryController@destroy');
+    // Mesures
+    Route::get('mesures', 'MeasureUnitController@create');
+    Route::post('mesures', 'MeasureUnitController@store');
+    Route::put('mesures_update', 'MeasureUnitController@update');
+    Route::delete('mesures/{measureUnit}', 'MeasureUnitController@destroy');
 
-        // Mesures
-        Route::get('mesures', 'MeasureUnitController@create');
-        Route::post('mesures', 'MeasureUnitController@store');
-        Route::put('mesures_update', 'MeasureUnitController@update');
-        Route::delete('mesures/{measureUnit}', 'MeasureUnitController@destroy');
-
-        // Produits
-        Route::get('produits', 'ProductController@create');
-        Route::post('produits', 'ProductController@store');
-        Route::put('produits_update', 'ProductController@update');
-        Route::delete('produits/{product}', 'ProductController@destroy');
+    // Produits
+    Route::get('produits', 'ProductController@create');
+    Route::post('produits', 'ProductController@store');
+    Route::put('produits_update', 'ProductController@update');
+    Route::delete('produits/{product}', 'ProductController@destroy');
 
 });
 

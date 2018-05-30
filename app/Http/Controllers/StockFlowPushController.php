@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use App\StockFlow;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class StockFlowController extends Controller
+class StockFlowPushController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,11 @@ class StockFlowController extends Controller
      */
     public function index()
     {
-        //
+        /*
+         * On veut tous les produits qui sont sortis (actifs pour simplifier)
+         */
+        $arrayProduct = Product::with('category')->where('active', true)->get()->sortBy('name', SORT_NATURAL|SORT_FLAG_CASE);
+        return view ( 'stock.flow.push', compact ( 'arrayProduct' ) );
     }
 
     /**
@@ -69,7 +75,31 @@ class StockFlowController extends Controller
      */
     public function update(Request $request, StockFlow $stockFlow)
     {
-        //
+        $nbrProductPush = 0;
+
+        foreach ($request->qte as $id_product => $val) {
+            $qte_virtual = Product::find($id_product)->quantity;
+            $qte_reel = is_numeric($val) ? $val : 0;
+            if($qte_reel <= 0 ) {
+                $qte_reel = 0;
+            }else{
+
+                $supply = new StockFlow();
+                $supply->quantity_add = $qte_reel;
+                $supply->id_product = $id_product;
+                $supply->user_id = Auth::user()->getAuthIdentifier();
+                $supply->save();
+                $nbrProductPush++;
+            }
+        }
+
+        if($nbrProductPush) {
+            \Session::flash('flash_message_success', $nbrProductPush . ' produits retrounés');
+        }else{
+            \Session::flash('flash_message_error','Aucun produit retrouné');
+        }
+
+        return redirect('stock/retourner');
     }
 
     /**

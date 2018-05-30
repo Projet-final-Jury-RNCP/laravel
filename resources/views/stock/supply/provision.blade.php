@@ -1,36 +1,36 @@
 @extends('layouts.public')
 
 @section('title')
-	Catégories
+	Approvisionner
 @stop
 
 @section('content')
 <div class="container-fluid">
 	<div class="card m-3 cancel-side-margins" id="stockSupply">
 		<div class="card-header">
-			Inventaire - remise des qté du stock 
+			Approvisionner - ajouter une livraison de produits
 			<button  class="btn btn-primary float-right" type="button" id="supply_button" onclick="document.supply.submit()">Enregistrer</button>
 		</div>
 		<div class="card-body table-container">
 			<form action="{{ url('stock/approvisionner_update') }}" id="supply" method="post" name="supply">
 				{{ csrf_field() }} {{ method_field('PUT') }}
-			<table id="table" class="table table-striped table-bordered" style="width: 100%">
-				<thead>
+			<table id="table" class="table table-striped table-bordered table-hover" style="width: 100%">
+				<thead class="thead-dark">
 					<tr>
 						<th>Categorie </th>
-						<th>Produit</th>	
-						<th>Quantité théorique</th>
-						<th>Quantité réelle</th>
+						<th>Produit</th>
+						<th>Quantité actuelle en stock</th>
+						<th>Quantité à ajouter</th>
 					</tr>
 				</thead>
 				<tbody>
-					@foreach($stockSupply as $stockSupply)
-					<tr>
-						<td class="responsive-td" responsive-field="Categorie">{{ $stockSupply->product->category->cat_name }}</td>
-						<td class="responsive-td" responsive-field="Produit">{{ $stockSupply->product->name }}</td>
-						<td class="responsive-td" responsive-field="Quantité théorique">{{ $stockSupply->quantity }}</td>
+					@foreach($arrayProduct as $product)
+					<tr style="{{ $product->active?:'text-decoration: line-through;' }}">
+						<td class="responsive-td" responsive-field="Categorie">{{ $product->category->cat_name }}</td>
+						<td class="responsive-td" responsive-field="Produit">{{ $product->name }}</td>
+						<td class="responsive-td" responsive-field="Quantité théorique">{{ $product->quantity }}</td>
 						<td class="responsive-td text-center" responsive-field="Quantité réelle">
-							<input type="number" name="qte[{{ $stockSupply->id_product }}]" value="{{ $stockSupply->quantity }}">
+							<input type="number" name="qte[{{ $product->id }}]" value="">
 						</td>
 					</tr>
 					@endforeach

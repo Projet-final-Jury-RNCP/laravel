@@ -7,6 +7,15 @@ $(document)
 					table = $('#table')
 									.DataTable(
 											{
+												
+												// Alignement à droite du contenu des cellules pour la/les colonnes à partir de l'index 0
+												// (valable uniquement par table - selon les colonnes ... :(
+												// inventorier : 2 = Quantité théorique 3 = Quantité réelle
+												  "columnDefs": [
+												      { className: "text-right", "targets": [2] },
+												      { className: "text-center", "targets": [3] },
+												  ],
+												
 //										        responsive: {
 //										            details: {
 //										                renderer: function ( api, rowIdx, columns ) {

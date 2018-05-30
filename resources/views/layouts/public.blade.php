@@ -12,7 +12,7 @@
 
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.16/sl-1.2.5/datatables.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
 
 	<!-- The style by default -->
 	<link rel="stylesheet" href="{{ asset('css/app.css') }}" media="screen" title="no title">
@@ -24,8 +24,8 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
 	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.16/sl-1.2.5/datatables.min.js"></script>
-	<script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
+	<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+	<script src="{{ asset('js/script.js') }}"></script>
 
 <style type="text/css">
 

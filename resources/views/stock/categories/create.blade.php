@@ -13,12 +13,12 @@
 				{{ csrf_field() }}
 				<input id="index" name="index" type="hidden">
 				<div class="form-group">
-					<label for="exampleInputEmail1">Nom</label>
+					<label for="cat_name">Nom</label>
 					<input type="text" class="form-control{{ $errors->has('cat_name') ? ' is-invalid' : '' }}" id="cat_name" aria-describedby="cat_name" name="cat_name" placeholder="Nom de la catégorie" required>
 					<small class="text-danger">{{ $errors->first('cat_name') }}</small>
 				</div>
 				<div class="form-group">
-					<label for="exampleInputEmail1">Description</label>
+					<label for="cat_desc">Description</label>
 					<textarea class="form-control" id="cat_desc" aria-describedby="cat_desc" name="cat_desc"></textarea>
 				</div>
 				<button data-target="#update_modal" data-toggle="modal" data-source="cat-edit" id="update" type="button" class="btn btn-warning float-right" style="display: none;">Modifier</button>
@@ -30,8 +30,8 @@
 	<div class="card m-3 cancel-side-margins">
 		<div class="card-header">Liste des catégories</div>
 		<div class="card-body table-container">
-			<table id="table" class="table table-striped table-bordered" style="width: 100%">
-				<thead>
+			<table id="table" class="table table-striped table-bordered table-hover" style="width: 100%">
+				<thead class="thead-dark">
 					<tr>
 						<th>#</th>
 						<th>Nom</th>
