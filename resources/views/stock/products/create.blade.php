@@ -46,6 +46,16 @@
             			<label for="min_threshold">Quantité minimale</label>
                   		<input type="number" class="form-control" id="min_threshold" name="min_threshold" placeholder="0" min="0" value="{{ old('min_threshold') }}">
 						<small class="text-danger">{{ $errors->first('min_threshold') }}</small>
+						@if(session()->has('is_update') && sizeof($errors) > 0)
+							<script type="text/javascript"> 
+								$(document)
+								.ready(
+										function() {
+											switchButon();
+										}
+									);
+							</script>
+						@endif
                 	</div>
                 	<div class="form-group col-lg-3 col-md-6 col-sm-12">
             			<label for="max_threshold">Quantité maximale</label>
