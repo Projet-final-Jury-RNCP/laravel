@@ -15,7 +15,7 @@ $(document)
 						customColumnDefs = [
 						      { className: "text-right", "targets": [2] },
 						      { className: "text-center", "targets": [3] },
-						      { className: "text-center", "targets": [4] }, 
+//						      { className: "text-center", "targets": [4] }, 
 						  ];
 					}
 					// TODO : dissocier les différentes tables, pour :
@@ -213,4 +213,11 @@ function isDone() {
 	$(".productline").click(function(){
 	    $(this).toggleClass("cross-off");
 	}); 
+}
+
+function plusX(value,item) {
+	var x = document.getElementById("qte_"+item);
+	var currentVal = Number(x.value); 
+	console.log("currentVal "+(currentVal+=value));
+	x.value = currentVal;
 }
