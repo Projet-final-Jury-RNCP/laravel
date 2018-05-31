@@ -32,7 +32,7 @@
 						<td class="responsive-td" responsive-field="Quantité actuelle en stock">{{ $product->quantity }}</td>
 						<!-- allow to modify the product quantity by typping a quantity to be add in storage -->
 						<td class="responsive-td text-center" responsive-field="Quantité à ajouter">
-							<input type="number" name="qte[{{ $product->id }}]" value="">
+							<input type="number" name="qte[{{ $product->id }}]" value="" min="0">
 						</td>
 					</tr>
 					@endforeach

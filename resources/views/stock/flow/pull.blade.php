@@ -32,7 +32,7 @@
 						<td class="responsive-td" responsive-field="Quantité théorique">{{ $product->quantity }}</td>
 						<!-- allow to modify the product quantity by typping a quantity to be remove from storage -->
 						<td class="responsive-td text-center" responsive-field="Quantité à sortir">
-							<input type="number" name="qte[{{ $product->id }}]" value="">
+							<input type="number" name="qte[{{ $product->id }}]" value="" min="0" max="{{ $product->quantity }}">
 						</td>
 					</tr>
 					@endforeach
