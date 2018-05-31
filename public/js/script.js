@@ -3,6 +3,10 @@ $(document)
 		.ready(
 				function() {
 					
+					/* The "is done" mark in shopping table */
+					isDone();
+					
+					
 					// Alignement à droite du contenu des cellules pour la/les colonnes à partir de l'index 0
 					// (valable uniquement par table - selon les colonnes ... :(
 					// inventorier : 2 = Quantité théorique 3 = Quantité réelle
@@ -203,4 +207,10 @@ function switchButon() {
         scrollTop: $(".container-fluid").offset().top
     }, 500);
 	
+}
+
+function isDone() {
+	$(".productline").click(function(){
+	    $(this).toggleClass("cross-off");
+	}); 
 }

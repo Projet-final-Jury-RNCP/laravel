@@ -31,6 +31,16 @@ body {
 	}
 }
 
+/* The "is done" mark in shopping table page ; work with the Jquery isDone() function */
+.cross-off td {
+	text-decoration: line-through;
+	color: red;
+	background-color: #444444;
+}
+.cross-off td:before {
+	color: black;
+}
+
 /*** pure css responsive datable ***/
 .dataTable td {
 	padding: 5px;
@@ -64,6 +74,7 @@ div.dataTables_wrapper div.dataTables_info {
 		position: absolute;
 		left: 0px;
 		top: 0px;
+		color: black;
 		font-weight: bold;
 		font-size: 0.97rem;
 		width: 50%;

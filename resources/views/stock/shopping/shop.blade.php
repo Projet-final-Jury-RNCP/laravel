@@ -27,7 +27,7 @@
 				</thead>
 				<tbody>
 					@foreach($arrayProduct as $product)
-					<tr style="{{ $product->active?:'text-decoration: line-through;' }}">
+					<tr class="productline">
 						<td class="responsive-td" responsive-field="Categorie">{{ $product->category->cat_name }}</td>
 						<td class="responsive-td" responsive-field="Produit">{{ $product->name }}</td>
 						<td class="responsive-td" responsive-field="Quantité théorique">{{ $product->quantity . ' [' . $product->min_threshold . '/' . $product->max_threshold . ']' }}</td>
