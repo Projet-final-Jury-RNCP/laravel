@@ -18,7 +18,7 @@
 			<table id="table" class="table table-striped table-bordered table-hover" style="width: 100%">
 				<thead class="thead-dark">
 					<tr>
-						<th>Categorie </th>
+						<th class="hidden-on-small">Categorie </th>
 						<th>Produit</th>
 						<th>Quantité actuelle en stock</th>
 						<th>Quantité à acheter MIN</th>
@@ -28,7 +28,7 @@
 				<tbody>
 					@foreach($arrayProduct as $product)
 					<tr class="productline">
-						<td class="responsive-td" responsive-field="Categorie">{{ $product->category->cat_name }}</td>
+						<td class="responsive-td hidden-on-small" responsive-field="Categorie">{{ $product->category->cat_name }}</td>
 						<td class="responsive-td" responsive-field="Produit">{{ $product->name }}</td>
 						<td class="responsive-td" responsive-field="Quantité théorique">{{ $product->quantity . ' [' . $product->min_threshold . '/' . $product->max_threshold . ']' }}</td>
 						<!-- allow to modify the product quantity by typping a quantity to be remove from storage -->

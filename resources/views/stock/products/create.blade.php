@@ -47,7 +47,7 @@
                   		<input type="number" class="form-control" id="min_threshold" name="min_threshold" placeholder="0" min="0" value="{{ old('min_threshold') }}">
 						<small class="text-danger">{{ $errors->first('min_threshold') }}</small>
 						@if(session()->has('is_update') && sizeof($errors) > 0)
-							<script type="text/javascript"> 
+							<script type="text/javascript">
 								$(document)
 								.ready(
 										function() {
@@ -83,6 +83,7 @@
 						<th>Unité de mesure</th>
 						<th>Quantité minimale</th>
 						<th>Quantité maximale</th>
+						<th>En stock</th>
 						<th style="width:50px;"></th>
 					</tr>
 				</thead>
@@ -99,6 +100,7 @@
 						<td class="responsive-td" responsive-field="Unité de mesure">{{ $product->measureUnit->measure_symbol }}</td>
 						<td class="responsive-td" responsive-field="Quantité minimale">{{ $product->min_threshold }}</td>
 						<td class="responsive-td" responsive-field="Quantité maximale">{{ $product->max_threshold }}</td>
+						<td class="responsive-td" responsive-field="En stock">{{ $product->quantity }}</td>
 						<td class="text-center responsive-td">
 							<i onclick="editRow(this)" id="edit" title="modifier" class="fa fa-pencil fa-2x" data-id="{{ $product->id }}" style="color:#007bff;cursor:pointer;margin-right:10px;"></i>
 							<i data-target="#delete" data-toggle="modal" title="supprimer" class="fa fa-trash fa-2x" aria-hidden="true" data-source="product-del" data-id="{{ $product->id }}" style="color:red;cursor:pointer;"></i>

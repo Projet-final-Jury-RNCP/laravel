@@ -65,7 +65,7 @@ hidden -> d-none d-md-block d-lg-none
                     <th>Name</th>
                     <th class="hidden-on-small">Email</th>
                     <th class="hidden-on-small">Role</th>
-                    <th>Action</th>
+                    <th class="text-center">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -75,7 +75,7 @@ hidden -> d-none d-md-block d-lg-none
                         <td>{{ $user->name }}</td>
                         <td class="hidden-on-small">{{ $user->email }}</td>
                         <td class="hidden-on-small">{{ $user->role }}</td>
-                        <td>
+                        <td class="text-center">
 
 	<a href="{{ url('/admin/user/' . $user->id . '/edit') }}" class="btn btn-success btn-sm">Modifier</a>
 

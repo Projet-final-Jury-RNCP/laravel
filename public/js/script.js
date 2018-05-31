@@ -10,19 +10,37 @@ $(document)
 					// Alignement à droite du contenu des cellules pour la/les colonnes à partir de l'index 0
 					// (valable uniquement par table - selon les colonnes ... :(
 					// inventorier : 2 = Quantité théorique 3 = Quantité réelle
-					var customColumnDefs = [];
-					if ($('#stockSupply').length>0) {
-						customColumnDefs = [
-						      { className: "text-right", "targets": [2] },
-						      { className: "text-center", "targets": [3] },
-//						      { className: "text-center", "targets": [4] }, 
-						  ];
-					}
+
 					// TODO : dissocier les différentes tables, pour :
 					// - aligner à droite les NUMERIQUES
 					// - aligner au centre les inputs
 					// - aligner à gauche les TEXTE (défault)
-									
+					var customColumnDefs = [];
+					if ($('#stockSupplyInventory').length>0) {
+						customColumnDefs = [
+						      { className: "text-right", "targets": [2] },
+						      { className: "text-center", "targets": [3] },
+						  ];
+					}
+					if ($('#stockSupplyProvision').length>0) {
+						customColumnDefs = [
+						      { className: "text-right", "targets": [2] },
+						      { className: "text-center", "targets": [3] },
+						      { className: "text-center", "targets": [4] }, 
+						  ];
+					}
+					if ($('#stockFlowPull').length>0) {
+						customColumnDefs = [
+						      { className: "text-right", "targets": [2] },
+						      { className: "text-center", "targets": [3] },
+						  ];
+					}
+					if ($('#stockFlowPush').length>0) {
+						customColumnDefs = [
+						      { className: "text-right", "targets": [2] },
+						      { className: "text-center", "targets": [3] },
+						  ];
+					}
 					
 					
 					var actionHolder = $('#delete .modal-body form').attr("action");
@@ -30,7 +48,6 @@ $(document)
 									.DataTable(
 											{
 												
-
 //												  "columnDefs": [
 //												      { className: "text-right", "targets": [2] },
 //												      { className: "text-center", "targets": [3] },
@@ -58,9 +75,10 @@ $(document)
 										            style: 'single'
 										        },
 										        "initComplete": function () {
-											        if ($('#stockSupply').length>0) {
+											        if ($('#stockSupplyInventory').length>0 || $('#stockSupplyProvision').length>0) {
+											        	// Add "Categorie" select with data from table
 											        	var tbl = this.api();
-											           tbl.columns().every( function () {
+											        	tbl.columns().every( function () {
 											                var column = this;
 											                if (this.index()==0) {
 												                var select = $('<select><option value=""></option></select>')
@@ -158,7 +176,9 @@ $(document)
 						location.reload();
 						return false;
 					})
-				});
+				});	// END JQUERY .ready()
+
+
 
 function editRow(target) {
 	var elem = target.parentElement;
@@ -206,7 +226,6 @@ function switchButon() {
     $('html, body').animate({
         scrollTop: $(".container-fluid").offset().top
     }, 500);
-	
 }
 
 function isDone() {

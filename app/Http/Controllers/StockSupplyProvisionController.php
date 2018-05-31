@@ -86,16 +86,22 @@ class StockSupplyProvisionController extends Controller
         	if($qte_reel <= 0 ) {
         		$qte_reel = 0;
         	}else{
-        		
+
+        	    $price = $request->prices[$id_product];
+        	    $price = preg_replace('/,/', '.', $price);
+        	    $price = is_numeric($price) ? $price : 0;
+
         		$supply = new StockSupply();
         		$supply->quantity_add = $qte_reel;
         		$supply->id_product = $id_product;
         		$supply->user_id = Auth::user()->getAuthIdentifier();
-        		foreach ($request->prices as $id_product_p => $val) {
-        			if ($id_product_p==$id_product) {
-        				$supply->unit_price = $val;
-        			}
-        		}
+//         		foreach ($request->prices as $id_product_p => $val) {
+//         			if ($id_product_p==$id_product) {
+//         				$supply->unit_price = $val;
+//         			}
+//         		}
+        		$supply->unit_price = $price;
+        		dump($supply);
         		$supply->save();
         		$nbrProductAdded++;
         	}

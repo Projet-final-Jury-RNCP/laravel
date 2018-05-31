@@ -22,7 +22,10 @@ class ShoppingController extends Controller
          * QTE_STOCK - QTE_MIN < 0 ?
          * AUTRE ?...
          */
-        $arrayProduct = Product::with('category')->where('quantity', '>', 0)->get()->sortBy('name', SORT_NATURAL|SORT_FLAG_CASE);
+        $arrayProduct = Product::with('category')
+        ->whereRaw('quantity < max_threshold')
+        ->where('active', true)
+        ->get()->sortBy('name', SORT_NATURAL|SORT_FLAG_CASE);
         return view ( 'stock.shopping.shop', compact ( 'arrayProduct' ) );
     }
 

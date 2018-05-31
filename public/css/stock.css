@@ -27,9 +27,13 @@ body {
 /* Hide fields in table on small devices */
 @media screen and (min-width: 0px) and (max-width: 992px) {
 	.hidden-on-small {
-		display: none;
-	}
+		display: none !important;
+	}	
 }
+
+
+
+
 
 /* The "is done" mark in shopping table page ; work with the Jquery isDone() function */
 .cross-off td {
@@ -94,7 +98,7 @@ div.dataTables_wrapper div.dataTables_info {
 	.dataTable td.responsive-td {
 		position: relative;
 		padding-left: 55% !important;
-		min-height: 50px;
+/* 		min-height: 50px; */
 	}
 	.dataTable td.responsive-td input { 
 		max-width: 80%;
