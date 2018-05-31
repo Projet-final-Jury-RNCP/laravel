@@ -7,7 +7,7 @@
 @section('content')
 <div class="container-fluid">
 	<!-- Display all products and allow to modify quantities by removing some in storage -->
-	<div class="card m-3 cancel-side-margins" id="stockSupply">
+	<div class="card m-3 cancel-side-margins" id="stockShopping">
 		<div class="card-header">
 			Liste des courses
 			<!-- <button  class="btn btn-primary float-right" type="button" id="supply_button" onclick="document.supply.submit()">Enregistrer</button> -->

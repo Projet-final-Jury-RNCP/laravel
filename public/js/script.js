@@ -75,7 +75,14 @@ $(document)
 										            style: 'single'
 										        },
 										        "initComplete": function () {
-											        if ($('#stockSupplyInventory').length>0 || $('#stockSupplyProvision').length>0) {
+											        if (
+											        		$('#stockSupplyInventory').length>0 
+											        		|| $('#stockSupplyProvision').length>0
+											        		|| $('#stockFlowPull').length>0
+											        		|| $('#stockFlowPush').length>0
+											        		|| $('#stockShopping').length>0		
+											        
+											        ) {
 											        	// Add "Categorie" select with data from table
 											        	var tbl = this.api();
 											        	tbl.columns().every( function () {
