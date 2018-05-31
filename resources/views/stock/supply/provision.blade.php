@@ -22,6 +22,7 @@
 						<th>Produit</th>
 						<th>Quantité actuelle en stock</th>
 						<th>Quantité à ajouter</th>
+						<th>Prix unitaire</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -31,8 +32,11 @@
 						<td class="responsive-td" responsive-field="Produit">{{ $product->name }}</td>
 						<td class="responsive-td" responsive-field="Quantité actuelle en stock">{{ $product->quantity }}</td>
 						<!-- allow to modify the product quantity by typping a quantity to be add in storage -->
-						<td class="responsive-td text-center" responsive-field="Quantité à ajouter">
-							<input type="number" name="qte[{{ $product->id }}]" value="" min="0">
+						<td class="responsive-td" responsive-field="Quantité à ajouter">
+							{{ $product->measureUnit->measure_symbol }} <input type="number" name="qte[{{ $product->id }}]" value="" min="0">
+						</td>
+						<td class="responsive-td" responsive-field="Prix unitaire">
+							€ <input type="number" name="prices[{{ $product->id }}]" value="" min="0" step=".01">
 						</td>
 					</tr>
 					@endforeach

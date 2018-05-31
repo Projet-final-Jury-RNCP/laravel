@@ -82,19 +82,23 @@ class StockSupplyProvisionController extends Controller
         $nbrProductAdded = 0;
 
         foreach ($request->qte as $id_product => $val) {
-            $qte_virtual = Product::find($id_product)->quantity;
-            $qte_reel = is_numeric($val) ? $val : 0;
-            if($qte_reel <= 0 ) {
-                $qte_reel = 0;
-            }else{
-
-                $supply = new StockSupply();
-                $supply->quantity_add = $qte_reel;
-                $supply->id_product = $id_product;
-                $supply->user_id = Auth::user()->getAuthIdentifier();
-                $supply->save();
-                $nbrProductAdded++;
-            }
+        	$qte_reel = is_numeric($val) ? $val : 0;
+        	if($qte_reel <= 0 ) {
+        		$qte_reel = 0;
+        	}else{
+        		
+        		$supply = new StockSupply();
+        		$supply->quantity_add = $qte_reel;
+        		$supply->id_product = $id_product;
+        		$supply->user_id = Auth::user()->getAuthIdentifier();
+        		foreach ($request->prices as $id_product_p => $val) {
+        			if ($id_product_p==$id_product) {
+        				$supply->unit_price = $val;
+        			}
+        		}
+        		$supply->save();
+        		$nbrProductAdded++;
+        	}
         }
 
         if($nbrProductAdded) {
