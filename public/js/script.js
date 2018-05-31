@@ -207,6 +207,6 @@ function editRow(target) {
 	$("#new").fadeIn( "slow" );
 	$("#update").fadeIn( "slow" );
     $('html, body').animate({
-        scrollTop: $(".container").offset().top
+        scrollTop: $(".container-fluid").offset().top
     }, 500);
 }
