@@ -101,7 +101,6 @@ class StockSupplyProvisionController extends Controller
 //         			}
 //         		}
         		$supply->unit_price = $price;
-        		dump($supply);
         		$supply->save();
         		$nbrProductAdded++;
         	}
