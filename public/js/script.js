@@ -194,7 +194,6 @@ function editRow(target) {
 	var measure_id_selected = $(tr_current).attr('data-measureid');
 
 	$('#update').attr('data-id', table.row( elem ).data()[0]);
-	$("#index").val(table.row( elem ).data()[0]);
 	if($('form[name="category"]').length>0){
 		$("#cat_name").val(table.row( elem ).data()[1]);
 		$("#cat_desc").val(table.row( elem ).data()[2]);
@@ -218,10 +217,10 @@ function editRow(target) {
 		$("#max_threshold").val(table.row( elem ).data()[6]);
 	}
 	
-	switchButon();
+	switchButon(table.row( elem ).data()[0]);
 }
 
-function switchButon() {
+function switchButon(index) {
 	if($('#put').length<1){
 		$('form').append('<input id="put" type="hidden" name="_method" value="PUT">');
 		$('form').attr("action", function( i, val ) { return val + "_update"});
@@ -233,6 +232,8 @@ function switchButon() {
     $('html, body').animate({
         scrollTop: $(".container-fluid").offset().top
     }, 500);
+    
+    $("#index").val(index);
 }
 
 function isDone() {

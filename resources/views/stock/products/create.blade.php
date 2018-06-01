@@ -51,7 +51,7 @@
 								$(document)
 								.ready(
 										function() {
-											switchButon();
+											switchButon({{ Session::get('is_update')}});
 										}
 									);
 							</script>

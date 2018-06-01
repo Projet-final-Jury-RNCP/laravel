@@ -126,7 +126,7 @@ class ProductController extends Controller
      */
     public function update(Request $request)
     {
-    	\Session::flash('is_update',true);
+    	\Session::flash('is_update',$request->index);
     	
         if(is_null($request->min_threshold)) {
             $request['min_threshold'] = '0';
