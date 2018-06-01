@@ -234,6 +234,7 @@ function switchButon(index) {
     }, 500);
     
     $("#index").val(index);
+    $('#update').attr('data-id', index);
 }
 
 function isDone() {
