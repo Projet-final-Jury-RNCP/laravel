@@ -10,7 +10,7 @@
 	<div class="card m-3 cancel-side-margins" id="stockShopping">
 		<div class="card-header">
 			Liste des courses
-			<!-- <button  class="btn btn-primary float-right" type="button" id="supply_button" onclick="document.supply.submit()">Enregistrer</button> -->
+			<button  class="btn btn-primary float-right" type="button" id="hide_done" >Voir tout/ce qui manque</button>
 		</div>
 		<div class="card-body table-container">
 <!-- 			<form action="{{ url('shopping/sortir_update') }}" id="supply" method="post" name="supply"> -->

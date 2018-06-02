@@ -183,6 +183,11 @@ $(document)
 						location.reload();
 						return false;
 					})
+					
+
+					$( "#hide_done" ).click(function() {
+						  $( ".cross-off" ).toggle( "slow" );
+					});
 				});	// END JQUERY .ready()
 
 
