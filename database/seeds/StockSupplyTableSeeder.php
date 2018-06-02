@@ -14,6 +14,17 @@ class StockSupplyTableSeeder extends Seeder
      */
     public function run()
     {
+        StockSupply::create([
+            'created_at' => '2018-04-30',
+            'id_product' => 8,
+            'quantity_add' => 6
+        ]);
+
+        StockSupply::create([
+            'created_at' => '2018-05-20',
+            'id_product' => 8,
+            'quantity_add' => 6
+        ]);
 
         StockSupply::create([
             'created_at' => '2018-05-25',
@@ -52,16 +63,63 @@ class StockSupplyTableSeeder extends Seeder
             'quantity_add' => 8
         ]);
 
+        StockSupply::create([
+            'created_at' => '2018-05-25 12:00:00',
+            'id_product' => 8,
+            'quantity_add' => 59
+        ]);
+
+        StockSupply::create([
+            'created_at' => '2018-05-25 14:00:00',
+            'id_product' => 8,
+            'quantity_add' => 1
+        ]);
+
+        StockSupply::create([
+            'created_at' => '2018-05-29',
+            'id_product' => 8,
+            'quantity_add' => 1
+        ]);
+
+        StockSupply::create([
+            'created_at' => '2018-05-30',
+            'id_product' => 8,
+            'quantity_add' => 5,
+        ]);
+
+        StockSupply::create([
+            'created_at' => '2018-06-02',
+            'id_product' => 8,
+            'quantity_add' => 1
+        ]);
+
 
         $faker = Faker::create();
-        foreach(range(1, 10) as $index)
+
+        foreach(range(1, 10) as $index) // coca
         {
-            // https://github.com/fzaninotto/Faker#fakerprovidermiscellaneous
+            $indexZeroPad = sprintf('%02d', $index);
+
             StockSupply::create([
-                'created_at' => '2018-05-25 23:59:59',
-                'id_product' => $index,
-                'quantity_add' => $index
+                'created_at' => '2018-06-' . $indexZeroPad . ' ' . $indexZeroPad . ':' . $indexZeroPad . ':' . $indexZeroPad,
+                'id_product' => 8,
+                'quantity_add' => $faker->numberBetween($min = 6, $max = 60)
             ]);
+        }
+
+        for($i = 0; $i<4; $i++) {
+            foreach(range(1, 31) as $index)
+            {
+                $indexZeroPad = sprintf('%02d', $index);
+
+                if($index != 8) {
+                    StockSupply::create([
+                        'created_at' => '2018-05-' . $indexZeroPad . ' 23:31:' . $indexZeroPad,
+                        'id_product' => $faker->numberBetween($min = 1, $max = 100), // $index,
+                        'quantity_add' => $faker->numberBetween($min = 1, $max = 10)
+                    ]);
+                }
+            }
         }
 
         // Inventaire (suppression de manque)

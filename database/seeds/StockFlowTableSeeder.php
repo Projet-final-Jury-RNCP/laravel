@@ -52,16 +52,28 @@ class StockFlowTableSeeder extends Seeder
         ]);
 
 
-//         $faker = Faker::create();
+        $faker = Faker::create();
 //         foreach(range(1, 10) as $index)
 //         {
-//             // https://github.com/fzaninotto/Faker#fakerprovidermiscellaneous
+//             $indexZeroPad = sprintf('%02d', $index);
+
 //             StockFlow::create([
-//                 'created_at' => '2018-05-26 23:59:00',
+//                 'created_at' => '2018-05-' . $indexZeroPad . ' 11:11:' . $indexZeroPad,
 //                 'id_product' => $index,
 //                 'quantity_rem' => $faker->numberBetween($min = 1, $max = 10)
 //             ]);
 //         }
+
+        foreach(range(1, 31) as $index) // all days : coca
+        {
+            $indexZeroPad = sprintf('%02d', $index);
+
+            StockFlow::create([
+                'created_at' => '2018-05-' . $indexZeroPad . ' 23:23:' . $indexZeroPad,
+                'id_product' => 8,  // coca
+                'quantity_add' => $faker->numberBetween($min = 1, $max = 10)
+            ]);
+        }
 
         // Retour en stock
 

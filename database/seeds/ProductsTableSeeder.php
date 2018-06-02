@@ -92,14 +92,26 @@ class ProductsTableSeeder extends Seeder
             'max_threshold' => 60
         ]);
 
+        Product::create([
+            'id' => 8,
+            'active' => true,
+            'id_measure_unit' => 5,
+            'id_category' => 1,
+            'name' => 'Coca 1.5L',
+            'description' => 'coca en btl',
+            'min_threshold' => 100,
+            'max_threshold' => 500
+        ]);
+
 
         $faker = Faker::create();
-        foreach(range(1, 10) as $index)
+        foreach(range(1, 150) as $index)
         {
             // https://github.com/fzaninotto/Faker#fakerprovidermiscellaneous
             Product::create([
-                'id_measure_unit' => 1,
-                'id_category' => 1,
+                'active' => $faker->boolean($chanceOfGettingTrue = 75),
+                'id_measure_unit' => $faker->numberBetween($min = 1, $max = 5),
+                'id_category' => $faker->numberBetween($min = 1, $max = 4),
                 'name' => $faker->word,
                 'description' => $faker->text,
                 'min_threshold' => $faker->numberBetween($min = 0, $max = 10),
