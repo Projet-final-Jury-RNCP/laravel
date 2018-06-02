@@ -27,9 +27,6 @@
 	<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 	<script src="{{ asset('js/script.js') }}"></script>
 
-<style type="text/css">
-
-</style>
 </head>
 <body>
     <!-- Main navigation -->

@@ -10,7 +10,12 @@
 	<div class="card m-3 cancel-side-margins" id="stockShopping">
 		<div class="card-header">
 			Liste des courses
-			<button  class="btn btn-primary float-right" type="button" id="hide_done" >Voir tout/ce qui manque</button>
+			<div style="float: right;text-align: center;width: 200px;">
+		    	<label>Voir tout/ce qui manque</label><div class="switch" style="margin: auto;width: 75px;">
+		       	 	<input id="hide_done" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" checked="checked">
+		        	<label for="hide_done"></label>    
+		    	</div>
+	    	</div>
 		</div>
 		<div class="card-body table-container">
 <!-- 			<form action="{{ url('shopping/sortir_update') }}" id="supply" method="post" name="supply"> -->

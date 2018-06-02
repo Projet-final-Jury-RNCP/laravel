@@ -186,7 +186,12 @@ $(document)
 					
 
 					$( "#hide_done" ).click(function() {
-						  $( ".cross-off" ).toggle( "slow" );
+						  console.log(this.checked)
+						  if (!this.checked) {
+							  $(document.body).prepend($('<style id="hide_done_css" type="text/css">.cross-off {display: none; }</style>'));
+						  }else{
+							  $("#hide_done_css").remove();
+						  }
 					});
 				});	// END JQUERY .ready()
 
