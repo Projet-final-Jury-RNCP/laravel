@@ -84,7 +84,7 @@ $( document ).ready(function() {
 
 				<div class="form-group{{ $errors->has('active') ? ' has-error' : '' }}">
 				    <label for="content">Actif ?</label>
-				    <input type="checkbox" name="active" placeholder="Confirmation du mot de passe" class="form-control" value="1" {{ $user->active?'checked':'' }} >
+				    <input type="checkbox" name="active" placeholder="Confirmation du mot de passe" class="form-control user-is-active" value="1" {{ $user->active?'checked':'' }} >
 				    <small class="text-danger">{{ $errors->first('active') }}</small>
 				</div>
 

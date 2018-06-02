@@ -31,7 +31,10 @@ body {
 	}	
 }
 
-
+.user-is-active {
+	width: 10%;
+	display: inline;
+}
 
 
 
