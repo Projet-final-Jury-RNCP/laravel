@@ -42,6 +42,12 @@ $(document)
 						  ];
 					}
 					
+					// ORDER BY
+					var order = [];
+					if ($('#stockHistory').length>0) {
+						order = [[ 0, "desc" ]];
+					}
+					
 					
 					var actionHolder = $('#delete .modal-body form').attr("action");
 					table = $('#table')
@@ -53,6 +59,8 @@ $(document)
 //												      { className: "text-center", "targets": [3] },
 //												  ],
 												  "columnDefs": customColumnDefs,
+												  
+												  "order": order,
 												
 //										        responsive: {
 //										            details: {

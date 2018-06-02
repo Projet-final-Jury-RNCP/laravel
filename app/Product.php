@@ -54,4 +54,20 @@ class Product extends Model
 //     }
 
 
+
+
+//     public function stockFlow()
+//     {
+//         //         return $this->belongsTo('App\Category');
+// //         dd("aaa");
+//         return $this->belongsTo('App\StockFlow', 'id');
+//         //         return $this->hasOne('App\Category', 'id_category');
+//     }
+
+//     public function products()
+//     {
+//         dd("acacakmackamca");
+//     }
+
+
 }
