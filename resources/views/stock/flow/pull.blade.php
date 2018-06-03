@@ -33,9 +33,8 @@
 						<!-- allow to modify the product quantity by typping a quantity to be remove from storage -->
 						<td class="responsive-td text-center" responsive-field="Quantité à sortir">
 							<input id="qte_{{$loop->index}}" type="number" name="qte[{{ $product->id }}]" value="" min="0" max="{{ $product->quantity }}">
-							<input type="button" onclick="plusX(1,{{$loop->index}})" value="+1">
-							<input type="button" onclick="plusX(5,{{$loop->index}})" value="+5">
-							<input type="button" onclick="plusX(10,{{$loop->index}})" value="+10">
+							<input type="button" onclick="plusX(1,{{$loop->index}})" value="-1">
+							<input type="button" onclick="plusX(5,{{$loop->index}})" value="-5">
 						</td>
 					</tr>
 					@endforeach
