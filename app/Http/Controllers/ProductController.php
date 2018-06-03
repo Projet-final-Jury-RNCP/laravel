@@ -29,7 +29,7 @@ class ProductController extends Controller
     public function create()
     {
         $products = Product::all()->sortBy('name', SORT_NATURAL|SORT_FLAG_CASE);
-        $categories = Category::all()->sortBy('cat_name', SORT_NATURAL|SORT_FLAG_CASE);
+        $categories = Category::all()->sortBy('cat_name', SORT_NATURAL|SORT_FLAG_CASE)->where('active', true);
         $measures = MeasureUnit::all()->sortBy('measure_name', SORT_NATURAL|SORT_FLAG_CASE);
         return view ( 'stock.products.create', compact ( 'products', 'categories', 'measures' ) );
     }
