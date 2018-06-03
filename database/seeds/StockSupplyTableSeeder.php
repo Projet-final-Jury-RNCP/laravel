@@ -102,7 +102,7 @@ class StockSupplyTableSeeder extends Seeder
         ]);
 
         StockSupply::create([
-            'created_at' => '2018-06-02',
+            'created_at' => '2018-06-01',
             'user_id' => $faker->numberBetween($min = 1, $max = 4),
             'id_product' => 8,
             'quantity_add' => 1
@@ -113,7 +113,7 @@ class StockSupplyTableSeeder extends Seeder
             $indexZeroPad = sprintf('%02d', $index);
 
             StockSupply::create([
-                'created_at' => '2018-06-' . $indexZeroPad . ' ' . $indexZeroPad . ':' . $indexZeroPad . ':' . $indexZeroPad,
+                'created_at' => '2018-06-02 ' . $indexZeroPad . ':' . $indexZeroPad . ':' . $indexZeroPad,
                 'user_id' => $faker->numberBetween($min = 1, $max = 4),
                 'id_product' => 8,
                 'quantity_add' => $faker->numberBetween($min = 6, $max = 60),

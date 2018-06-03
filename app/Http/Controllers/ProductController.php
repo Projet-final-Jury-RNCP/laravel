@@ -52,7 +52,6 @@ class ProductController extends Controller
             $request['price'] = '0';
         }
 
-
         $this->validate ( $request, [
             'name' => 'required|min:1|max:255|unique:products',
 
@@ -71,30 +70,30 @@ class ProductController extends Controller
 
         ] );
 
-        $products = new Product ();
-        $products->name = $request->name;
-        $products->description = $request->description;
-        $products->id_measure_unit = $request->id_measure_unit;
-        $products->id_category = $request->id_category;
-        $products->min_threshold = $request->min_threshold;
-        $products->max_threshold = $request->max_threshold;
+        $product = new Product();
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->id_measure_unit = $request->id_measure_unit;
+        $product->id_category = $request->id_category;
+        $product->min_threshold = $request->min_threshold;
+        $product->max_threshold = $request->max_threshold;
 
-        if(is_null($products->min_threshold)) {
-            $products->min_threshold = 0;
+        if(is_null($product->min_threshold)) {
+            $product->min_threshold = 0;
         }
 
-        if(is_null($products->max_threshold)) {
-            $products->max_threshold = 0;
+        if(is_null($product->max_threshold)) {
+            $product->max_threshold = 0;
         }
 
-//         if(is_null($products->description)) {
-//             $products->description = "";
+//         if(is_null($product->description)) {
+//             $product->description = "";
 //         }
         $product->unit_price = $request->price;
 
-        $products->save ();
+        $product->save();
 
-        \Session::flash('flash_message_success', 'Produits créé : ' . $products->name);
+        \Session::flash('flash_message_success', 'Produits créé : ' . $product->name);
 
         return redirect('stock/produits');
     }
@@ -141,7 +140,6 @@ class ProductController extends Controller
         if(is_null($request->price)) {
             $request['price'] = '0';
         }
-
 
         $this->validate ( $request, [
             'name' => 'required|min:1|max:255', // |unique:products

@@ -36,7 +36,7 @@
 							<input type="number" name="qte[{{ $product->id }}]" value="" min="0"> {{ $product->measureUnit->measure_symbol }}
 						</td>
 						<td class="responsive-td" responsive-field="Prix unitaire">
-							<input type="text" name="prices[{{ $product->id }}]" value="" min="0" step=".01"> €
+							<input type="text" name="prices[{{ $product->id }}]" value="{{ $product->unit_price }}" min="0" step=".01"> €
 						</td>
 					</tr>
 					@endforeach
