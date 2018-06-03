@@ -270,15 +270,25 @@ function isDone() {
 	$(".productline").click(function(){
 	    $(this).toggleClass("cross-off");
 	    
-	    var added = $(this).find('input[name="added"]').val();
-	    
-	    if (added == 1) {
+	    // Existe ?
+	    if( $(this).attr('edc') == 1 ) {
+//	    	console.log('is ATTR');
 	    	added = 0;
-		}else{
-			added = 1;
-		}
-	   
-	    $(this).find('input[name="added"]').val(added);
+	    }else{
+//	    	console.log('NO attr');
+	    	added = 1;
+	    }
+	    $(this).attr('edc', added);
+	    
+//	    var added = $(this).find('input[name="added"]').val();
+//	    
+//	    if (added == 1) {
+//	    	added = 0;
+//		}else{
+//			added = 1;
+//		}
+//	   
+//	    $(this).find('input[name="added"]').val(added);
 	    var prix =  $(this).find('input[name="prix"]').val()*$(this).find('input[name="qte"]').val()
 	    setTotal(prix, added)
 	}); 
