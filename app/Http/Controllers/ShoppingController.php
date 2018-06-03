@@ -27,7 +27,14 @@ class ShoppingController extends Controller
         ->where('active', true)
         ->get()->sortBy('name', SORT_NATURAL|SORT_FLAG_CASE);
         
-        $total = $arrayProduct->sum('unit_price');
+        $total = 0;
+        
+        foreach ($arrayProduct as $product) {
+        	$qte = $product->quantity;
+        	$prix = $product->unit_price;
+        	$total += $prix * $qte ;
+        }
+        
         return view ( 'stock.shopping.shop', compact ( 'arrayProduct', 'total') );
     }
 
