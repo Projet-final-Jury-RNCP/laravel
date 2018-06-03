@@ -44,12 +44,13 @@ class ProductController extends Controller
     {
         if(is_null($request->min_threshold)) {
             $request['min_threshold'] = '0';
-
         }
         if(is_null($request->max_threshold)) {
             $request['max_threshold'] = '0';
         }
-//         dd($request);
+        if(is_null($request->price)) {
+            $request['price'] = '0';
+        }
 
 
         $this->validate ( $request, [
@@ -61,6 +62,8 @@ class ProductController extends Controller
             // min_threshold <= max_threshold
             'min_threshold' => 'lte:max_threshold',
             'max_threshold' => 'gte:min_threshold',
+
+            'price' => 'min:0|numeric'
 
             // https://laravel.com/docs/5.6/validation
             // A Note On Optional Fields
@@ -87,6 +90,7 @@ class ProductController extends Controller
 //         if(is_null($products->description)) {
 //             $products->description = "";
 //         }
+        $product->unit_price = $request->price;
 
         $products->save ();
 
@@ -127,15 +131,16 @@ class ProductController extends Controller
     public function update(Request $request)
     {
     	\Session::flash('is_update',$request->index);
-    	
+
         if(is_null($request->min_threshold)) {
             $request['min_threshold'] = '0';
-
         }
         if(is_null($request->max_threshold)) {
             $request['max_threshold'] = '0';
         }
-        //         dd($request);
+        if(is_null($request->price)) {
+            $request['price'] = '0';
+        }
 
 
         $this->validate ( $request, [
@@ -147,6 +152,8 @@ class ProductController extends Controller
             // min_threshold <= max_threshold
             'min_threshold' => 'lte:max_threshold',
             'max_threshold' => 'gte:min_threshold',
+
+            'price' => 'min:0|numeric'
 
             // https://laravel.com/docs/5.6/validation
             // A Note On Optional Fields
@@ -166,6 +173,7 @@ class ProductController extends Controller
         $product->id_category = $request->id_category;
         $product->min_threshold = $request->min_threshold;
         $product->max_threshold = $request->max_threshold;
+        $product->unit_price = $request->price;
 
         $product->save ();
 

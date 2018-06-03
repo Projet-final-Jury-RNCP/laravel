@@ -32,6 +32,8 @@ class CreateProductsTable extends Migration
             $table->string('description')->nullable();
             $table->integer('min_threshold')->default(0);
             $table->integer('max_threshold')->default(0);
+
+            $table->float('unit_price', 8, 2)->default(0);
         });
     }
 

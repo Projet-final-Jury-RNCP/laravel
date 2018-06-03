@@ -13,10 +13,17 @@
 			<form action="{{ url('stock/produits') }}" id="product" method="post" name="product">
 				{{ csrf_field() }}
 				<input id="index" name="index" type="hidden">
-				<div class="form-group">
-					<label for="name">Nom</label>
-					<input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id="name" aria-describedby="name" name="name" placeholder="Nom du produit" required value="{{ old('name') }}">
-					<small class="text-danger">{{ $errors->first('name') }}</small>
+                <div class="row">
+    				<div class="form-group col-lg-8 col-md-6 col-sm-12">
+    					<label for="name">Nom</label>
+    					<input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id="name" aria-describedby="name" name="name" placeholder="Nom du produit" required value="{{ old('name') }}">
+    					<small class="text-danger">{{ $errors->first('name') }}</small>
+    				</div>
+    				<div class="form-group col-lg-4 col-md-6 col-sm-12">
+    					<label for="name">Prix</label>
+    					<input type="text" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}" id="price" aria-describedby="price" name="price" placeholder="Prix" required value="{{ old('price') }}">
+    					<small class="text-danger">{{ $errors->first('price') }}</small>
+    				</div>
 				</div>
 				<div class="form-group">
 					<label for="description">Description</label>
@@ -84,6 +91,7 @@
 						<th>Quantité minimale</th>
 						<th>Quantité maximale</th>
 						<th>En stock</th>
+						<th>Prix</th>
 						<th style="width:50px;"></th>
 					</tr>
 				</thead>
@@ -101,6 +109,7 @@
 						<td class="responsive-td" responsive-field="Quantité minimale">{{ $product->min_threshold }}</td>
 						<td class="responsive-td" responsive-field="Quantité maximale">{{ $product->max_threshold }}</td>
 						<td class="responsive-td" responsive-field="En stock">{{ $product->quantity }}</td>
+						<td class="responsive-td" responsive-field="Prix">{{ $product->unit_price }}</td>
 						<td class="text-center responsive-td">
 							<i onclick="editRow(this)" id="edit" title="modifier" class="fa fa-pencil fa-2x" data-id="{{ $product->id }}" style="color:#007bff;cursor:pointer;margin-right:10px;"></i>
 							<i data-target="#delete" data-toggle="modal" title="supprimer" class="fa fa-trash fa-2x" aria-hidden="true" data-source="product-del" data-id="{{ $product->id }}" style="color:red;cursor:pointer;"></i>

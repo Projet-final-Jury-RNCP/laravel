@@ -14,6 +14,7 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Faker::create();
 
         Product::create([
             'id' => 1,
@@ -23,7 +24,8 @@ class ProductsTableSeeder extends Seeder
             'name' => 'Eau de source',
             'description' => 'eau de source',
             'min_threshold' => 10,
-            'max_threshold' => 30
+            'max_threshold' => 30,
+            'unit_price' => 1
         ]);
 
         Product::create([
@@ -34,7 +36,8 @@ class ProductsTableSeeder extends Seeder
             'name' => 'Eau 1.5L',
             'description' => 'eau en btl',
             'min_threshold' => 50,
-            'max_threshold' => 100
+            'max_threshold' => 100,
+            'unit_price' => 1.1
         ]);
 
         Product::create([
@@ -45,7 +48,8 @@ class ProductsTableSeeder extends Seeder
             'name' => 'Vinaigre',
             'description' => '',
             'min_threshold' => 1,
-            'max_threshold' => 3
+            'max_threshold' => 3,
+            'unit_price' => 3
         ]);
 
         Product::create([
@@ -56,7 +60,8 @@ class ProductsTableSeeder extends Seeder
             'name' => 'Poison',
             'description' => 'attention danger',
             'min_threshold' => 1,
-            'max_threshold' => 3
+            'max_threshold' => 3,
+            'unit_price' => 50
         ]);
 
         Product::create([
@@ -67,7 +72,8 @@ class ProductsTableSeeder extends Seeder
             'name' => 'Poisson',
             'description' => '',
             'min_threshold' => 1,
-            'max_threshold' => 3
+            'max_threshold' => 3,
+            'unit_price' => 3
         ]);
 
         Product::create([
@@ -78,7 +84,8 @@ class ProductsTableSeeder extends Seeder
             'name' => 'Steack congelé',
             'description' => '',
             'min_threshold' => 60,
-            'max_threshold' => 100
+            'max_threshold' => 100,
+            'unit_price' => 1
         ]);
 
         Product::create([
@@ -89,7 +96,8 @@ class ProductsTableSeeder extends Seeder
             'name' => 'Sopalin',
             'description' => 'moelleu',
             'min_threshold' => 20,
-            'max_threshold' => 60
+            'max_threshold' => 60,
+            'unit_price' => 2
         ]);
 
         Product::create([
@@ -100,11 +108,11 @@ class ProductsTableSeeder extends Seeder
             'name' => 'Coca 1.5L',
             'description' => 'coca en btl',
             'min_threshold' => 100,
-            'max_threshold' => 500
+            'max_threshold' => 500,
+            'unit_price' => 1.5
         ]);
 
 
-        $faker = Faker::create();
         foreach(range(1, 150) as $index)
         {
             // https://github.com/fzaninotto/Faker#fakerprovidermiscellaneous
@@ -115,7 +123,8 @@ class ProductsTableSeeder extends Seeder
                 'name' => $faker->word,
                 'description' => $faker->text,
                 'min_threshold' => $faker->numberBetween($min = 0, $max = 10),
-                'max_threshold' => $faker->numberBetween($min = 0, $max = 30)
+                'max_threshold' => $faker->numberBetween($min = 0, $max = 30),
+                'unit_price' => $faker->numberBetween($min = 0, $max = 6),
             ]);
         }
     }

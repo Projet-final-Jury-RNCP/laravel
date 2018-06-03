@@ -246,6 +246,8 @@ function editRow(target) {
 		});
 		$("#min_threshold").val(table.row( elem ).data()[5]);
 		$("#max_threshold").val(table.row( elem ).data()[6]);
+		// 7 : stock
+		$("#price").val(table.row( elem ).data()[8]);
 	}
 	
 	switchButon(table.row( elem ).data()[0]);
