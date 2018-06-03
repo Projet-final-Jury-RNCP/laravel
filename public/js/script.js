@@ -7,6 +7,7 @@ $(document)
 					isDone();
 					
 					
+					
 					// Alignement à droite du contenu des cellules pour la/les colonnes à partir de l'index 0
 					// (valable uniquement par table - selon les colonnes ... :(
 					// inventorier : 2 = Quantité théorique 3 = Quantité réelle
@@ -48,6 +49,12 @@ $(document)
 						order = [[ 0, "desc" ]];
 					}
 					
+					// Display ALL
+					var lengthMenu = [[25, 50, 100, -1], [25, 50, 100, "Tous"]];
+					if($('#stockShopping').length>0) {
+						var lengthMenu = [[-1, 50], ["Tous", 50]];
+					}
+					
 					
 					var actionHolder = $('#delete .modal-body form').attr("action");
 					table = $('#table')
@@ -61,6 +68,9 @@ $(document)
 												  "columnDefs": customColumnDefs,
 												  
 												  "order": order,
+													
+												   // Display ALL 
+											       "lengthMenu": lengthMenu,
 												
 //										        responsive: {
 //										            details: {
