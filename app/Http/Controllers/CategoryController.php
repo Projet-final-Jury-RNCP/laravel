@@ -25,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-		$categories = Category::all ();
+		$categories = Category::all();
 		return view ( 'stock.categories.create', compact ( 'categories' ) );
     }
 
@@ -41,11 +41,11 @@ class CategoryController extends Controller
 		    'cat_name' => 'required|min:5|max:255',
 		] );
 
-		$categories = new Category ();
-		$categories->cat_name = $request->cat_name;
-		$categories->cat_desc = $request->cat_desc;
-
-		$categories->save ();
+		$category = new Category();
+		$category->active = true; // $request->active?true:false;
+		$category->cat_name = $request->cat_name;
+		$category->cat_desc = $request->cat_desc;
+		$category->save();
 
 		return redirect('stock/categories');
     }
@@ -86,11 +86,11 @@ class CategoryController extends Controller
         ] );
 
         $category = Category::find($request->index);
-        $category->active = true;
+        $category->active = true; // $request->active?true:false;
         $category->cat_name = $request->cat_name;
         $category->cat_desc = $request->cat_desc;
+        $category->save();
 
-        $category->save ();
         \Session::flash('flash_message_success','Catégorie modifiée');
         return redirect('stock/categories');
     }

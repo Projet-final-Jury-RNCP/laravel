@@ -92,17 +92,17 @@ class StockSupplyInventoryController extends Controller
 
     	    if($qte_virtual < $qte_reel) {
     	        $supply = new StockSupply();
-    	        $supply -> quantity_add = $qte_reel - $qte_virtual;
-    	        $supply -> id_product = $id_product;
-    	        $supply -> user_id = Auth::user()->getAuthIdentifier();
-    	        $supply -> save();
+    	        $supply->quantity_add = $qte_reel - $qte_virtual;
+    	        $supply->id_product = $id_product;
+    	        $supply->user_id = Auth::user()->getAuthIdentifier();
+    	        $supply->save();
     	        $nbrProductChanged++;
     	    }elseif ($qte_virtual > $qte_reel) {
     	        $supply = new StockSupply();
-    	        $supply -> quantity_rem = $qte_virtual - $qte_reel;
-    	        $supply -> id_product = $id_product;
-    	        $supply -> user_id = Auth::user()->getAuthIdentifier();
-    	        $supply -> save();
+    	        $supply->quantity_rem = $qte_virtual - $qte_reel;
+    	        $supply->id_product = $id_product;
+    	        $supply->user_id = Auth::user()->getAuthIdentifier();
+    	        $supply->save();
     	        $nbrProductChanged++;
     	    }
 

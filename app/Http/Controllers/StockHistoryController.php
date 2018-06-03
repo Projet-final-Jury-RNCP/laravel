@@ -126,6 +126,7 @@ class StockHistoryController extends Controller
 
         ->get()
         ;
+        // (select *, "Appro" as typestock from `stock_supplies`) union all (select *, "Sortie" as typestock from `stock_flows`) order by `created_at` desc
 
 //         echo "<pre>";
 //         foreach( $arrayStockHistory as $key => $val) {

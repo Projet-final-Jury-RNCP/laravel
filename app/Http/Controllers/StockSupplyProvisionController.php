@@ -91,6 +91,13 @@ class StockSupplyProvisionController extends Controller
         	    $price = preg_replace('/,/', '.', $price);
         	    $price = is_numeric($price) ? $price : 0;
 
+        	    // Updating product price, with new price if changed
+        	    $product = Product::find($id_product);
+        	    if($product->unit_price != $price) {
+        	        $product->unit_price = $price;
+        	        $product->save();
+        	    }
+
         		$supply = new StockSupply();
         		$supply->quantity_add = $qte_reel;
         		$supply->id_product = $id_product;
