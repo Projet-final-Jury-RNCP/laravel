@@ -192,7 +192,6 @@ $(document)
 						return false;
 					})
 					
-
 					$( "#hide_done" ).click(function() {
 						  console.log(this.checked)
 						  if (!this.checked) {
