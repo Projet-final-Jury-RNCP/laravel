@@ -9,7 +9,8 @@
 	<!-- Display all products and allow to modify quantities by removing some in storage -->
 	<div class="card m-3 cancel-side-margins" id="stockShopping">
 		<div class="card-header">
-			Liste des courses
+			Liste des courses - Total  <b id="total"></b>
+			<script type="text/javascript">var total = {{ $total }}; $("#total").text(" : "+total.toFixed(2)+ "€");</script>
 			<div class="float-right">
 				<button class="btn btn-primary float-right ml-5" onclick="printShop()">print</button>
 				<div style="float: right; text-align: center; width: 200px;">
@@ -29,9 +30,7 @@
 						<th class="hidden-on-small">Categorie</th>
 						<th>Produit</th>
 						<th>Description</th>
-						<th>Quantité actuelle en stock</th>
-						<th>Quantité à acheter MIN</th>
-						<th>Quantité à acheter MAX</th>
+						<th>Quantité à acheter</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -40,10 +39,13 @@
 						<td class="responsive-td hidden-on-small" responsive-field="Categorie">{{ $product->category->cat_name }}</td>
 						<td class="responsive-td" responsive-field="Produit">{{ $product->name }}</td>
 						<td class="responsive-td" responsive-field="Description">{{ $product->description }}</td>
-						<td class="responsive-td" responsive-field="Quantité actuelle">{{ $product->quantity . ' [' . $product->min_threshold . '/' . $product->max_threshold . ']' }}</td>
 						<!-- allow to modify the product quantity by typping a quantity to be remove from storage -->
-						<td class="responsive-td text-center" responsive-field="Min à acheter">{{ $product->min_threshold - $product->quantity }}</td>
-						<td class="responsive-td text-center" responsive-field="Max à acheter">{{ $product->max_threshold - $product->quantity }}</td>
+						<td class="responsive-td text-center" responsive-field="Max à acheter">
+							{{ $product->max_threshold - $product->quantity }}
+							<input type="hidden" name="prix" value="{{$product->unit_price}}">
+							<input type="hidden" name="qte" value="{{$product->quantity}}">
+							<input type="hidden" name="added" value="">
+						</td>
 					</tr>
 					@endforeach
 				</tbody>

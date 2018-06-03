@@ -26,7 +26,9 @@ class ShoppingController extends Controller
         ->whereRaw('quantity < max_threshold')
         ->where('active', true)
         ->get()->sortBy('name', SORT_NATURAL|SORT_FLAG_CASE);
-        return view ( 'stock.shopping.shop', compact ( 'arrayProduct' ) );
+        
+        $total = $arrayProduct->sum('unit_price');
+        return view ( 'stock.shopping.shop', compact ( 'arrayProduct', 'total') );
     }
 
     /**
