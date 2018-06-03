@@ -109,20 +109,6 @@ $(document)
 												                    select.append( '<option value="'+d+'">'+d+'</option>' )
 												                } );
 												                $('<div><lavel>Categorie : </label></div>').append(select).appendTo( $('#table_filter') );
-															}else if(this.index()==2 && $('#stockShopping').length>0){
-												                var select = $('<select style="max-width:100%;"><option value=""></option></select>')
-											                    .on( 'change', function () {
-											                        var val = $.fn.dataTable.util.escapeRegex(
-											                            $(this).val()
-											                        );
-											 
-											                        column.search( val ? '^'+val+'$' : '', true, false ).draw();
-											                    } );
-											 
-												                column.data().unique().sort().each( function ( d, j ) {
-												                    select.append( '<option value="'+d+'">'+d+'</option>' )
-												                } );
-												                $('<div><lavel>Description : </label></div>').append(select).appendTo( $('#table_filter') );
 															}
 											            } );
 													}
