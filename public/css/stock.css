@@ -58,6 +58,12 @@ body {
 	background-color: #CCCCCC !important;
 }
 */
+/* Cancel a bootstrap rule to cancel the border */
+table.dataTable {
+    border-collapse: collapse !important;
+	border-left-width: 0;
+}
+
 
 /* Cancel a bootstrap rule to optimise display on small device */
 div.dataTables_wrapper div.dataTables_info {
