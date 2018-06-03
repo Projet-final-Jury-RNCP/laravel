@@ -10,21 +10,25 @@
 	<div class="card m-3 cancel-side-margins" id="stockShopping">
 		<div class="card-header">
 			Liste des courses
-			<div style="float: right;text-align: center;width: 200px;">
-		    	<label>Voir tout/ce qui manque</label><div class="switch" style="margin: auto;width: 75px;">
-		       	 	<input id="hide_done" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" checked="checked">
-		        	<label for="hide_done"></label>    
-		    	</div>
-	    	</div>
+			<div class="float-right">
+				<button class="btn btn-primary float-right ml-5" onclick="printShop()">print</button>
+				<div style="float: right; text-align: center; width: 200px;">
+					<label>Voir tout/ce qui manque</label>
+					<div class="switch" style="margin: auto; width: 75px;">
+						<input id="hide_done" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" checked="checked">
+						<label for="hide_done"></label>
+					</div>
+				</div>
+			</div>
+
 		</div>
 		<div class="card-body table-container">
-<!-- 			<form action="{{ url('shopping/sortir_update') }}" id="supply" method="post" name="supply"> -->
-<!-- 				{{ csrf_field() }} {{ method_field('PUT') }} -->
 			<table id="table" class="table table-striped table-bordered table-hover" style="width: 100%">
 				<thead class="thead-dark">
 					<tr>
-						<th class="hidden-on-small">Categorie </th>
+						<th class="hidden-on-small">Categorie</th>
 						<th>Produit</th>
+						<th>Description</th>
 						<th>Quantité actuelle en stock</th>
 						<th>Quantité à acheter MIN</th>
 						<th>Quantité à acheter MAX</th>
@@ -35,20 +39,15 @@
 					<tr class="productline">
 						<td class="responsive-td hidden-on-small" responsive-field="Categorie">{{ $product->category->cat_name }}</td>
 						<td class="responsive-td" responsive-field="Produit">{{ $product->name }}</td>
+						<td class="responsive-td" responsive-field="Description">{{ $product->description }}</td>
 						<td class="responsive-td" responsive-field="Quantité actuelle">{{ $product->quantity . ' [' . $product->min_threshold . '/' . $product->max_threshold . ']' }}</td>
 						<!-- allow to modify the product quantity by typping a quantity to be remove from storage -->
-						<td class="responsive-td text-center" responsive-field="Min à acheter">
-<!-- 							<input type="number" name="qte[{{ $product->id }}]" value=""> -->
-								{{ $product->min_threshold - $product->quantity }}
-						</td>
-						<td class="responsive-td text-center" responsive-field="Max à acheter">
-								{{ $product->max_threshold - $product->quantity }}
-						</td>
+						<td class="responsive-td text-center" responsive-field="Min à acheter">{{ $product->min_threshold - $product->quantity }}</td>
+						<td class="responsive-td text-center" responsive-field="Max à acheter">{{ $product->max_threshold - $product->quantity }}</td>
 					</tr>
 					@endforeach
 				</tbody>
 			</table>
-<!-- 			</form> -->
 		</div>
 	</div>
 </div>

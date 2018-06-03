@@ -266,3 +266,8 @@ function plusX(value,item) {
 	console.log("currentVal "+(currentVal+=value));
 	x.value = currentVal;
 }
+
+function printShop() {
+	$(document.body).prepend($('<style type="text/css">@media print {.dataTables_info,.dataTables_paginate,.dataTables_filter,.dataTables_length,.card-header div{display:none!important;}}</style>'));
+	window.print();
+}
