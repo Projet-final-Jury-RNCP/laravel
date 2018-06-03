@@ -6,6 +6,7 @@ use App\StockFlow;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Product;
+use PDF;
 
 class ShoppingController extends Controller
 {
@@ -26,8 +27,15 @@ class ShoppingController extends Controller
         ->whereRaw('quantity < max_threshold')
         ->where('active', true)
         ->get()->sortBy('name', SORT_NATURAL|SORT_FLAG_CASE);
-        
-        $total = $arrayProduct->sum('unit_price');
+
+        $total = 0;
+
+        foreach ($arrayProduct as $product) {
+        	$qte = $product->quantity;
+        	$prix = $product->unit_price;
+        	$total += $prix * $qte ;
+        }
+
         return view ( 'stock.shopping.shop', compact ( 'arrayProduct', 'total') );
     }
 
@@ -96,4 +104,23 @@ class ShoppingController extends Controller
     {
         //
     }
+
+
+    /**
+     * Export shopping list as PDF
+     */
+    public function pdf() {
+
+        $arrayProduct = Product::with('category')
+        ->whereRaw('quantity < max_threshold')
+        ->where('active', true)
+        ->get()->sortBy('name', SORT_NATURAL|SORT_FLAG_CASE);
+
+        //         return view ( 'stock.shopping.shop', compact ( 'arrayProduct') );
+
+        $pdf = PDF::loadView('stock.shopping.pdf', compact('arrayProduct'));
+        return $pdf->download('Courses_' . date('Y-m-d') . '.pdf');
+
+    }
+
 }
