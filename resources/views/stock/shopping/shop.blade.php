@@ -9,8 +9,8 @@
 	<!-- Display all products and allow to modify quantities by removing some in storage -->
 	<div class="card m-3 cancel-side-margins" id="stockShopping">
 		<div class="card-header">
-			Liste des courses - Total  <b id="total"></b>
-			<script type="text/javascript">var total = {{ $total }}; $("#total").text(" : "+total.toFixed(2)+ "€");</script>
+			Liste des courses - Total liste   <b id="total"></b> / Total articles sélectionnés <b id="total_select">0</b>
+			<script type="text/javascript">var total = {{ $total }} , totalSelect=0; $("#total").text(" : "+total.toFixed(2)+ "€");</script>
 			<div class="float-right">
 				<button class="btn btn-primary float-right ml-5" onclick="printShop()">imprimer</button>
 				<a href="{{ url('stock/shoppingpdf') }}" class="btn btn-secondary float-right ml-5">pdf</a>

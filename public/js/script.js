@@ -287,12 +287,12 @@ function isDone() {
 function setTotal(total, added){
 	var newTotal;
 	if (added == 1) {
-		newTotal = window.total -= Number(total);
+		newTotal = window.totalSelect += Number(total);
 	} else {
-		newTotal = window.total += Number(total);
+		newTotal = window.totalSelect -= Number(total);
 	}
-	window.total = newTotal;
-	$("#total").text(" : "+newTotal.toFixed(2)+ "€");
+	window.totalSelect = newTotal;
+	$("#total_select").text(" : "+newTotal.toFixed(2)+ "€");
 }
 
 function plusX(value,item) {
