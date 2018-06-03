@@ -292,7 +292,7 @@ function setTotal(total, added){
 		newTotal = window.totalSelect -= Number(total);
 	}
 	window.totalSelect = newTotal;
-	$("#total_select").text(" : "+newTotal.toFixed(2)+ "€");
+	$("#total_select").text(newTotal.toFixed(2));
 }
 
 function plusX(value,item) {
