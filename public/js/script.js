@@ -1,4 +1,4 @@
-var	table ;
+var	table, totalSelect ;
 $(document)
 		.ready(
 				function() {
@@ -287,11 +287,11 @@ function isDone() {
 function setTotal(total, added){
 	var newTotal;
 	if (added == 1) {
-		newTotal = window.totalSelect += Number(total);
+		newTotal = totalSelect += Number(total);
 	} else {
-		newTotal = window.totalSelect -= Number(total);
+		newTotal = totalSelect -= Number(total);
 	}
-	window.totalSelect = newTotal;
+	totalSelect = newTotal;
 	$("#total_select").text(newTotal.toFixed(2));
 }
 
