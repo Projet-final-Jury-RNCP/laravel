@@ -17,7 +17,7 @@
 				<div style="float: right; text-align: center; width: 200px;">
 					<label>Ce qui manque/voir tout</label>
 					<div class="switch" style="margin: auto; width: 75px;">
-						<input id="hide_done" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" checked="checked">
+						<input id="hide_done" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" checked="checked" autocomplete="off">
 						<label for="hide_done"></label>
 					</div>
 				</div>
