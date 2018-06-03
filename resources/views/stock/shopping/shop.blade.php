@@ -12,9 +12,10 @@
 			Liste des courses - Total  <b id="total"></b>
 			<script type="text/javascript">var total = {{ $total }}; $("#total").text(" : "+total.toFixed(2)+ "€");</script>
 			<div class="float-right">
-				<button class="btn btn-primary float-right ml-5" onclick="printShop()">print</button>
+				<button class="btn btn-primary float-right ml-5" onclick="printShop()">imprimmer</button>
+				<a href="{{ url('stock/shoppingpdf') }}" class="btn btn-secondary float-right ml-5">pdf</a>
 				<div style="float: right; text-align: center; width: 200px;">
-					<label>Ce qui manque/coir tout</label>
+					<label>Ce qui manque/voir tout</label>
 					<div class="switch" style="margin: auto; width: 75px;">
 						<input id="hide_done" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" checked="checked">
 						<label for="hide_done"></label>

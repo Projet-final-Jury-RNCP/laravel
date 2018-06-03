@@ -47,17 +47,19 @@ Route::group(['prefix' => 'stock', 'middleware' => 'auth'], function()
      * Stock
      */
 
-    // history // TODO : See history of the complete storage (all products in it)
+    // history : See history of the complete storage (all products in it)
     Route::get('historique', 'StockHistoryController@index');
     Route::post('historique', 'StockHistoryController@store');
     Route::put('historique_update', 'StockHistoryController@update');
     Route::delete('historique/{stockSupply}', 'StockHistoryController@destroy');
 
-    // shopping // TODO : Faire les courses
+    // shopping : check products in shop
     Route::get('shopping', 'ShoppingController@index');
     Route::post('shopping', 'ShoppingController@store');
     Route::put('shopping_update', 'ShoppingController@update');
     Route::delete('shopping/{stockSupply}', 'ShoppingController@destroy');
+
+    Route::get('shoppingpdf', 'ShoppingController@pdf');
 
     // supplying
     Route::get('approvisionner', 'StockSupplyProvisionController@index');
