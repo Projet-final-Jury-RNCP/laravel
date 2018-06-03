@@ -31,9 +31,9 @@ class ShoppingController extends Controller
         $total = 0;
 
         foreach ($arrayProduct as $product) {
-        	$qte = $product->quantity;
+            $qte = $product->max_threshold - $product->quantity;
         	$prix = $product->unit_price;
-        	$total += $prix * $qte ;
+        	$total += $prix * $qte;
         }
 
         return view ( 'stock.shopping.shop', compact ( 'arrayProduct', 'total') );

@@ -44,7 +44,7 @@
 						<td class="responsive-td text-center" responsive-field="Max à acheter">
 							{{ $product->max_threshold - $product->quantity }}
 							<input type="hidden" name="prix" value="{{$product->unit_price}}">
-							<input type="hidden" name="qte" value="{{$product->quantity}}">
+							<input type="hidden" name="qte" value="{{ $product->max_threshold - $product->quantity }}">
 							<input type="hidden" name="added" value="">
 						</td>
 					</tr>

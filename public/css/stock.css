@@ -173,11 +173,13 @@ input.cmn-toggle-round-flat:checked+label:after {
 		color: black;
 		font-weight: bold;
 		font-size: 0.97rem;
-		width: 50%;
+		width: 40%;
 		height: 100%;
 		text-align: left;
 		padding-top: 4px;
 		padding-left: 1px;
+		white-space: nowrap;
+		overflow: hidden;
 	}
 	.dataTable tr:nth-child(odd) td.responsive-td:before {
 		background-color: #DDDDDD !important;
@@ -189,7 +191,7 @@ input.cmn-toggle-round-flat:checked+label:after {
 	/* Push the td content after the before content */
 	.dataTable td.responsive-td {
 		position: relative;
-		padding-left: 55% !important;
+		padding-left: 45% !important;
 		/* 		min-height: 50px; */
 	}
 	.dataTable td.responsive-td input {
