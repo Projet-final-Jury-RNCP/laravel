@@ -32,6 +32,8 @@
 						<th>Produit</th>
 						<th>Description</th>
 						<th>Quantité à acheter</th>
+						<th>price</th>
+						<th>added</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -43,10 +45,9 @@
 						<!-- allow to modify the product quantity by typping a quantity to be remove from storage -->
 						<td class="responsive-td text-center" responsive-field="Max à acheter">
 							{{ $product->max_threshold - $product->quantity }}
-							<input type="hidden" name="prix" value="{{$product->unit_price}}">
-							<input type="hidden" name="qte" value="{{ $product->max_threshold - $product->quantity }}">
-							<input type="hidden" name="added" value="">
 						</td>
+						<td>{{$product->unit_price}}</td>
+						<td></td>
 					</tr>
 					@endforeach
 				</tbody>

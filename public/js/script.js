@@ -53,6 +53,10 @@ $(document)
 					var lengthMenu = [[25, 50, 100, -1], [25, 50, 100, "Tous"]];
 					if($('#stockShopping').length>0) {
 						var lengthMenu = [[-1, 50], ["Tous", 50]];
+						customColumnDefs = [
+							{"targets": [ 4 ],"visible": false},
+							{"targets": [ 5 ],"visible": false}
+						  ];						
 					}
 					
 					
@@ -269,34 +273,15 @@ function switchButon(index) {
 function isDone() {
 	$(".productline").click(function(){
 	    $(this).toggleClass("cross-off");
-	    
-	    // Existe ?
-	    if( $(this).attr('edc') == 1 ) {
-//	    	console.log('is ATTR');
-	    	added = 0;
-	    }else{
-//	    	console.log('NO attr');
-	    	added = 1;
-	    }
-	    $(this).attr('edc', added);
-	    
-//	    var added = $(this).find('input[name="added"]').val();
-//	    
-//	    if (added == 1) {
-//	    	added = 0;
-//		}else{
-//			added = 1;
-//		}
-//	   
-//	    $(this).find('input[name="added"]').val(added);
-	    var prix =  $(this).find('input[name="prix"]').val()*$(this).find('input[name="qte"]').val()
-	    setTotal(prix, added)
+	    var prix =  table.row( this ).data()[3]*table.row( this ).data()[4];
+	    setTotal(prix, !table.row( this ).data()[5]);
+	    table.row( this ).data()[5] = !table.row( this ).data()[5];
 	}); 
 }
 
 function setTotal(total, added){
 	var newTotal;
-	if (added == 1) {
+	if (added) {
 		newTotal = totalSelect += Number(total);
 	} else {
 		newTotal = totalSelect -= Number(total);
