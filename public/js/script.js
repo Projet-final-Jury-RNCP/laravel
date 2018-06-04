@@ -195,6 +195,10 @@ $(document)
 						} else if (source == "product-del") {
 							src_txt = "le produit";
 							modal.find('.modal-body form').attr("action", actionHolder + '/produits/'+id);
+						} else if (source == "product-week-del") {
+							var idweek = button.data('idweek')
+							src_txt = "le produit";
+							modal.find('.modal-body form').attr("action", actionHolder + '/produits/semaines/'+idweek+'/'+id);
 						}
 						modal.find('.modal-title').text('supprimer '+src_txt+' n° ' + id + ' ?')
 					}).on('hidden.bs.modal', function (e) {
