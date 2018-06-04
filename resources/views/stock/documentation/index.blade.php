@@ -57,6 +57,12 @@
 						Un click sur la ligne d’un produit permet de signifier que ce produit a été ajouté dans le chariot de course ou dans le panier s’il s’agit de courses en ligne. Le bouton « Voir tout / Ce qui manque » permet d’afficher l’ensemble des produits à acheter ou seulement ceux qui n’ont pas déjà été ajoutés.</p>
       				</p>
       			</div>
+				<div class="documentation-section col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+      				<h2>Historique </h2>
+      				<p>
+      					À rédiger
+      				</p>
+      			</div>
       		</div>
       	</div>
     </div>
