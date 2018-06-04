@@ -167,6 +167,69 @@ input.cmn-toggle-round-flat:checked+label:after {
 	}
 }
 
+/* The responsive table for the Products one only */
+@media screen and ( max-width : 1040px) {
+	.dataTable.products-table table, .dataTable.products-table thead, .dataTable.products-table tbody, .dataTable.products-table th, .dataTable.products-table tr, .dataTable.products-table td.responsive-td {
+		display: block;
+	}
+
+	/* display the HTML responsive-field attribute content before each td */
+	.dataTable.products-table td.responsive-td:before {
+		content: attr(responsive-field);
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		color: black;
+		font-weight: bold;
+		font-size: 0.97rem;
+		width: 36%;
+		height: 100%;
+		text-align: left;
+		padding-top: 4px;
+		padding-left: 1px;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+	.dataTable.products-table tr:nth-child(odd) td.responsive-td:before {
+		background-color: #DDDDDD !important;
+	}
+	.dataTable.products-table tr:nth-child(even) td.responsive-td:before {
+		background-color: #BBBBBB !important;
+	}
+
+	/* Push the td content after the before content */
+	.dataTable.products-table td.responsive-td {
+		position: relative;
+		padding-left: 41% !important;
+		/* 		min-height: 50px; */
+	}
+	.dataTable.products-table td.responsive-td input {
+		max-width: 80%;
+	}
+
+	/* The edit and delete icons */
+	.dataTable.products-table .table-icone {
+		text-align: right;
+	}
+
+	/* hide the table head */
+	#table.dataTable.products-table thead {
+		display: none;
+	}
+	/*** Optimize margins and paddings on small devices ***/
+	#table.dataTable.products-table .card-body.table-container {
+		padding: 0;
+	}
+	#table.dataTable.products-table .cancel-side-margins {
+		margin: 0 !important;
+		margin-top: 1rem !important;
+	}
+	#table.dataTable.products-table .dataTables_wrapper .row:first-child {
+		margin-top: 14px;
+	}
+}
+
+/* The responsive table for every tables */
 @media screen and ( max-width : 767px) {
 	.dataTable table, .dataTable thead, .dataTable tbody, .dataTable th, .dataTable tr, .dataTable td.responsive-td {
 		display: block;

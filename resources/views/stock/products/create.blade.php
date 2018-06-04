@@ -80,7 +80,7 @@
 	<div class="card m-3 cancel-side-margins">
 		<div class="card-header">Liste des produits</div>
 		<div class="card-body table-container">
-			<table id="table" class="table table-striped table-bordered table-hover" style="width: 100%">
+			<table id="table" class="table table-striped products-table table-bordered table-hover" style="width: 100%">
 				<thead class="thead-dark">
 					<tr>
 						<th>#</th>
@@ -105,10 +105,10 @@
 						<!-- get the associated category -->
 						<td class="responsive-td" responsive-field="Catégorie">{{ $product->category->cat_name }}</td>
 						<!-- get the associated unit of measurement -->
-						<td class="responsive-td" responsive-field="Unité de mesure">{{ $product->measureUnit->measure_symbol }}</td>
-						<td class="responsive-td" responsive-field="Quantité minimale">{{ $product->min_threshold }}</td>
-						<td class="responsive-td" responsive-field="Quantité maximale">{{ $product->max_threshold }}</td>
-						<td class="responsive-td" responsive-field="En stock">{{ $product->quantity }}</td>
+						<td class="responsive-td" responsive-field="U. de mesure">{{ $product->measureUnit->measure_symbol }}</td>
+						<td class="responsive-td" responsive-field="Qté min">{{ $product->min_threshold }}</td>
+						<td class="responsive-td" responsive-field="Qté max">{{ $product->max_threshold }}</td>
+						<td class="responsive-td" responsive-field="Qté en stock">{{ $product->quantity }}</td>
 						<td class="responsive-td" responsive-field="Prix">{{ $product->unit_price }}</td>
 						<td class="text-center responsive-td">
 							<i onclick="editRow(this)" id="edit" title="modifier" class="fa fa-pencil fa-2x" data-id="{{ $product->id }}" style="color:#007bff;cursor:pointer;margin-right:10px;"></i>

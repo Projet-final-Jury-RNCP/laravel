@@ -30,9 +30,9 @@
 					<tr style="{{ $product->active?:'text-decoration: line-through;' }}">
 						<td class="responsive-td hidden-on-small" responsive-field="Categorie">{{ $product->category->cat_name }}</td>
 						<td class="responsive-td" responsive-field="Produit">{{ $product->name }}</td>
-						<td class="responsive-td" responsive-field="Quantité théorique">{{ $product->quantity }}</td>
+						<td class="responsive-td" responsive-field="Qté théorique">{{ $product->quantity }}</td>
 						<!-- allow to modify the product quantity by typping the real quantity seen in storage -->
-						<td class="responsive-td text-center" responsive-field="Quantité réelle">
+						<td class="responsive-td text-center" responsive-field="Qté réelle">
 							<input type="number" name="qte[{{ $product->id }}]" value="{{ $product->quantity }}" min="0"> {{ $product->measureUnit->measure_symbol }}
 						</td>
 					</tr>

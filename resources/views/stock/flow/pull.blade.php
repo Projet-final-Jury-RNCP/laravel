@@ -29,9 +29,9 @@
 					<tr style="{{ $product->active?:'text-decoration: line-through;' }}">
 						<td class="responsive-td hidden-on-small" responsive-field="Categorie">{{ $product->category->cat_name }}</td>
 						<td class="responsive-td" responsive-field="Produit">{{ $product->name }}</td>
-						<td class="responsive-td" responsive-field="Quantité théorique">{{ $product->quantity }}</td>
+						<td class="responsive-td" responsive-field="Qté en stock">{{ $product->quantity }}</td>
 						<!-- allow to modify the product quantity by typping a quantity to be remove from storage -->
-						<td class="responsive-td text-center" responsive-field="Quantité à sortir">
+						<td class="responsive-td text-center" responsive-field="Qté à sortir">
 							<input id="qte_{{$loop->index}}" type="number" name="qte[{{ $product->id }}]" value="" min="0" max="{{ $product->quantity }}">
 							<input type="button" onclick="plusX(1,{{$loop->index}})" value="-1">
 							<input type="button" onclick="plusX(5,{{$loop->index}})" value="-5">

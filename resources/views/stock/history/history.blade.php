@@ -37,10 +37,10 @@
 						<td class="responsive-td" responsive-field="Produit">{{ $stockHistory->product->name }}</td>
 <!-- 						<td class="responsive-td" responsive-field="Quantité actuelle">{{ $stockHistory->id }}</td> -->
 						<!-- allow to modify the product quantity by typping a quantity to be remove from storage -->
-						<td class="responsive-td text-center" responsive-field="Ajou.">
+						<td class="responsive-td text-center" responsive-field="Ajouté">
 						{{ $stockHistory->quantity_add }}
 						</td>
-						<td class="responsive-td text-center" responsive-field="Reti.">
+						<td class="responsive-td text-center" responsive-field="Retiré">
 						{{ $stockHistory->quantity_rem }}
 						</td>
 						<td class="responsive-td text-center" responsive-field="Prix">
