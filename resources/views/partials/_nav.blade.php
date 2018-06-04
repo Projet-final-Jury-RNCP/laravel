@@ -37,7 +37,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{  url('/stock/documentation') }}">Documentation</a>
+        <a class="nav-link" href="{{  url('/stock/documentation') }}">Aide</a>
       </li>
 <!--       <li class="nav-item"> -->
 <!--         <a class="nav-link" href="{{  url('/repas') }}">Repas</a> -->
