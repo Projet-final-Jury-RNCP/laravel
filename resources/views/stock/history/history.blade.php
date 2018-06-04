@@ -24,7 +24,7 @@
 <!-- 						<th>ID</th> -->
 						<th>Ajouté</th>
 						<th>Retiré</th>
-						<th>Prix</th>
+						<th>Prix u.</th>
 						<th>Qui</th>
 						<th>Type</th>
 					</tr>
@@ -43,7 +43,7 @@
 						<td class="responsive-td text-center" responsive-field="Retiré">
 						{{ $stockHistory->quantity_rem }}
 						</td>
-						<td class="responsive-td text-center" responsive-field="Prix">
+						<td class="responsive-td text-center" responsive-field="Prix unitaire">
 						{{ $stockHistory->unit_price }}
 						</td>
 						<td class="responsive-td text-center" responsive-field="Qui">
