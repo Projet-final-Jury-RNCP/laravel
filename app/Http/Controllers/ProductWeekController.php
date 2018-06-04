@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Category;
 use App\MeasureUnit;
-use App\Week;
-use App\WeekProduct;
 use Illuminate\Http\Request;
 use App\StockFlow;
 use App\StockSupply;
 
-class ProductController extends Controller
+use App\Week;
+use App\WeekProduct;
+
+class ProductWeekController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -28,15 +29,18 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id_week)
     {
-//         $products = Product::all()->sortBy('name', SORT_NATURAL|SORT_FLAG_CASE);
-//         $categories = Category::all()->sortBy('cat_name', SORT_NATURAL|SORT_FLAG_CASE)->where('active', true);
-//         $measures = MeasureUnit::all()->sortBy('measure_name', SORT_NATURAL|SORT_FLAG_CASE);
-//         return view ( 'stock.products.create', compact ( 'products', 'categories', 'measures' ) );
 
-        $weeks = Week::all();
-        return view ( 'stock.products.chooseweek', compact ( 'weeks' ) );
+        $products = Product::all()->sortBy('name', SORT_NATURAL|SORT_FLAG_CASE);
+        $categories = Category::all()->sortBy('cat_name', SORT_NATURAL|SORT_FLAG_CASE)->where('active', true);
+        $measures = MeasureUnit::all()->sortBy('measure_name', SORT_NATURAL|SORT_FLAG_CASE);
+
+        $week = Week::findOrFail($id_week);
+        $weekproducts = WeekProduct::with('product')->where('id_week', $id_week)->get();    // Collection:WeekProduct + relation"product":Product
+//         dd($weekProducts);
+
+        return view ( 'stock.products.createweek', compact ( 'products', 'categories', 'measures', 'week', 'weekproducts' ) );
     }
 
     /**
@@ -47,6 +51,10 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+
+        $id_product = 0; // $request->index;
+        $id_week = $request->id_week;
+
         if(is_null($request->min_threshold)) {
             $request['min_threshold'] = '0';
         }
@@ -98,9 +106,18 @@ class ProductController extends Controller
 
         $product->save();
 
+        $id_product = $product->id;
+
+//         WeekProduct::where(['id_week' => $id_week, 'id_product' => $id_product])->update(['max_threshold' => $request->max_threshold]);
+        $wp = new WeekProduct();
+        $wp->id_week = $id_week;
+        $wp->id_product = $id_product;
+        $wp->max_threshold = $request->max_threshold;
+        $wp->save();
+
         \Session::flash('flash_message_success', 'Produits créé : ' . $product->name);
 
-        return redirect('stock/produits');
+        return redirect('stock/produits/semaines/' . $id_week);
     }
 
     /**
@@ -134,8 +151,11 @@ class ProductController extends Controller
      */
     public function update(Request $request)
     {
-    	\Session::flash('is_update',$request->index);
 
+    	$id_product = $request->index;
+    	$id_week = $request->id_week;
+
+    	\Session::flash('is_update',$request->index);
         if(is_null($request->min_threshold)) {
             $request['min_threshold'] = '0';
         }
@@ -168,21 +188,25 @@ class ProductController extends Controller
 //             'name' => 'required|min:1|max:255',
 //         ] );
 
-        $product = Product::find($request->index);
+        $product = Product::find($id_product);
         $product->active = true;
         $product->name = $request->name;
         $product->description = $request->description;
         $product->id_measure_unit = $request->id_measure_unit;
         $product->id_category = $request->id_category;
         $product->min_threshold = $request->min_threshold;
-        $product->max_threshold = $request->max_threshold;
+//         $product->max_threshold = $request->max_threshold;
         $product->unit_price = $request->price;
+        $product->save();
 
-        $product->save ();
+//         $wp = WeekProduct::find(array('id_week' => $id_week, 'id_product' => $id_product))->first();
+//         $wp->max_threshold = $request->max_threshold;
+//         $wp->save();
+        WeekProduct::where(['id_week' => $id_week, 'id_product' => $id_product])->update(['max_threshold' => $request->max_threshold]);
 
         \Session::flash('flash_message_success','Produit modifié : ' . $product->name);
 
-        return redirect('stock/produits');
+        return redirect('stock/produits/semaines/' . $id_week);
     }
 
     /**
@@ -191,7 +215,7 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Week $week, Product $product)
     {
         //         dd($category);  // Category
         //         dd($category->products); // Collection 0-n
@@ -214,7 +238,7 @@ class ProductController extends Controller
 
         // Pour être supprimé, il ne doit pas être dans les stocks (supply/flow)
 
-//         $id_week = $week->id;
+        $id_week = $week->id;
         $id_product = $product->id;
 
         $countFlow = StockFlow::where('id_product', '=', $product->id)->count();
@@ -228,11 +252,11 @@ class ProductController extends Controller
             $product->active = false;
             $product->save ();
         }else{
-            WeekProduct::where([/*'id_week' => $id_week,*/ 'id_product' => $id_product])->delete();
+            WeekProduct::where(['id_week' => $id_week, 'id_product' => $id_product])->delete();
             Product::destroy($product->id);
             \Session::flash('flash_message_success','Produit supprimé : ' . $product->name);
         }
 
-        return redirect('stock/produits');
+        return redirect('stock/produits/semaines/' . $id_week);
     }
 }

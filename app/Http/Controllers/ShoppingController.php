@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\StockFlow;
+use App\Week;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Product;
 use PDF;
+use App\WeekProduct;
 
 class ShoppingController extends Controller
 {
@@ -15,17 +17,24 @@ class ShoppingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Week $week)
     {
         /*
-         * On veut tous les produits actifs, dont ?.... quel choix ?.... :
-         * QTE_STOCK - QTE_MAX < 0 ?
-         * QTE_STOCK - QTE_MIN < 0 ?
-         * AUTRE ?...
+         * On veut tous les produits actifs, dont : QTE_STOCK - QTE_MAX < 0
          */
-        $arrayProduct = Product::with('category')
-        ->whereRaw('quantity < max_threshold')
+//         $arrayProduct = Product::with('category')
+//         ->whereRaw('quantity < max_threshold')
+//         ->where('active', true)
+//         ->get()->sortBy('name', SORT_NATURAL|SORT_FLAG_CASE);
+
+        $id_week = $week->id;
+
+        $arrayProduct = Product::with('category') // ->with('product')
+        ->join('week_products', 'products.id', '=', 'week_products.id_product')
+        ->join('measure_units', 'products.id_measure_unit', '=', 'measure_units.id')
+        ->whereRaw('quantity < week_products.max_threshold')
         ->where('active', true)
+        ->where('week_products.id_week', $id_week)
         ->get()->sortBy('name', SORT_NATURAL|SORT_FLAG_CASE);
 
         $total = 0;
@@ -36,7 +45,7 @@ class ShoppingController extends Controller
         	$total += $prix * $qte;
         }
 
-        return view ( 'stock.shopping.shop', compact ( 'arrayProduct', 'total') );
+        return view ( 'stock.shopping.shop', compact ( 'arrayProduct', 'total', 'week') );
     }
 
     /**
@@ -46,7 +55,8 @@ class ShoppingController extends Controller
      */
     public function create()
     {
-        //
+        $weeks = Week::all();
+        return view ( 'stock.shopping.chooseweek', compact ( 'weeks' ) );
     }
 
     /**
@@ -109,16 +119,24 @@ class ShoppingController extends Controller
     /**
      * Export shop list as PDF
      */
-    public function pdf(){
+    public function pdf(Week $week) {
 
-        $arrayProduct = Product::with('category')
-        ->whereRaw('quantity < max_threshold')
+//         $arrayProduct = Product::with('category')
+//         ->whereRaw('quantity < max_threshold')
+//         ->where('active', true)
+//         ->get()->sortBy('name', SORT_NATURAL|SORT_FLAG_CASE);
+
+        $id_week = $week->id;
+
+        $arrayProduct = Product::with('category') // ->with('product')
+        ->join('week_products', 'products.id', '=', 'week_products.id_product')
+        ->join('measure_units', 'products.id_measure_unit', '=', 'measure_units.id')
+        ->whereRaw('quantity < week_products.max_threshold')
         ->where('active', true)
+        ->where('week_products.id_week', $id_week)
         ->get()->sortBy('name', SORT_NATURAL|SORT_FLAG_CASE);
 
-        //         return view ( 'stock.shopping.shop', compact ( 'arrayProduct') );
-
-        $pdf = PDF::loadView('stock.shopping.pdf', compact('arrayProduct'));
+        $pdf = PDF::loadView('stock.shopping.pdf', compact('arrayProduct' , 'week'));
         return $pdf->download('Courses_' . date('Y-m-d') . '.pdf');
 
     }

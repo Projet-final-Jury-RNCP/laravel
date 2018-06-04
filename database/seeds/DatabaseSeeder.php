@@ -3,6 +3,7 @@
 use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use App\WeekProduct;
 
 // use MeasureUnitSeeder;
 
@@ -30,6 +31,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call(StockSupplyTableSeeder::class);
         $this->call(StockFlowTableSeeder::class);
+
+        $this->call(WeekTableSeeder::class);
+        $this->call(WeekProductTableSeeder::class);
 
     }
 }

@@ -9,15 +9,15 @@
 	<!-- Display all products and allow to modify quantities by removing some in storage -->
 	<div class="card m-3 cancel-side-margins" id="stockShopping">
 		<div class="card-header">
-			Liste des courses - En cours/total : <b id="total_select" class="btn-primary">0</b>/<span id="total">0</span>€
+			Liste des courses (<b class="btn-primary">{{ $week->name }}</b>) - En cours/total : <b id="total_select" class="btn-primary">0</b>/<span id="total">0</span>€
 			<script type="text/javascript">var total = {{ $total }} , totalSelect=0; $("#total").text(total.toFixed(2));</script>
 			<div class="float-right">
 				<button class="btn btn-primary float-right ml-5" onclick="printShop()">imprimer</button>
-				<a href="{{ url('stock/shoppingpdf') }}" class="btn btn-secondary float-right ml-5">pdf</a>
+				<a href="{{ url('stock/shoppingpdf/' . $week->id) }}" class="btn btn-secondary float-right ml-5">pdf</a>
 				<div style="float: right; text-align: center; width: 200px;">
 					<label>Ce qui manque/voir tout</label>
 					<div class="switch" style="margin: auto; width: 75px;">
-						<input id="hide_done" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" checked="checked" autocomplete="off"> 
+						<input id="hide_done" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" checked="checked" autocomplete="off">
 						<label for="hide_done"></label>
 					</div>
 				</div>
@@ -32,6 +32,7 @@
 						<th>Produit</th>
 						<th>Description</th>
 						<th>Quantité à acheter</th>
+						<th>Unité</th>
 						<th>price</th>
 						<th>added</th>
 					</tr>
@@ -43,9 +44,8 @@
 						<td class="responsive-td" responsive-field="Produit">{{ $product->name }}</td>
 						<td class="responsive-td" responsive-field="Description">{{ $product->description }}</td>
 						<!-- allow to modify the product quantity by typping a quantity to be remove from storage -->
-						<td class="responsive-td text-center" responsive-field="Max à acheter">
-							{{ $product->max_threshold - $product->quantity }}
-						</td>
+						<td class="responsive-td text-center" responsive-field="Max à acheter">{{ $product->max_threshold - $product->quantity }}</td>
+						<td class="responsive-td" responsive-field="U.">{{ $product->measure_symbol }}</td>
 						<td>{{$product->unit_price}}</td>
 						<td></td>
 					</tr>

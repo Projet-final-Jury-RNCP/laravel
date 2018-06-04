@@ -54,12 +54,13 @@ Route::group(['prefix' => 'stock', 'middleware' => 'auth'], function()
     Route::delete('historique/{stockSupply}', 'StockHistoryController@destroy');
 
     // shopping : check products in shop
-    Route::get('shopping', 'ShoppingController@index');
+    Route::get('shopping', 'ShoppingController@create');
+    Route::get('shopping/{week}', 'ShoppingController@index');
     Route::post('shopping', 'ShoppingController@store');
     Route::put('shopping_update', 'ShoppingController@update');
     Route::delete('shopping/{stockSupply}', 'ShoppingController@destroy');
 
-    Route::get('shoppingpdf', 'ShoppingController@pdf');
+    Route::get('shoppingpdf/{week}', 'ShoppingController@pdf');
 
     // supplying
     Route::get('approvisionner', 'StockSupplyProvisionController@index');
@@ -108,11 +109,17 @@ Route::group(['prefix' => 'stock', 'middleware' => 'auth'], function()
     Route::put('produits_update', 'ProductController@update');
     Route::delete('produits/{product}', 'ProductController@destroy');
 
+    // Products week
+    Route::get('produits/semaines/{week}', 'ProductWeekController@create');
+    Route::post('produits/semaines/{week}', 'ProductWeekController@store');
+    Route::put('produits/semaines/{week}_update', 'ProductWeekController@update');
+    Route::delete('produits/semaines/{week}/{product}', 'ProductWeekController@destroy');
+
     // The documentation
     Route::get('/documentation', function () {
         return view ('stock.documentation.index');
     });
-    
+
 });
 
 // Users
@@ -139,3 +146,4 @@ Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/test/seb/dbrelations', 'TestSebController@dbrelations');
 Route::get('/test/seb/flashmessage', 'TestSebController@flashmessage');
 Route::get('/test/seb/stockreel', 'TestSebController@stockreel');
+Route::get('/test/seb/week', 'TestSebController@week');

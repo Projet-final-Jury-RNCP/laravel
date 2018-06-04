@@ -148,7 +148,7 @@ class StockHistoryController extends Controller
 //         dd($arrayStockHistory[0]->product);
 //         dd($arrayStockHistory);
 
-        $stockHistory = $arrayStockHistory[0];
+        $stockHistory = empty($arrayStockHistory[0])?array():$arrayStockHistory[0];
 //         dd($stockHistory->product);  // Product
 //         dd($stockHistory->product());  // HasOne
 //         dd($stockHistory->product->name);   // "Coca 1.5L"

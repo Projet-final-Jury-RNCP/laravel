@@ -70,4 +70,11 @@ class Product extends Model
 //     }
 
 
+    public function product()
+    {
+        dd("never use");
+        return $this->hasOne('App\WeekProduct', 'id');
+    }
+
+
 }

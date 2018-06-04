@@ -54,9 +54,9 @@ $(document)
 					if($('#stockShopping').length>0) {
 						var lengthMenu = [[-1, 50], ["Tous", 50]];
 						customColumnDefs = [
-							{"targets": [ 4 ],"visible": false},
-							{"targets": [ 5 ],"visible": false}
-						  ];						
+							{"targets": [ 5 ],"visible": false},
+							{"targets": [ 6 ],"visible": false}
+						  ];
 					}
 					
 					
@@ -277,13 +277,21 @@ function switchButon(index) {
 function isDone() {
 	$(".productline").click(function(){
 	    $(this).toggleClass("cross-off");
-	    var prix =  table.row( this ).data()[3]*table.row( this ).data()[4];
-	    setTotal(prix, !table.row( this ).data()[5]);
-	    table.row( this ).data()[5] = !table.row( this ).data()[5];
+	    // 3 : qté
+	    // 4 : u.
+	    // 5 : price 
+	    // 6 : added
+	    var prix = table.row( this ).data()[3]*table.row( this ).data()[5];
+//	    console.log("*", table.row( this ).data()[3], table.row( this ).data()[5])
+//	    console.log("data", table.row( this ).data())
+//	    console.log("prix", prix);
+	    setTotal(prix, !table.row( this ).data()[6]);
+	    table.row( this ).data()[6] = !table.row( this ).data()[6];
 	}); 
 }
 
 function setTotal(total, added){
+//	console.log("setTotal", total, added);
 	var newTotal;
 	if (added) {
 		newTotal = totalSelect += Number(total);
