@@ -108,6 +108,11 @@ Route::group(['prefix' => 'stock', 'middleware' => 'auth'], function()
     Route::put('produits_update', 'ProductController@update');
     Route::delete('produits/{product}', 'ProductController@destroy');
 
+    // The documentation
+    Route::get('/documentation', function () {
+        return view ('stock.documentation.index');
+    });
+    
 });
 
 // Users

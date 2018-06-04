@@ -36,6 +36,9 @@
           <a class="dropdown-item" href="{{  url('/stock/produits') }}">Produits</a>
         </div>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{  url('/stock/documentation') }}">Documentation</a>
+      </li>
 <!--       <li class="nav-item"> -->
 <!--         <a class="nav-link" href="{{  url('/repas') }}">Repas</a> -->
 <!--       </li> -->

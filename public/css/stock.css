@@ -24,6 +24,21 @@ body {
 	font-size: 1rem;
 }
 
+/* The documentation */
+.documentation h1 {
+	margin-top: 20px;
+	margin-bottom: 30px;
+	margin-left: 8%;
+}
+
+.documentation li {
+	margin-bottom: 10px;
+}
+
+.documentation .documentation-section {
+	margin-bottom: 30px;
+}
+
 .user-is-active {
 	width: 10%;
 	display: inline;
