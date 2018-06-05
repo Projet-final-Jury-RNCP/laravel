@@ -75,11 +75,11 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-//     protected function credentials(Request $request)    // + use Illuminate\Http\Request;
-//     {
-// //         return $request->only($this->username(), 'password');
-//         return array_merge($request->only($this->username(), 'password'), ['active' => 1]);
-//     }
+    protected function credentials(Request $request)    // + use Illuminate\Http\Request;
+    {
+//         return $request->only($this->username(), 'password');
+        return array_merge($request->only($this->username(), 'password'), ['active' => 1]);
+    }
 
 
 
