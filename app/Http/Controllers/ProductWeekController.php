@@ -108,12 +108,27 @@ class ProductWeekController extends Controller
 
         $id_product = $product->id;
 
+
+
+
+        // Add for all weeks
+        $weeks = Week::all();
+        foreach ($weeks as $week) {
+
+            $max_threshold = 0;
+            if($week->id == $id_week) {
+                $max_threshold = $request->max_threshold;
+            }
+
 //         WeekProduct::where(['id_week' => $id_week, 'id_product' => $id_product])->update(['max_threshold' => $request->max_threshold]);
-        $wp = new WeekProduct();
-        $wp->id_week = $id_week;
-        $wp->id_product = $id_product;
-        $wp->max_threshold = $request->max_threshold;
-        $wp->save();
+            $wp = new WeekProduct();
+            $wp->id_week = $week->id;
+            $wp->id_product = $id_product;
+            $wp->max_threshold = $max_threshold;
+            $wp->save();
+
+        }
+
 
         \Session::flash('flash_message_success', 'Produits créé : ' . $product->name);
 
