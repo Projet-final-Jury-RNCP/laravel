@@ -10,6 +10,9 @@
 <!--         <a class="nav-link" href="{{  url('/stock') }}">Home <span class="sr-only">(current)</span></a> -->
 <!--       </li> -->
       <li class="nav-item">
+        <a class="nav-link" href="{{  url('/stock/documentation') }}">Aide</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="{{  url('/admin/user') }}">Utilisateurs</a>
       </li>
       <li class="nav-item dropdown">
@@ -35,9 +38,6 @@
           <a class="dropdown-item" href="{{  url('/stock/mesures') }}">Mesures</a>
           <a class="dropdown-item" href="{{  url('/stock/produits') }}">Produits</a>
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{  url('/stock/documentation') }}">Aide</a>
       </li>
 <!--       <li class="nav-item"> -->
 <!--         <a class="nav-link" href="{{  url('/repas') }}">Repas</a> -->
