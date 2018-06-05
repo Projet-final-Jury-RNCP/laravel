@@ -46,12 +46,19 @@ body {
 /* The "is done" mark in shopping table page ; work with the Jquery isDone() function */
 .cross-off td {
 	text-decoration: line-through;
-	color: red;
-	background-color: #444444;
+	color: #EEEEEE;
+	background-color: #FFFFFF;
 }
 
 .cross-off td:before {
 	color: black;
+}
+
+.shopping-infos {
+    color: #000000;
+    background-color: rgb(239, 225, 225);
+    border-color: rgb(239, 225, 225);
+    border-radius: 5px;
 }
 
 /*** pure css responsive datable ***/
@@ -63,15 +70,15 @@ body {
 	cursor: pointer;
 }
 
-/*
-.dataTable tr:nth-child(odd):not (.head-tr ){
-	background-color: #EEEEEE !important;
+
+.dataTable tr:nth-child(odd):not(.head-tr ){
+	background-color: #D1C7C7 !important;
 }
 
 .dataTable tr:nth-child(even) {
-	background-color: #CCCCCC !important;
+	background-color: rgb(239, 225, 225) !important;
 }
-*/
+
 /* Cancel a bootstrap rule to cancel the border */
 table.dataTable {
     border-collapse: collapse !important;
@@ -164,12 +171,12 @@ input.cmn-toggle-round-flat+label:after {
 }
 
 input.cmn-toggle-round-flat:checked+label {
-	background-color: #27A1CA;
+	background-color: #007bff;
 }
 
 input.cmn-toggle-round-flat:checked+label:after {
 	margin-left: 45px;
-	background-color: #27A1CA;
+	background-color: #007bff;
 }
 
 /****************/
