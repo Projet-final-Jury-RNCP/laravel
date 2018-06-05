@@ -57,9 +57,9 @@
 					<!-- start looping though each category -->
 					@foreach($categories as $category)
 					<tr style="{{ $category->active?:'text-decoration: line-through;' }}">
-						<td class="responsive-td" responsive-field="#">{{ $category->id }}</td>
-						<td class="responsive-td" responsive-field="Nom">{{ $category->cat_name }}</td>
-						<td class="responsive-td" responsive-field="Description">{{ $category->cat_desc }}</td>
+						<td class="responsive-td" data-responsive-field="#">{{ $category->id }}</td>
+						<td class="responsive-td" data-responsive-field="Nom">{{ $category->cat_name }}</td>
+						<td class="responsive-td" data-responsive-field="Description">{{ $category->cat_desc }}</td>
 						<td class="text-center responsive-td">
 							<i onclick="editRow(this)" id="edit" title="modifier" class="fa fa-pencil fa-2x" data-id="{{ $category->id }}" style="color:#007bff;cursor:pointer;margin-right:10px;"></i>
 							<i data-target="#delete" data-toggle="modal" title="supprimer" class="fa fa-trash fa-2x" aria-hidden="true" data-source="cat-del" data-id="{{ $category->id }}" style="color:red;cursor:pointer;"></i>

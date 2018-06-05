@@ -15,9 +15,9 @@ tr:nth-child(even) {
 		display: block; 
 	}	 	
  
-	/* display the responsive-field attribute content before each td */
+	/* display the data-responsive-field attribute content before each td */
 	td.responsive-td:before { 
-		content: attr(responsive-field); 
+		content: attr(data-responsive-field); 
 		position: absolute;
 		left: 0px;
 		top: 0px;

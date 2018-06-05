@@ -23,11 +23,11 @@
 		<tbody>
 			@foreach($arrayProduct as $product)
 			<tr class="productline">
-				<td align="right" class="responsive-td text-center" responsive-field="Max à acheter">{{ $product->max_threshold - $product->quantity }}</td>
-				<td class="responsive-td" responsive-field="U.">{{ $product->measure_symbol }}</td>
-				<td class="responsive-td" responsive-field="Produit">{{ $product->name }}</td>
-				<td class="responsive-td" responsive-field="Description">{{ $product->description }}</td>
-				<td class="responsive-td hidden-on-small" responsive-field="Categorie">{{ $product->category->cat_name }}</td>
+				<td align="right" class="responsive-td text-center" data-responsive-field="Max à acheter">{{ $product->max_threshold - $product->quantity }}</td>
+				<td class="responsive-td" data-responsive-field="U.">{{ $product->measure_symbol }}</td>
+				<td class="responsive-td" data-responsive-field="Produit">{{ $product->name }}</td>
+				<td class="responsive-td" data-responsive-field="Description">{{ $product->description }}</td>
+				<td class="responsive-td hidden-on-small" data-responsive-field="Categorie">{{ $product->category->cat_name }}</td>
 			</tr>
 			@endforeach
 		</tbody>

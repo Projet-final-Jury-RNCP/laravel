@@ -32,24 +32,24 @@
 				<tbody>
 					@foreach($arrayStockHistory as $stockHistory)
 					<tr class="no_productline">
-						<td class="responsive-td" responsive-field="Date">{{ $stockHistory->created_at->format('Y-m-d h:i:s') }}</td>
-						<td class="responsive-td hidden-on-small" responsive-field="Cat.">{{ $stockHistory->product->category->cat_name }}</td>
-						<td class="responsive-td" responsive-field="Produit">{{ $stockHistory->product->name }}</td>
-<!-- 						<td class="responsive-td" responsive-field="Quantité actuelle">{{ $stockHistory->id }}</td> -->
+						<td class="responsive-td" data-responsive-field="Date">{{ $stockHistory->created_at->format('Y-m-d h:i:s') }}</td>
+						<td class="responsive-td hidden-on-small" data-responsive-field="Cat.">{{ $stockHistory->product->category->cat_name }}</td>
+						<td class="responsive-td" data-responsive-field="Produit">{{ $stockHistory->product->name }}</td>
+<!-- 						<td class="responsive-td" data-responsive-field="Quantité actuelle">{{ $stockHistory->id }}</td> -->
 						<!-- allow to modify the product quantity by typping a quantity to be remove from storage -->
-						<td class="responsive-td text-center" responsive-field="Ajouté">
+						<td class="responsive-td text-center" data-responsive-field="Ajouté">
 						{{ $stockHistory->quantity_add }}
 						</td>
-						<td class="responsive-td text-center" responsive-field="Retiré">
+						<td class="responsive-td text-center" data-responsive-field="Retiré">
 						{{ $stockHistory->quantity_rem }}
 						</td>
-						<td class="responsive-td text-center" responsive-field="Prix unitaire">
+						<td class="responsive-td text-center" data-responsive-field="Prix unitaire">
 						{{ $stockHistory->unit_price }}
 						</td>
-						<td class="responsive-td text-center" responsive-field="Qui">
+						<td class="responsive-td text-center" data-responsive-field="Qui">
 						{{ $stockHistory->user->name }}
 						</td>
-						<td class="responsive-td" responsive-field="Type">{{ $stockHistory->typestock }}</td>
+						<td class="responsive-td" data-responsive-field="Type">{{ $stockHistory->typestock }}</td>
 					</tr>
 					@endforeach
 				</tbody>
@@ -75,8 +75,8 @@
 				<tbody>
 					@foreach($arrayDatePrice as $datePrice)
 					<tr class="no_productline">
-						<td class="responsive-td" responsive-field="Date">{{ $datePrice->date }}</td>
-						<td class="responsive-td text-right" responsive-field="Prix">{{ $datePrice->price }}</td>
+						<td class="responsive-td" data-responsive-field="Date">{{ $datePrice->date }}</td>
+						<td class="responsive-td text-right" data-responsive-field="Prix">{{ $datePrice->price }}</td>
 					</tr>
 					@endforeach
 				</tbody>

@@ -187,9 +187,9 @@ input.cmn-toggle-round-flat:checked+label:after {
 		display: block;
 	}
 
-	/* display the HTML responsive-field attribute content before each td */
+	/* display the HTML data-responsive-field attribute content before each td */
 	.dataTable.products-table td.responsive-td:before {
-		content: attr(responsive-field);
+		content: attr(data-responsive-field);
 		position: absolute;
 		left: 0px;
 		top: 0px;
@@ -249,9 +249,9 @@ input.cmn-toggle-round-flat:checked+label:after {
 		display: block;
 	}
 
-	/* display the HTML responsive-field attribute content before each td */
+	/* display the HTML data-responsive-field attribute content before each td */
 	.dataTable td.responsive-td:before {
-		content: attr(responsive-field);
+		content: attr(data-responsive-field);
 		position: absolute;
 		left: 0px;
 		top: 0px;

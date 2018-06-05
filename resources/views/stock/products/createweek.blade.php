@@ -100,17 +100,17 @@
 					<!-- start looping though each product -->
 					@foreach($weekproducts as $weekProduct)
 					<tr style="{{ $weekProduct->product->active?:'text-decoration: line-through;' }}" data-catid="{{ $weekProduct->product->category->id }}" data-measureid="{{ $weekProduct->product->measureUnit->id }}">
-						<td class="responsive-td" responsive-field="#">{{ $weekProduct->product->id }}</td>
-						<td class="responsive-td" responsive-field="Nom">{{ $weekProduct->product->name }}</td>
-						<td class="responsive-td" responsive-field="Description">{{ $weekProduct->product->description }}</td>
+						<td class="responsive-td" data-responsive-field="#">{{ $weekProduct->product->id }}</td>
+						<td class="responsive-td" data-responsive-field="Nom">{{ $weekProduct->product->name }}</td>
+						<td class="responsive-td" data-responsive-field="Description">{{ $weekProduct->product->description }}</td>
 						<!-- get the associated category -->
-						<td class="responsive-td" responsive-field="Catégorie">{{ $weekProduct->product->category->cat_name }}</td>
+						<td class="responsive-td" data-responsive-field="Catégorie">{{ $weekProduct->product->category->cat_name }}</td>
 						<!-- get the associated unit of measurement -->
-						<td class="responsive-td" responsive-field="U. de mesure">{{ $weekProduct->product->measureUnit->measure_symbol }}</td>
-						<td class="responsive-td" responsive-field="Qté min">x</td>
-						<td class="responsive-td" responsive-field="Qté max">{{ $weekProduct->max_threshold }}</td>
-						<td class="responsive-td" responsive-field="Qté en stock">{{ $weekProduct->product->quantity }}</td>
-						<td class="responsive-td" responsive-field="Prix">{{ $weekProduct->product->unit_price }}</td>
+						<td class="responsive-td" data-responsive-field="U. de mesure">{{ $weekProduct->product->measureUnit->measure_symbol }}</td>
+						<td class="responsive-td" data-responsive-field="Qté min">x</td>
+						<td class="responsive-td" data-responsive-field="Qté max">{{ $weekProduct->max_threshold }}</td>
+						<td class="responsive-td" data-responsive-field="Qté en stock">{{ $weekProduct->product->quantity }}</td>
+						<td class="responsive-td" data-responsive-field="Prix">{{ $weekProduct->product->unit_price }}</td>
 						<td class="text-center responsive-td">
 							<i onclick="editRow(this)" id="edit" title="modifier" class="fa fa-pencil fa-2x" data-id="{{ $weekProduct->product->id }}" style="color:#007bff;cursor:pointer;margin-right:10px;"></i>
 							<i data-target="#delete" data-toggle="modal" title="supprimer" class="fa fa-trash fa-2x" aria-hidden="true" data-source="product-week-del" data-id="{{ $weekProduct->product->id }}" data-idweek="{{ $weekProduct->id_week }}" style="color:red;cursor:pointer;"></i>
