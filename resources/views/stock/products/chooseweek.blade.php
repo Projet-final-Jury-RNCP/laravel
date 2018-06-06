@@ -26,9 +26,8 @@
 					@foreach($weeks as $week)
 					<tr>
 						<td class="responsive-td" data-responsive-field="#">{{ $week->id }}</td>
-						<td class="responsive-td" data-responsive-field="Nom">{{ $week->name }}</td>
+						<td class="responsive-td" data-responsive-field="Nom"><a href="/stock/produits/semaines/{{ $week->id }}">{{ $week->name }}</a></td>
 						<td class="text-center responsive-td">
-							<a href="/stock/produits/semaines/{{ $week->id }}"><i id="edit" title="modifier" class="fa fa-pencil fa-2x" data-id="{{ $week->id }}" style="color:#007bff;cursor:pointer;margin-right:10px;"></i></a>
 						<!--
 							TODO : l'édition/suppression
 							<i onclick="editRow(this)" id="edit" title="modifier" class="fa fa-pencil fa-2x" data-id="{{ $week->id }}" style="color:#007bff;cursor:pointer;margin-right:10px;"></i>
