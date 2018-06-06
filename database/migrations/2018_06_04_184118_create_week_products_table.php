@@ -23,7 +23,7 @@ class CreateWeekProductsTable extends Migration
 
 //             $table->integer('id_product');
             $table->unsignedInteger('id_product');
-            $table->foreign('id_product')->references('id')->on('products');
+            $table->foreign('id_product')->references('id')->on('products')->onDelete('cascade');
 
             $table->integer('max_threshold')->default(0);
 
