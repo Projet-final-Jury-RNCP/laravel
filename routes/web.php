@@ -103,6 +103,12 @@ Route::group(['prefix' => 'stock', 'middleware' => 'auth'], function()
     Route::put('mesures_update', 'MeasureUnitController@update');
     Route::delete('mesures/{measureUnit}', 'MeasureUnitController@destroy');
 
+    // weeks
+    Route::get('semaines', 'WeeksController@create');
+    Route::post('semaines', 'WeeksController@store');
+    Route::put('semaines_update', 'WeeksController@update');
+    Route::delete('semaines/{week}', 'WeeksController@destroy');
+    
     // Products
     Route::get('produits', 'ProductController@create');
     Route::post('produits', 'ProductController@store');

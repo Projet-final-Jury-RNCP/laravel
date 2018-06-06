@@ -16,35 +16,21 @@
 
                     Gérer votre STOCK !
 
-
                     <div class="list-group m-3">
-                      <a href="#" class="list-group-item active">
-                        Stock
-                      </a>
-<!--                       <a href="/stock/consulter" class="list-group-item list-group-item-action">Consulter</a> -->
-
-                      <a href="/stock/shopping" class="list-group-item list-group-item-action">Faire les courses</a>
-
-                      <a href="/stock/approvisionner" class="list-group-item list-group-item-action"><b>Approvisionner</b> (au retour des courses)</a>
-                      <a href="/stock/inventorier" class="list-group-item list-group-item-action">Inventorier (remise en l'état du stock)</a>
-                      <a href="/stock/sortir" class="list-group-item list-group-item-action"><b>Sortie</b> de stock</a>
-                      <a href="/stock/retourner" class="list-group-item list-group-item-action">Retour en stock</a>
+                      <span class="list-group-item active">Stock</span>
+                      <a  href="{{ url('/stock/shopping') }}" class="list-group-item list-group-item-action">Faire les courses</a>
+                      <a  href="{{ url('/stock/approvisionner') }}" class="list-group-item list-group-item-action"><b>Approvisionner</b> (au retour des courses)</a>
+                      <a  href="{{ url('/stock/inventorier') }}" class="list-group-item list-group-item-action">Inventorier (remise en l'état du stock)</a>
+                      <a  href="{{ url('/stock/sortir') }}" class="list-group-item list-group-item-action"><b>Sortie</b> de stock</a>
+                      <a  href="{{ url('/stock/retourner') }}" class="list-group-item list-group-item-action">Retour en stock</a>
                     </div>
 
-<!--                     <div class="list-group m-3"> -->
-<!--                       <a href="#" class="list-group-item active"> -->
-<!--                         Repas -->
-<!--                       </a> -->
-<!--                       <a href="/stock/repas" class="list-group-item list-group-item-action">Consulter / Créer / Sortie et retour en stock</a> -->
-<!--                     </div> -->
-
                     <div class="list-group m-3">
-                      <a href="#" class="list-group-item active">
-                        Configuration
-                      </a>
-                      <a href="/stock/categories" class="list-group-item list-group-item-action">Catégories</a>
-                      <a href="/stock/mesures" class="list-group-item list-group-item-action">Mesures</a>
-                      <a href="/stock/produits" class="list-group-item list-group-item-action">Produits</a>
+                      <span class="list-group-item active">Configuration</span>
+                      <a  href="{{ url('/stock/categories') }}" class="list-group-item list-group-item-action">Catégories</a>
+                      <a  href="{{ url('/stock/mesures') }}" class="list-group-item list-group-item-action">Mesures</a>
+                      <a href="{{ url('/stock/semaines') }}" class="list-group-item list-group-item-action">Semaines</a>
+                      <a  href="{{ url('/stock/produits') }}" class="list-group-item list-group-item-action">Produits</a>
                     </div>
 
 

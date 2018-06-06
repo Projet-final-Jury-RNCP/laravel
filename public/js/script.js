@@ -6,16 +6,10 @@ $(document)
 					/* The "is done" mark in shopping table */
 					isDone();
 					
-					
-					
 					// Alignement à droite du contenu des cellules pour la/les colonnes à partir de l'index 0
 					// (valable uniquement par table - selon les colonnes ... :(
 					// inventorier : 2 = Quantité théorique 3 = Quantité réelle
 
-					// TODO : dissocier les différentes tables, pour :
-					// - aligner à droite les NUMERIQUES
-					// - aligner au centre les inputs
-					// - aligner à gauche les TEXTE (défault)
 					var customColumnDefs = [];
 					if ($('#stockSupplyInventory').length>0) {
 						customColumnDefs = [
@@ -64,34 +58,12 @@ $(document)
 					table = $('#table')
 									.DataTable(
 											{
-												
-//												  "columnDefs": [
-//												      { className: "text-right", "targets": [2] },
-//												      { className: "text-center", "targets": [3] },
-//												  ],
 												  "columnDefs": customColumnDefs,
 												  
 												  "order": order,
 													
 												   // Display ALL 
 											       "lengthMenu": lengthMenu,
-												
-//										        responsive: {
-//										            details: {
-//										                renderer: function ( api, rowIdx, columns ) {
-//										                    var data = $.map( columns, function ( col, i ) {
-//										                        return col.hidden ?
-//										                            '<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
-//										                                '<td>'+col.title+':'+'</td> '+
-//										                                '<td>'+col.data+'</td>'+
-//										                            '</tr>' :
-//										                            '';
-//										                    } ).join('');
-//										 
-//										                    return data ? $('<table/>').append( data ) : false;
-//										                }
-//										            }
-//										        },
 												"autoWidth": false,
 										        select: {
 										            style: 'single'
@@ -173,6 +145,11 @@ $(document)
 							modal.find('#send').click(function() {
 								document.product.submit();
 							});
+						} else if (source == "week-edit") {
+							src_txt = "modifier la semaines n° " + id + ' ?';
+							modal.find('#send').click(function() {
+								document.week.submit();
+							});
 						}
 						modal.find('.modal-title').text(src_txt);
 					}).on('hidden.bs.modal', function (e) {
@@ -235,6 +212,8 @@ function editRow(target) {
 	} else if($('form[name="measure"]').length>0){
 		$("#measure_name").val(table.row( elem ).data()[1]);
 		$("#measure_symbol").val(table.row( elem ).data()[2]);
+	} else if($('form[name="week"]').length>0){
+		$("#name").val(table.row( elem ).data()[1]);
 	} else if($('form[name="product"]').length>0){
 		$("#name").val(table.row( elem ).data()[1]);
 		$("#description").val(table.row( elem ).data()[2]);
@@ -250,7 +229,6 @@ function editRow(target) {
 		});
 		$("#min_threshold").val(table.row( elem ).data()[5]);
 		$("#max_threshold").val(table.row( elem ).data()[6]);
-		// 7 : stock
 		$("#price").val(table.row( elem ).data()[8]);
 	}
 	
@@ -277,21 +255,13 @@ function switchButon(index) {
 function isDone() {
 	$(".productline").click(function(){
 	    $(this).toggleClass("cross-off");
-	    // 3 : qté
-	    // 4 : u.
-	    // 5 : price 
-	    // 6 : added
 	    var prix = table.row( this ).data()[3]*table.row( this ).data()[5];
-//	    console.log("*", table.row( this ).data()[3], table.row( this ).data()[5])
-//	    console.log("data", table.row( this ).data())
-//	    console.log("prix", prix);
 	    setTotal(prix, !table.row( this ).data()[6]);
 	    table.row( this ).data()[6] = !table.row( this ).data()[6];
 	}); 
 }
 
 function setTotal(total, added){
-//	console.log("setTotal", total, added);
 	var newTotal;
 	if (added) {
 		newTotal = totalSelect += Number(total);

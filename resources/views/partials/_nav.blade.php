@@ -37,6 +37,7 @@
           <a class="dropdown-item" href="{{  url('/stock/categories') }}">Categories</a>
           <a class="dropdown-item" href="{{  url('/stock/mesures') }}">Mesures</a>
           <a class="dropdown-item" href="{{  url('/stock/produits') }}">Produits</a>
+          <a class="dropdown-item" href="{{  url('/stock/semaines') }}">Semaines</a>
         </div>
       </li>
 <!--       <li class="nav-item"> -->
