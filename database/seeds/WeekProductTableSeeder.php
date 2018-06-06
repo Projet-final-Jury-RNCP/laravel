@@ -17,32 +17,7 @@ class WeekProductTableSeeder extends Seeder
      */
     public function run()
     {
-
-
-//         WeekProduct::create([
-//             'id_week' => 2,
-//             'id_product' => 1,
-//             'max_threshold' => 1
-//         ]);
-
-//         WeekProduct::create([
-//             'id_week' => 2,
-//             'id_product' => 11,
-//             'max_threshold' => 11
-//         ]);
-
-//         WeekProduct::create([
-//             'id_week' => 3,
-//             'id_product' => 1,
-//             'max_threshold' => 31
-//         ]);
-
-//         WeekProduct::create([
-//             'id_week' => 3,
-//             'id_product' => 2,
-//             'max_threshold' => 32
-//         ]);
-
+        $faker = Faker::create();
 
         $weeks = Week::all();
         $products = Product::all();
@@ -52,7 +27,8 @@ class WeekProductTableSeeder extends Seeder
                 WeekProduct::create([
                     'id_week' => $week->id,
                     'id_product' => $product->id,
-                    'max_threshold' => $product->max_threshold +1
+//                     'max_threshold' => $product->max_threshold +1
+                    'max_threshold' => $faker->numberBetween($min = 0, $max = 30),
                 ]);
             }
         }

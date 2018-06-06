@@ -18,7 +18,6 @@ class MealsTableSeeder extends Seeder
         $faker = Faker::create();
         foreach(range(1, 10) as $index)
         {
-            // https://github.com/fzaninotto/Faker#fakerprovidermiscellaneous
             Meal::create([
 //                 'date' => $faker->dateTimeInInterval($startDate = '-30 days', $interval = '+ 1 days', $timezone = null),
                 'date' => $faker->dateTimeBetween($startDate = '-15 days', $endDate = 'now', $timezone = null),

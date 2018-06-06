@@ -45,16 +45,14 @@ class MeasureUnitTableSeeder extends Seeder
             'measure_symbol' => 'btl'
         ]);
 
-        //         $faker = Faker::create();
-        //         foreach(range(1, 6) as $index)
-            //         {
-
-            //             // https://github.com/fzaninotto/Faker#fakerprovidermiscellaneous
-            //             MeasureUnit::create([
-            //                 'measure_name' => ucfirst(strtolower($faker->city)),
-            //                 'measure_symbol' => ucfirst(strtolower($faker->countryCode))
-            //             ]);
-            //         }
+//         $faker = Faker::create();
+//         foreach(range(1, 6) as $index)
+//         {
+//             MeasureUnit::create([
+//                 'measure_name' => ucfirst(strtolower($faker->city)),
+//                 'measure_symbol' => ucfirst(strtolower($faker->countryCode))
+//             ]);
+//         }
 
     }
 }

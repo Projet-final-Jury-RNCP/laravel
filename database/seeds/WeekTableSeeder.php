@@ -22,17 +22,22 @@ class WeekTableSeeder extends Seeder
 
         Week::create([
             'id' => 2,
-            'name' => 'Semaine congé de xxx'
+            'name' => "1er semaine congés d'été (du 2 au 8 juillet 2018)"
         ]);
 
         Week::create([
             'id' => 3,
-            'name' => 'Semaine congé de noël'
+            'name' => 'Semaine congelés de noël'
         ]);
 
         Week::create([
             'id' => 4,
             'name' => 'Semaine caviar pour tous'
+        ]);
+
+        Week::create([
+            'id' => 5,
+            'name' => 'Anniversaire'
         ]);
 
     }

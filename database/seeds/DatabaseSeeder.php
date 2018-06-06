@@ -12,6 +12,8 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      *
+     * @see https://github.com/fzaninotto/Faker#fakerprovidermiscellaneous
+     *
      * @return void
      */
     public function run()
@@ -25,7 +27,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MeasureUnitTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
 
-        $this->call(MealsTableSeeder::class);
+//         $this->call(MealsTableSeeder::class);
 
         $this->call(ProductsTableSeeder::class);
 

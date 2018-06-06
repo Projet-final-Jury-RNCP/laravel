@@ -17,7 +17,7 @@ class StockFlowTableSeeder extends Seeder
         $faker = Faker::create();
 
         StockFlow::create([
-            'created_at' => '2018-05-25 13:00:00',
+            'created_at' => '2018-05-20',
             'user_id' => $faker->numberBetween($min = 1, $max = 4),
             'id_product' => 2,
             'quantity_rem' => 2
@@ -38,7 +38,7 @@ class StockFlowTableSeeder extends Seeder
         ]);
 
         StockFlow::create([
-            'created_at' => '2018-05-26',
+            'created_at' => '2018-05-26 20:59:59',
             'user_id' => $faker->numberBetween($min = 1, $max = 4),
             'id_product' => 7,
             'quantity_rem' => 2
