@@ -10,7 +10,7 @@
 	<!-- Display the complete list of available products -->
 	<div class="card m-3 cancel-side-margins">
 		<div class="card-header">Liste des produits - choix de la semaine
-			<button  class="btn btn-primary float-right" type="button" id="create_button" onclick="todo_lien_vers_creation">Créer (TODO lien vers la création d'une nouvelle semaine)</button>
+			<button  class="btn btn-primary float-right" type="button" id="create_button" onclick="window.location.assign('{{ url('/stock/semaines') }}')">Créer une nouvelle semaine</button>
 		</div>
 		<div class="card-body table-container">
 			<table id="table" class="table table-striped products-table table-bordered table-hover" style="width: 100%">
