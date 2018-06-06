@@ -8,7 +8,7 @@
 <div class="container-fluid">
 	<!-- The form to add or edit a product -->
 	<div class="card m-3 cancel-side-margins">
-		<div class="card-header">Formulaire Produits (SEMAINE : <span class='btn-primary'>{{ $week->name }}</span> )</div>
+		<div class="card-header">Formulaire Produits (<b>SEMAINE : <span class='shopping-infos'>{{ $week->name }}</span> <b></b>)</div>
 		<div class="card-body">
 			<form action="{{ url('stock/produits/semaines/' . $week->id) }}" id="product" method="post" name="product">
 				{{ csrf_field() }}
