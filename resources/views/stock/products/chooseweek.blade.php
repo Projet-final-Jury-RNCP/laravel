@@ -13,7 +13,7 @@
 			<button  class="btn btn-primary float-right" type="button" id="create_button" onclick="window.location.assign('{{ url('/stock/semaines') }}')">Créer une nouvelle semaine</button>
 		</div>
 		<div class="card-body table-container">
-			<table id="table" class="table table-striped products-table table-bordered table-hover" style="width: 100%">
+			<table id="table" class="table table-striped table-bordered table-hover" style="width: 100%">
 				<thead class="thead-dark">
 					<tr>
 						<th>#</th>
