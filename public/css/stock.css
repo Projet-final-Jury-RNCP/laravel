@@ -71,6 +71,10 @@ body {
     border-radius: 5px;
 }
 
+.pointer {
+	cursor: pointer;
+}
+
 /*** pure css responsive datable ***/
 .dataTable td {
 	padding: 5px;

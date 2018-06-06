@@ -18,22 +18,14 @@
 					<tr>
 						<th>#</th>
 						<th>Nom</th>
-						<th style="width:50px;"></th>
 					</tr>
 				</thead>
 				<tbody>
 					<!-- start looping though each product -->
 					@foreach($weeks as $week)
-					<tr>
+					<tr class="pointer" onclick="window.location.assign('{{ url('stock/produits/semaines/' . $week->id) }}')">
 						<td class="responsive-td" data-responsive-field="#">{{ $week->id }}</td>
-						<td class="responsive-td" data-responsive-field="Nom"><a href="/stock/produits/semaines/{{ $week->id }}">{{ $week->name }}</a></td>
-						<td class="text-center responsive-td">
-						<!--
-							TODO : l'édition/suppression
-							<i onclick="editRow(this)" id="edit" title="modifier" class="fa fa-pencil fa-2x" data-id="{{ $week->id }}" style="color:#007bff;cursor:pointer;margin-right:10px;"></i>
-							<i data-target="#delete" data-toggle="modal" title="supprimer" class="fa fa-trash fa-2x" aria-hidden="true" data-source="product-del" data-id="{{ $week->id }}" style="color:red;cursor:pointer;"></i>
-					    -->
-						</td>
+						<td class="responsive-td" data-responsive-field="Nom">{{ $week->name }}</td>
 					</tr>
 					@endforeach
 					<!-- end looping though each product -->
