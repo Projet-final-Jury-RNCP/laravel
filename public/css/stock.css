@@ -38,6 +38,15 @@ body {
 	margin-bottom: 30px;
 }
 
+.documentation h2 {
+	margin-bottom: 12px;	
+}
+
+.documentation h3 {
+	text-decoration : underline;
+	font-size: 1.2rem;
+}
+
 .user-is-active {
 	width: 10%;
 	display: inline;
