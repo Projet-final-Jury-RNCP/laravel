@@ -75,6 +75,10 @@ body {
 	cursor: pointer;
 }
 
+.table-hover tbody tr:hover {
+    background-color: #ccc !important;
+}
+
 /*** pure css responsive datable ***/
 .dataTable td {
 	padding: 5px;
@@ -86,11 +90,11 @@ body {
 
 
 .dataTable tr:nth-child(odd):not(.head-tr ){
-	background-color: #D1C7C7 !important;
+	background-color: #D1C7C7;
 }
 
 .dataTable tr:nth-child(even) {
-	background-color: rgb(239, 225, 225) !important;
+	background-color: rgb(239, 225, 225);
 }
 
 /* Cancel a bootstrap rule to cancel the border */

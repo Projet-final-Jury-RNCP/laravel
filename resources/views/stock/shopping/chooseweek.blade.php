@@ -23,7 +23,7 @@
 					@foreach($weeks as $week)
 					<tr class="pointer" onclick="window.location.assign('{{ url('stock/shopping/' . $week->id) }}')">
 						<td class="responsive-td" data-responsive-field="#">{{ $week->id }}</td>
-						<td class="responsive-td" data-responsive-field="Nom">{{ $week->name }}</td>
+						<td class="responsive-td" data-responsive-field="Nom">{{ $week->name }} <i id="edit" title="modifier" class="fa fa-pencil fa-2x" style="color:#007bff;cursor:pointer;float:right;margin-right:10px;"></i></td>
 					</tr>
 					@endforeach
 					<!-- end looping though each product -->
