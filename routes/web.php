@@ -15,10 +15,12 @@ use Illuminate\Support\Facades\Route;
  * |
  */
 
-Route::get('/', function () {
+// Route::get('/', function () {
 //     return view('welcome');
+// });
+Route::get('/', ['as' => 'root', function () {
     return Redirect::to( '/stock');
-});
+}]);
 
 Route::get('/pi', function () {
     phpinfo();
@@ -39,9 +41,12 @@ Route::group(['prefix' => 'stock', 'middleware' => 'auth'], function()
 // Route::group(['prefix' => 'stock'], function()
 {
     // The index page
-    Route::get('/', function () {
+//     Route::get('/', function () {
+//         return view('stock.home');
+//     });
+    Route::get('/', ['as' => 'stock', function () {
         return view('stock.home');
-    });
+    }]);
 
     /**
      * Stock
@@ -108,7 +113,7 @@ Route::group(['prefix' => 'stock', 'middleware' => 'auth'], function()
     Route::post('semaines', 'WeeksController@store');
     Route::put('semaines_update', 'WeeksController@update');
     Route::delete('semaines/{week}', 'WeeksController@destroy');
-    
+
     // Products
     Route::get('produits', 'ProductController@create');
     Route::post('produits', 'ProductController@store');

@@ -6,6 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+
+//     protected $fillable = ['id', 'created_at', 'updated_at', 'deleted_at', 'active', 'quantity',
+//         'id_measure_unit', 'id_category', 'name', 'description', 'min_threshold',
+// //         'max_threshold',
+//         'unit_price'];
+// //     protected $guarded = ['*'];
+//     protected $guarded = ['bi'];
+//     protected $hidden = ['bi'];
+
     // https://laravel.com/docs/5.6/eloquent-relationships
     //     return $this->hasOne('App\Phone');
     //     return $this->hasOne('App\Phone', 'foreign_key');

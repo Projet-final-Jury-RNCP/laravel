@@ -11,6 +11,7 @@ use App\StockSupply;
 
 use App\Week;
 use App\WeekProduct;
+use App\ProductUtil;
 
 class ProductWeekController extends Controller
 {
@@ -104,31 +105,32 @@ class ProductWeekController extends Controller
 //         }
         $product->unit_price = $request->price;
 
-        $product->save();
+//         $product->save();
 
-        $id_product = $product->id;
-
-
+//         $id_product = $product->id;
 
 
-        // Add for all weeks
-        $weeks = Week::all();
-        foreach ($weeks as $week) {
 
-            $max_threshold = 0;
-            if($week->id == $id_week) {
-                $max_threshold = $request->max_threshold;
-            }
 
-//         WeekProduct::where(['id_week' => $id_week, 'id_product' => $id_product])->update(['max_threshold' => $request->max_threshold]);
-            $wp = new WeekProduct();
-            $wp->id_week = $week->id;
-            $wp->id_product = $id_product;
-            $wp->max_threshold = $max_threshold;
-            $wp->save();
+//         // Add for all weeks
+//         $weeks = Week::all();
+//         foreach ($weeks as $week) {
 
-        }
+//             $max_threshold = 0;
+//             if($week->id == $id_week) {
+//                 $max_threshold = $request->max_threshold;
+//             }
 
+// //         WeekProduct::where(['id_week' => $id_week, 'id_product' => $id_product])->update(['max_threshold' => $request->max_threshold]);
+//             $wp = new WeekProduct();
+//             $wp->id_week = $week->id;
+//             $wp->id_product = $id_product;
+//             $wp->max_threshold = $max_threshold;
+//             $wp->save();
+
+//         }
+
+        ProductUtil::createProduct($product, $id_week);
 
         \Session::flash('flash_message_success', 'Produits créé : ' . $product->name);
 
@@ -204,20 +206,25 @@ class ProductWeekController extends Controller
 //         ] );
 
         $product = Product::find($id_product);
-        $product->active = true;
-        $product->name = $request->name;
-        $product->description = $request->description;
-        $product->id_measure_unit = $request->id_measure_unit;
-        $product->id_category = $request->id_category;
-        $product->min_threshold = $request->min_threshold;
-//         $product->max_threshold = $request->max_threshold;
-        $product->unit_price = $request->price;
-        $product->save();
+//         $product->active = true;
+//         $product->name = $request->name;
+//         $product->description = $request->description;
+//         $product->id_measure_unit = $request->id_measure_unit;
+//         $product->id_category = $request->id_category;
+//         $product->min_threshold = $request->min_threshold;
+// //         $product->max_threshold = $request->max_threshold;
+//         $product->unit_price = $request->price;
+//         $product->save();
 
-//         $wp = WeekProduct::find(array('id_week' => $id_week, 'id_product' => $id_product))->first();
-//         $wp->max_threshold = $request->max_threshold;
-//         $wp->save();
-        WeekProduct::where(['id_week' => $id_week, 'id_product' => $id_product])->update(['max_threshold' => $request->max_threshold]);
+// //         $wp = WeekProduct::find(array('id_week' => $id_week, 'id_product' => $id_product))->first();
+// //         $wp->max_threshold = $request->max_threshold;
+// //         $wp->save();
+//         WeekProduct::where(['id_week' => $id_week, 'id_product' => $id_product])->update(['max_threshold' => $request->max_threshold]);
+
+
+        $product->max_threshold = $request->max_threshold;
+
+        ProductUtil::updateProduct($product, $id_week);
 
         \Session::flash('flash_message_success','Produit modifié : ' . $product->name);
 
