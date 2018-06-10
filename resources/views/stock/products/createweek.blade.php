@@ -107,7 +107,7 @@
 						<td class="responsive-td" data-responsive-field="Catégorie">{{ $weekProduct->product->category->cat_name }}</td>
 						<!-- get the associated unit of measurement -->
 						<td class="responsive-td" data-responsive-field="U. de mesure">{{ $weekProduct->product->measureUnit->measure_symbol }}</td>
-						<td class="responsive-td" data-responsive-field="Qté min">x</td>
+						<td class="responsive-td" data-responsive-field="Qté min">{{ $weekProduct->product->min_threshold }}</td>
 						<td class="responsive-td" data-responsive-field="Qté max">{{ $weekProduct->max_threshold }}</td>
 						<td class="responsive-td" data-responsive-field="Qté en stock">{{ $weekProduct->product->quantity }}</td>
 						<td class="responsive-td" data-responsive-field="Prix">{{ $weekProduct->product->unit_price }}</td>

@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Product;
 use App\ProductUtil;
+use App\Week;
 
 class UserTest extends TestCase
 {
@@ -20,7 +21,7 @@ class UserTest extends TestCase
 
         //         $user = factory(\App\User::class)->create();
 
-        $user = \App\User::find(1);
+//         $user = \App\User::find(1);
         $user = \App\User::where('username', 'edc')->get()->first();
 
 
@@ -66,5 +67,11 @@ class UserTest extends TestCase
 
         $this->assertEquals(true, $udpated);
 
+        // DELETE
+
+        $week = Week::find($idWeek);
+        $string = \App\ProductUtil::deleteProduct($product, $week);
+
+        $this->assertContains($product->name, $string);
     }
 }

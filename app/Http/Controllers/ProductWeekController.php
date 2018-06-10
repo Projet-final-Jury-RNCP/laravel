@@ -260,24 +260,29 @@ class ProductWeekController extends Controller
 
         // Pour être supprimé, il ne doit pas être dans les stocks (supply/flow)
 
+//         $id_week = $week->id;
+//         $id_product = $product->id;
+
+//         $countFlow = StockFlow::where('id_product', '=', $product->id)->count();
+//         $countSupply = StockSupply::where('id_product', '=', $product->id)->count();
+
+//         $nbProductsExternalUsed = $countFlow + $countSupply;
+
+//         if($nbProductsExternalUsed > 0) {
+//             \Session::flash('flash_message_error','Produit non supprimé, car il est utilisé dans le stock');
+//             \Session::flash('flash_message_success','Produit désactivé : ' . $product->name);
+//             $product->active = false;
+//             $product->save ();
+//         }else{
+//             WeekProduct::where(['id_week' => $id_week, 'id_product' => $id_product])->delete();
+//             Product::destroy($product->id);
+//             \Session::flash('flash_message_success','Produit supprimé : ' . $product->name);
+//         }
+
+
         $id_week = $week->id;
-        $id_product = $product->id;
-
-        $countFlow = StockFlow::where('id_product', '=', $product->id)->count();
-        $countSupply = StockSupply::where('id_product', '=', $product->id)->count();
-
-        $nbProductsExternalUsed = $countFlow + $countSupply;
-
-        if($nbProductsExternalUsed > 0) {
-            \Session::flash('flash_message_error','Produit non supprimé, car il est utilisé dans le stock');
-            \Session::flash('flash_message_success','Produit désactivé : ' . $product->name);
-            $product->active = false;
-            $product->save ();
-        }else{
-            WeekProduct::where(['id_week' => $id_week, 'id_product' => $id_product])->delete();
-            Product::destroy($product->id);
-            \Session::flash('flash_message_success','Produit supprimé : ' . $product->name);
-        }
+        $msg = ProductUtil::deleteProduct($product, $week);
+        \Session::flash('flash_message_success', $msg);
 
         return redirect('stock/produits/semaines/' . $id_week);
     }
