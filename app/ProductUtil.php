@@ -9,8 +9,6 @@ class ProductUtil
 
     public static function createProduct(Product $product, int $idWeek) : int {
 
-//         $product->bi  = 'don';
-
         $product->save();
 
         // Add for all weeks
@@ -61,7 +59,7 @@ class ProductUtil
             $product->save();
             return 'Produit désactivé : ' . $product->name;
         }else{
-            WeekProduct::where([/*'id_week' => $id_week,*/ 'id_product' => $id_product])->delete();
+            WeekProduct::where(['id_product' => $id_product])->delete();
             Product::destroy($product->id);
 
             return 'Produit supprimé : ' . $product->name;

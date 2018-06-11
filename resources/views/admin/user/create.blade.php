@@ -5,27 +5,6 @@ Créer un nouvel utilisateur
 @stop
 
 @section('content')
-
-@push('scripts-end')
-<script type="text/javascript">
-$( document ).ready(function() {
-
-	$("#choiceicon span")
-// 	.css("color", "grey")
-	.on('click', function() {
-		var classIcon = $( this ).attr('class');
-
-		$("#iconchoiced").attr('class', classIcon);
-		$("#icon").val(classIcon);
-	})
-	;
-
-});
-</script>
-@endpush
-
-<!-- https://getbootstrap.com/docs/4.0/components/forms/ -->
-
 <div class="container">
 
     <br>
@@ -34,12 +13,9 @@ $( document ).ready(function() {
   		<div class="card-header">Créer un nouvel utilisateur</div>
   		<div class="card-block" style="padding: 1.5rem">
 
-<!--         <div class="row"> -->
-<!--             <div class="col-md-12"> -->
-
 			@include('partials._form-errors')
 
-			<!-- The form to create a new user -->
+			{{-- The form to create a new user --}}
 			<form action="{{ url('/admin/user/create') }}" method="POST">
 
   				{{ csrf_field() }}
@@ -86,9 +62,6 @@ $( document ).ready(function() {
 
 			    <button type="submit" class="btn btn-primary">Créer</button>
 			</form>
-
-<!--             </div> -->
-<!--         </div> -->
 
     	</div>
     </div>

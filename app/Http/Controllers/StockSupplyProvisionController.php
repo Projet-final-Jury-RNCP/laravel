@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\StockSupply;
-use App\StockReal;
 use Illuminate\Http\Request;
 use App\StockFlow;
 use Illuminate\Support\Facades\Auth;
@@ -20,9 +19,7 @@ class StockSupplyProvisionController extends Controller
      */
     public function index()
     {
-        /*
-         * On veut tous les produits actifs
-         */
+        // Getting all actives products
         $arrayProduct = Product::with('category')->where('active', true)->get()->sortBy('name', SORT_NATURAL|SORT_FLAG_CASE);
         return view ( 'stock.supply.provision', compact ( 'arrayProduct' ) );
     }
@@ -102,11 +99,6 @@ class StockSupplyProvisionController extends Controller
         		$supply->quantity_add = $qte_reel;
         		$supply->id_product = $id_product;
         		$supply->user_id = Auth::user()->getAuthIdentifier();
-//         		foreach ($request->prices as $id_product_p => $val) {
-//         			if ($id_product_p==$id_product) {
-//         				$supply->unit_price = $val;
-//         			}
-//         		}
         		$supply->unit_price = $price;
         		$supply->save();
         		$nbrProductAdded++;

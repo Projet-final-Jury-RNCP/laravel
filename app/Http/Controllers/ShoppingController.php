@@ -19,17 +19,10 @@ class ShoppingController extends Controller
      */
     public function index(Week $week)
     {
-        /*
-         * On veut tous les produits actifs, dont : QTE_STOCK - QTE_MAX < 0
-         */
-//         $arrayProduct = Product::with('category')
-//         ->whereRaw('quantity < max_threshold')
-//         ->where('active', true)
-//         ->get()->sortBy('name', SORT_NATURAL|SORT_FLAG_CASE);
-
         $id_week = $week->id;
 
-        $arrayProduct = Product::with('category') // ->with('product')
+        // Getting all actives products with : QTE_STOCK - QTE_MAX < 0
+        $arrayProduct = Product::with('category')
         ->join('week_products', 'products.id', '=', 'week_products.id_product')
         ->join('measure_units', 'products.id_measure_unit', '=', 'measure_units.id')
         ->whereRaw('quantity < week_products.max_threshold')
@@ -120,11 +113,6 @@ class ShoppingController extends Controller
      * Export shop list as PDF
      */
     public function pdf(Week $week) {
-
-//         $arrayProduct = Product::with('category')
-//         ->whereRaw('quantity < max_threshold')
-//         ->where('active', true)
-//         ->get()->sortBy('name', SORT_NATURAL|SORT_FLAG_CASE);
 
         $id_week = $week->id;
 

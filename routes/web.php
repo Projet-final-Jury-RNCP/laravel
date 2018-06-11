@@ -15,19 +15,10 @@ use Illuminate\Support\Facades\Route;
  * |
  */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 Route::get('/', ['as' => 'root', function () {
     return Redirect::to( '/stock');
 }]);
 
-Route::get('/pi', function () {
-    phpinfo();
-    die();
-});
-
-// Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home', function() {
     return Redirect::to( '/stock');
 });
@@ -38,12 +29,8 @@ Route::get('/home', function() {
  */
 
 Route::group(['prefix' => 'stock', 'middleware' => 'auth'], function()
-// Route::group(['prefix' => 'stock'], function()
 {
     // The index page
-//     Route::get('/', function () {
-//         return view('stock.home');
-//     });
     Route::get('/', ['as' => 'stock', function () {
         return view('stock.home');
     }]);
@@ -131,6 +118,12 @@ Route::group(['prefix' => 'stock', 'middleware' => 'auth'], function()
         return view ('stock.documentation.index');
     });
 
+    // Phpinfo
+    Route::get('/pi', function () {
+        phpinfo();
+        die();
+    });
+
 });
 
 // Users
@@ -149,12 +142,3 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
 Auth::routes();
 
 Route::get('/logout', 'Auth\LoginController@logout');
-
-
-/**
- * the TEST routes
- */
-Route::get('/test/seb/dbrelations', 'TestSebController@dbrelations');
-Route::get('/test/seb/flashmessage', 'TestSebController@flashmessage');
-Route::get('/test/seb/stockreel', 'TestSebController@stockreel');
-Route::get('/test/seb/week', 'TestSebController@week');

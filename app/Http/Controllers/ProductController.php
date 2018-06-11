@@ -30,11 +30,6 @@ class ProductController extends Controller
      */
     public function create()
     {
-//         $products = Product::all()->sortBy('name', SORT_NATURAL|SORT_FLAG_CASE);
-//         $categories = Category::all()->sortBy('cat_name', SORT_NATURAL|SORT_FLAG_CASE)->where('active', true);
-//         $measures = MeasureUnit::all()->sortBy('measure_name', SORT_NATURAL|SORT_FLAG_CASE);
-//         return view ( 'stock.products.create', compact ( 'products', 'categories', 'measures' ) );
-
         $weeks = Week::all();
         return view ( 'stock.products.chooseweek', compact ( 'weeks' ) );
     }
@@ -68,11 +63,6 @@ class ProductController extends Controller
             'max_threshold' => 'gte:min_threshold',
 
             'price' => 'min:0|numeric'
-
-            // https://laravel.com/docs/5.6/validation
-            // A Note On Optional Fields
-            // By default, Laravel includes the TrimStrings and ConvertEmptyStringsToNull
-
         ] );
 
         $product = new Product();
@@ -91,9 +81,6 @@ class ProductController extends Controller
             $product->max_threshold = 0;
         }
 
-//         if(is_null($product->description)) {
-//             $product->description = "";
-//         }
         $product->unit_price = $request->price;
 
         $product->save();
@@ -158,15 +145,7 @@ class ProductController extends Controller
 
             'price' => 'min:0|numeric'
 
-            // https://laravel.com/docs/5.6/validation
-            // A Note On Optional Fields
-            // By default, Laravel includes the TrimStrings and ConvertEmptyStringsToNull
-
         ] );
-
-//         $this->validate ( $request, [
-//             'name' => 'required|min:1|max:255',
-//         ] );
 
         $product = Product::find($request->index);
         $product->active = true;
@@ -193,28 +172,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //         dd($category);  // Category
-        //         dd($category->products); // Collection 0-n
-
-//         dd($product);  // Product
-//         dd($product->category); // Category
-//         dd($product->category->count()); // 14
-//         dd($product->category->get());  // Collection 14
-
-//         dd(Category::find($product->id_category));
-//         dd(Category::find($product->id_category)->with('products'));
-//         dd(Category::find($product->id_category)->with('products')->get());
-//         dd(Category::with('products')->where('id', $product->id_category)->get());
-//         dd(Category::with('products')->where('id', $product->id_category)->first());
-//         dd(Category::with('products')->where('id', $product->id_category)->first()->products());
-//         dd(Category::with('products')->where('id', $product->id_category)->first()->products()->count());
-
-//         $nbProductsInCategory = Category::with('products')->where('id', $product->id_category)->first()->products()->count();
-
-
         // Pour être supprimé, il ne doit pas être dans les stocks (supply/flow)
 
-//         $id_week = $week->id;
         $id_product = $product->id;
 
         $countFlow = StockFlow::where('id_product', '=', $product->id)->count();
@@ -228,7 +187,7 @@ class ProductController extends Controller
             $product->active = false;
             $product->save ();
         }else{
-            WeekProduct::where([/*'id_week' => $id_week,*/ 'id_product' => $id_product])->delete();
+            WeekProduct::where(['id_product' => $id_product])->delete();
             Product::destroy($product->id);
             \Session::flash('flash_message_success','Produit supprimé : ' . $product->name);
         }

@@ -5,27 +5,6 @@ Modifier l'utilisateur {{ $user->name }}
 @stop
 
 @section('content')
-
-@push('scripts-end')
-<script type="text/javascript">
-$( document ).ready(function() {
-
-	$("#choiceicon span")
-// 	.css("color", "grey")
-	.on('click', function() {
-		var classIcon = $( this ).attr('class');
-
-		$("#iconchoiced").attr('class', classIcon);
-		$("#icon").val(classIcon);
-	})
-	;
-
-});
-</script>
-@endpush
-
-<!-- https://getbootstrap.com/docs/4.0/components/forms/ -->
-
 <div class="container">
 
     <br>
@@ -36,7 +15,7 @@ $( document ).ready(function() {
 
 			@include('partials._form-errors')
 
-			<!-- The form to modify a user -->
+			{{-- The form to modify a user --}}
 		    <form action="{{ url('/admin/user/' . $user->id) }}" method="POST" role="form" enctype="multipart/form-data">
 
 		        {{ csrf_field() }}

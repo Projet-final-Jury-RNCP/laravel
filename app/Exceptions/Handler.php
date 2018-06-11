@@ -63,32 +63,11 @@ class Handler extends ExceptionHandler
             ->withErrors(["AuthorizationException ! Vous n'avez pas le droit de faire cela !"]);
         }
 
-
         if( $exception instanceof NotFoundHttpException) {
-
-//             $arrayWithErrors = ['adfadfa', 'afdafafa'];
-
-//             abort('404');
-
-//             return redirect(route('login'))
-// //             ->withErrors(["Ressource non trouvée"]);
-// //             ->withError("Ressource non trouvée");
-//             ->withErrors($arrayWithErrors);
-
             return response()->view('errors.404', [], 404);
         }
 
         if ($exception instanceof QueryException) {
-            //             dd($exception);
-
-//             \Session::flash('error', 'teatat');
-
-//             return redirect(route('root'))
-// //             return redirect(route('login'))
-//             ->withErrors(["Erreur SQL"]);
-
-//             return view("errors.404");
-
             return response()->view('errors.500', ['exception' => $exception], 500);
         }
 
@@ -108,13 +87,12 @@ class Handler extends ExceptionHandler
             ;
         }
 
-        // custom error message
-//         if ($exception instanceof \Exception) {
-//             return response()->view('errors.500', ['exception' => $exception], 500);
-//         }
         if ($exception instanceof \ErrorException) {
             return response()->view('errors.500', ['exception' => $exception], 500);
         }
+//         if ($exception instanceof \Exception) {
+//             return response()->view('errors.500', ['exception' => $exception], 500);
+//         }
 
         return parent::render($request, $exception);
     }

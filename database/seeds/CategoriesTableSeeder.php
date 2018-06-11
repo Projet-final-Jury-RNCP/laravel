@@ -35,6 +35,11 @@ class CategoriesTableSeeder extends Seeder
             'cat_name' => 'Pharmacie'
         ]);
 
+        Category::create([
+            'id' => 5,
+            'cat_name' => 'Maison'
+        ]);
+
 //         $faker = Faker::create();
 //         foreach(range(1, 10) as $index)
 //         {

@@ -13,23 +13,11 @@
 			<form action="{{ url('stock/categories') }}" id="category" method="post" name="category">
 				{{ csrf_field() }}
 				<input id="index" name="index" type="hidden">
-<!-- 				<div class="row"> -->
-    				<div class="form-group"> <!-- col-lg-8 col-md-6 col-sm-12"> -->
-    					<label for="cat_name">Nom</label>
-    					<input type="text" class="form-control{{ $errors->has('cat_name') ? ' is-invalid' : '' }}" id="cat_name" aria-describedby="cat_name" name="cat_name" placeholder="Nom de la catégorie" required="required">
-    					<small class="text-danger">{{ $errors->first('cat_name') }}</small>
-    				</div>
-<!--
-    				<div class="form-group col-lg-4 col-md-6 col-sm-12">
-    					<label for="name">Actif</label>
-    					<select class="form-control{{ $errors->has('active') ? ' is-invalid' : '' }}" id="active" aria-describedby="active" name="active" placeholder="Actif">
-    						<option value="1" {{ old('active') === "1" ? 'selected' : '' }}>Oui</option>
-    						<option value="0" {{ old('active') === "0" ? 'selected' : '' }}>Non</option>
-    					</select>
-    					<small class="text-danger">{{ $errors->first('active') }}</small>
-    				</div>
- -->
-<!-- 				</div> -->
+				<div class="form-group">
+					<label for="cat_name">Nom</label>
+					<input type="text" class="form-control{{ $errors->has('cat_name') ? ' is-invalid' : '' }}" id="cat_name" aria-describedby="cat_name" name="cat_name" placeholder="Nom de la catégorie" required="required">
+					<small class="text-danger">{{ $errors->first('cat_name') }}</small>
+				</div>
 				<div class="form-group">
 					<label for="cat_desc">Description</label>
 					<textarea class="form-control" id="cat_desc" aria-describedby="cat_desc" name="cat_desc"></textarea>

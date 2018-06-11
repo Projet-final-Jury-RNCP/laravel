@@ -16,9 +16,7 @@ class StockFlowPullController extends Controller
      */
     public function index()
     {
-        /*
-         * On veut tous les produits disponibles dans le stock (qté > 0)
-         */
+        // Getting all available products : QTE > 0
         $arrayProduct = Product::with('category')->where('quantity', '>', 0)->get()->sortBy('name', SORT_NATURAL|SORT_FLAG_CASE);
         return view ( 'stock.flow.pull', compact ( 'arrayProduct' ) );
     }
@@ -84,7 +82,7 @@ class StockFlowPullController extends Controller
                 $qte_reel = 0;
             }else{
 
-                if($qte_reel > $qte_virtual) {  // on ne sort pas plus que ce qu'il y a dans le stock
+                if($qte_reel > $qte_virtual) {  // we do not go out more than there is in the stock
                     $qte_reel = $qte_virtual;
                 }
 

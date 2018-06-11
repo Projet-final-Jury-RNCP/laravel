@@ -135,7 +135,7 @@ class ProductsTableSeeder extends Seeder
         "POMME GOLDEN 1ER PRIX 2KG ",
         "RIK ROK CLEMENTINE 1KG",
         "RIK ET ROK BANANE 1KG",
-        "AUCHAN BEURRE TENDRE FACILE A TARTINER DEMI-SEL 250G",
+//         "AUCHAN BEURRE TENDRE FACILE A TARTINER DEMI-SEL 250G",
         "Œufs moyens datés du jour X 20",
         "GALMIER FILET POULET BLANC X6",
         "LAIT ENTIER 1L",
@@ -170,36 +170,36 @@ class ProductsTableSeeder extends Seeder
         "MAISON DU CAFE ESPRESSO DECA",
         "MAISON DU CAFE ESPRESSO SUPREM",
         "FONTAINE LUMINEUSE ANNIVERSAIRE",
-        "NETTOYANT TAPIS",
-        "SACS POUBELLE 30L X20",
-        "SACS POUBELLE 100L X10",
-        "RECHARGE DÉSODORISANT AIR WICK",
-        "GANTS MAPA TAILLE L",
-        "SAVON LIQUIDE",
-        "LINGETTES AUCHAN NETTOYANTES X50",
-        "NETTOYANT MEUBLE",
-        "SACS CONGÉLATION 3L X50",
-        "AUCHAN CARRES ABSORBANTS X5",
-        "LIQUIDE VAISSELLE AUCHAN CITRON 750ML",
-        "BLOC WC AUCHAN X3",
-        "ÉPONGES MULTI USAGE X3",
-        "FOUR ET GRILL AUCHAN",
-        "PAPIER ALUMINIUM 1ER PRIX 50M",
-        "DESTOP ENTRETIEN CANALISATIONS",
-        "GEL WC AUCHAN",
-        "EPONGE MÉTALIQUE X3",
-        "LIQUIDE RINCAGE LAVE VAISSELLE",
-        "AUCHAN LESSIVE PASTILLES VAISSELLE",
-        "LINGETTES BÉBÉ",
-        "LESSIVE PASTILLES LINGE X80",
-        "RECHARGE NETTOYANT VITRE AUCHAN 750ML",
-        "DÉSODORISANT",
-        "NETTOYANT ÉCRAN PLAT",
-        "SEL RÉGÉNÉRANT LAVE VAISSELLE AUCHAN 1KG",
-        "GANTS TAILLE L",
-        "FEBREZE",
-        "NETTOYANT MULTI-SURFACE 1L",
-        "SANYTOL DÉSINFECTANT MULTI-USAGE",
+//         "NETTOYANT TAPIS",
+//         "SACS POUBELLE 30L X20",
+//         "SACS POUBELLE 100L X10",
+//         "RECHARGE DÉSODORISANT AIR WICK",
+//         "GANTS MAPA TAILLE L",
+//         "SAVON LIQUIDE",
+//         "LINGETTES AUCHAN NETTOYANTES X50",
+//         "NETTOYANT MEUBLE",
+//         "SACS CONGÉLATION 3L X50",
+//         "AUCHAN CARRES ABSORBANTS X5",
+//         "LIQUIDE VAISSELLE AUCHAN CITRON 750ML",
+//         "BLOC WC AUCHAN X3",
+//         "ÉPONGES MULTI USAGE X3",
+//         "FOUR ET GRILL AUCHAN",
+//         "PAPIER ALUMINIUM 1ER PRIX 50M",
+//         "DESTOP ENTRETIEN CANALISATIONS",
+//         "GEL WC AUCHAN",
+//         "EPONGE MÉTALIQUE X3",
+//         "LIQUIDE RINCAGE LAVE VAISSELLE",
+//         "AUCHAN LESSIVE PASTILLES VAISSELLE",
+//         "LINGETTES BÉBÉ",
+//         "LESSIVE PASTILLES LINGE X80",
+//         "RECHARGE NETTOYANT VITRE AUCHAN 750ML",
+//         "DÉSODORISANT",
+//         "NETTOYANT ÉCRAN PLAT",
+//         "SEL RÉGÉNÉRANT LAVE VAISSELLE AUCHAN 1KG",
+//         "GANTS TAILLE L",
+//         "FEBREZE",
+//         "NETTOYANT MULTI-SURFACE 1L",
+//         "SANYTOL DÉSINFECTANT MULTI-USAGE",
         "PAPIER TOILETTE X16",
         "ESSUIE TOUT GROS ROULEAU",
         "ESSUIE TOUT X2",
@@ -244,6 +244,11 @@ class ProductsTableSeeder extends Seeder
 
         foreach($arrayCoursesHebdo as $name) {
 
+            $id_category = 1;
+            if(strpos(strtolower($name), 'ampo') !== false) {
+                $id_category = 5;
+            }
+
             Product::create([
                 'active' => true,
                 'id_measure_unit' => 1,
@@ -254,6 +259,17 @@ class ProductsTableSeeder extends Seeder
             ]);
 
         }
+
+
+        Product::create([
+            'active' => true,
+            'id_measure_unit' => 3,
+            'id_category' => 1,
+            'name' => "BEURRE TENDRE",
+            'description' => "FACILE A TARTINER DEMI-SEL 250G - AUCHAN",
+            'unit_price' => $faker->randomFloat(2, 0, $max = 12),
+        ]);
+
 
         Product::create([
             'active' => true,
@@ -267,9 +283,40 @@ class ProductsTableSeeder extends Seeder
 
         $arrayCoursesHebdo = array(
 
-        "SACS ASPIRATEUR KARCHER 6-959-130",
-        "SACS ASPIRATEUR VOITURE KARCHER 6.904.143",
-        "BAC PLASTIQUE RIGIDE GRIS FONCÉ (rangement des affaires des élèves)",
+            "NETTOYANT TAPIS",
+            "SACS POUBELLE 30L X20",
+            "SACS POUBELLE 100L X10",
+            "RECHARGE DÉSODORISANT AIR WICK",
+            "GANTS MAPA TAILLE L",
+            "SAVON LIQUIDE",
+            "LINGETTES AUCHAN NETTOYANTES X50",
+            "NETTOYANT MEUBLE",
+            "SACS CONGÉLATION 3L X50",
+            "AUCHAN CARRES ABSORBANTS X5",
+            "LIQUIDE VAISSELLE AUCHAN CITRON 750ML",
+            "BLOC WC AUCHAN X3",
+            "ÉPONGES MULTI USAGE X3",
+            "FOUR ET GRILL AUCHAN",
+            "PAPIER ALUMINIUM 1ER PRIX 50M",
+            "DESTOP ENTRETIEN CANALISATIONS",
+            "GEL WC AUCHAN",
+            "EPONGE MÉTALIQUE X3",
+            "LIQUIDE RINCAGE LAVE VAISSELLE",
+            "AUCHAN LESSIVE PASTILLES VAISSELLE",
+            "LINGETTES BÉBÉ",
+            "LESSIVE PASTILLES LINGE X80",
+            "RECHARGE NETTOYANT VITRE AUCHAN 750ML",
+            "DÉSODORISANT",
+            "NETTOYANT ÉCRAN PLAT",
+            "SEL RÉGÉNÉRANT LAVE VAISSELLE AUCHAN 1KG",
+            "GANTS TAILLE L",
+            "FEBREZE",
+            "NETTOYANT MULTI-SURFACE 1L",
+            "SANYTOL DÉSINFECTANT MULTI-USAGE",
+
+            "SACS ASPIRATEUR KARCHER 6-959-130",
+            "SACS ASPIRATEUR VOITURE KARCHER 6.904.143",
+            "BAC PLASTIQUE RIGIDE GRIS FONCÉ (rangement des affaires des élèves)",
 
         );
 

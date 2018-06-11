@@ -5,28 +5,6 @@ Liste des utilisateurs
 @stop
 
 @section('content')
-
-<!--
-
-https://v4-alpha.getbootstrap.com/migration/
-
-.panel to .card, now built with flexbox.
-.panel-default removed and no replacement.
-
-.panel-heading to .card-header
-
-.panel-body to .card-block
-
-https://www.quackit.com/bootstrap/bootstrap_4/tutorial/bootstrap_tables.cfm
-
-
-https://getbootstrap.com/docs/4.1/migration/
-https://getbootstrap.com/docs/4.1/utilities/display/
-hidden -> d-none d-md-block d-lg-none
-
-
- -->
-
 <div class="container">
 
     <br>
@@ -94,7 +72,7 @@ hidden -> d-none d-md-block d-lg-none
         </table>
     </div>
 
-    {{ $arrayUser->links() }}	<!-- pagination + justify-content-center : https://laravel.com/docs/5.6/pagination    -->
+    {{ $arrayUser->links() }}
 
 @endif
 

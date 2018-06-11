@@ -16,9 +16,7 @@ class StockFlowPushController extends Controller
      */
     public function index()
     {
-        /*
-         * On veut tous les produits qui sont sortis (actifs pour simplifier)
-         */
+        // Getting all actives products
         $arrayProduct = Product::with('category')->where('active', true)->get()->sortBy('name', SORT_NATURAL|SORT_FLAG_CASE);
         return view ( 'stock.flow.push', compact ( 'arrayProduct' ) );
     }

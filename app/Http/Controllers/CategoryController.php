@@ -32,13 +32,13 @@ class CategoryController extends Controller
 		] );
 
 		$category = new Category();
-		$category->active = true; // $request->active?true:false;
+		$category->active = true;
 		$category->cat_name = $request->cat_name;
 		$category->cat_desc = $request->cat_desc;
 		$category->save();
 
 		\Session::flash('flash_message_success', 'Catégorie créé : ' . $category->cat_name );
-		
+
 		return redirect('stock/categories');
     }
 
@@ -56,7 +56,7 @@ class CategoryController extends Controller
         ] );
 
         $category = Category::find($request->index);
-        $category->active = true; // $request->active?true:false;
+        $category->active = true;
         $category->cat_name = $request->cat_name;
         $category->cat_desc = $request->cat_desc;
         $category->save();
@@ -73,9 +73,6 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-//         dd($category);  // Category
-//         dd($category->products); // Collection 0-n
-
         if($category->products->count()) {
             \Session::flash('flash_message_error','Catégorie non supprimée, car elle est utilisée par des produits');
             \Session::flash('flash_message_success','Catégorie désactivée');

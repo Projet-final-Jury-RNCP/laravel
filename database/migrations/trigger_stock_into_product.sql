@@ -1,8 +1,4 @@
 
-/*
-DELETE FROM  stock_real;
-*/
-
 -- Appro -> stock
 
 DROP TRIGGER IF EXISTS trigger_stock_supplies_insert_after;

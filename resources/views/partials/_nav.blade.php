@@ -6,9 +6,7 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-<!--       <li class="nav-item active"> -->
-<!--         <a class="nav-link" href="{{  url('/stock') }}">Home <span class="sr-only">(current)</span></a> -->
-<!--       </li> -->
+
       <li class="nav-item">
         <a class="nav-link" href="{{  url('/stock/documentation') }}">Aide</a>
       </li>
@@ -22,8 +20,6 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
           <a class="dropdown-item" href="{{  url('/stock/shopping') }}"><b>Faire les courses</b></a>
-
-<!--           <a class="dropdown-item" href="{{  url('/stock/consulter') }}"><b>Consulter</b></a> -->
 
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="{{  url('/stock/approvisionner') }}"><b>Approvisionner</b> (au retour des courses)</a>
@@ -40,9 +36,6 @@
           <a class="dropdown-item" href="{{  url('/stock/semaines') }}">Semaines</a>
         </div>
       </li>
-<!--       <li class="nav-item"> -->
-<!--         <a class="nav-link" href="{{  url('/repas') }}">Repas</a> -->
-<!--       </li> -->
     </ul>
 
         <!-- Right Side Of Navbar -->
@@ -50,7 +43,7 @@
             <!-- Authentication Links -->
             @guest
                 <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-<!--                 <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li> -->
+                {{--<li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>--}}
             @else
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
