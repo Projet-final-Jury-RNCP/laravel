@@ -252,7 +252,7 @@ class ProductsTableSeeder extends Seeder
             Product::create([
                 'active' => true,
                 'id_measure_unit' => 1,
-                'id_category' => 1,
+                'id_category' => $id_category,
                 'name' => $name,
 //                 'max_threshold' => $faker->numberBetween($min = 0, $max = 30),
                 'unit_price' => $faker->randomFloat(2, 0, $max = 12),
