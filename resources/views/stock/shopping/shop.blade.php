@@ -12,8 +12,8 @@
 			Liste des courses (<b class="shopping-infos">{{ $week->name }}</b>) - En cours/total : <b id="total_select" class="shopping-infos">0</b>/<span id="total">0</span>€
 			<script type="text/javascript">var total = {{ $total }} , totalSelect=0; $("#total").text(total.toFixed(2));</script>
 			<div class="float-right">
-				<button class="btn btn-primary float-right ml-5" onclick="printShop()">imprimer</button>
-				<a href="{{ url('stock/shoppingpdf/' . $week->id) }}" class="btn btn-secondary float-right ml-5">pdf</a>
+				<button class="btn btn-primary float-right ml-5" onclick="printShop()"><i class="fa fa-print"></i> imprimer</button>
+				<a href="{{ url('stock/shoppingpdf/' . $week->id) }}" class="btn btn-secondary float-right ml-5"><i class="fa fa-file-pdf-o"></i> pdf</a>
 				<div style="float: right; text-align: center; width: 200px;">
 					<label>Ce qui manque/voir tout</label>
 					<div class="switch" style="margin: auto; width: 75px;">

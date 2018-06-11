@@ -35,7 +35,7 @@
 					<textarea class="form-control" id="cat_desc" aria-describedby="cat_desc" name="cat_desc"></textarea>
 				</div>
 				<button data-target="#update_modal" data-toggle="modal" data-source="cat-edit" id="update" type="button" class="btn btn-warning float-right" style="display: none;">Modifier</button>
-				<button id="submit_form" type="submit" class="btn btn-primary float-right">Envoyer</button>
+				<button id="submit_form" type="submit" class="btn btn-primary float-right">Créer</button>
 				<button id="new" type="button" class="btn btn-danger float-right mr-3" style="display: none;">Annuler</button>
 			</form>
 		</div>
