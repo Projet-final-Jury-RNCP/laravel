@@ -165,8 +165,14 @@ class ProductWeekController extends Controller
         ] );
 
         $product = Product::find($id_product);
-
+        $product->active = true;
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->id_measure_unit = $request->id_measure_unit;
+        $product->id_category = $request->id_category;
+        $product->min_threshold = $request->min_threshold;
         $product->max_threshold = $request->max_threshold;
+        $product->unit_price = $request->price;
 
         ProductUtil::updateProduct($product, $id_week);
 
